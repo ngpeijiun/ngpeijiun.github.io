@@ -11,7 +11,7 @@
 - Notes about Coding
 
   - Graphics
-    - p5.js
+    - [p5.js](cg/p5/p5-1-introduction)
 
 - Notes about Machine Learning
 
