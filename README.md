@@ -18,6 +18,9 @@
   - [Machine Learning](ml/ml-1-introduction)<br>
     *Andrew Ng*<br>
     *Stanford University*
+  - [Deep Learning Specialisation](dl/dl-1-introduction)<br>
+    *Andrew Ng*<br>
+    *deeplearning.ai*
 
 - Notes about Statistics
 
