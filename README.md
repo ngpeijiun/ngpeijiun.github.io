@@ -2,6 +2,10 @@
 
 > He who learns but does not think, is lost! He who thinks but does not learn is in great danger.
 
+- Notes about My Ideas
+
+  - [A Gradient Tracking Method of Explaining Model Predictions](idea/idea-gradient-tracking-explainer)
+
 - Notes about Learning
 
   - [Learning How to Learning](learn/learn-1-what-is-learning)<br>

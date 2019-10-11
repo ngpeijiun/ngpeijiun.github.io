@@ -1,0 +1,2 @@
+- [Home](/ "Home")
+- [Gradient Tracking Explainer](idea/idea-gradient-tracking-explainer "Sensi Explainer")

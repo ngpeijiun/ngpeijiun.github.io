@@ -76,7 +76,7 @@
    }
    ```
 
-   * $ \alpha $ = learning rate controls how big a step we take downhill with creating descent
+   * $ \alpha $ = learning rate controls how big a step we take downhill with gradient descent
 
 3. Simultaneously update $ { \theta  }_{ 0 },{ \theta  }_{ 1 } $
 
