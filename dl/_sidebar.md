@@ -1,3 +1,4 @@
 - [Home](/ "Home")
 - [Introduction](dl/dl-1-introduction "Introduction")
 - [Neural Networks Basics](dl/dl-2-neural-networks-basics "Neural Networks Basics")
+- [Shallow Neural Networks](dl/dl-3-shallow-neural-networks "Shallow Neural Networks")

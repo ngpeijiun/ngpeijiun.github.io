@@ -350,13 +350,14 @@ x^{( 1)}_{2} & x^{( 2)}_{2} & \cdots  & x^{( m)}_{2}\\
 x^{( 1)}_{n_{x}} & x^{( 2)}_{n_{x}} & \cdots  & x^{( m)}_{n_{x}}
 \end{bmatrix} $$
 
-   $$ \begin{array}{ c c l }
+   $$ \begin{aligned}
 dw=\begin{bmatrix}
 dw_{1}\\
 dw_{2}\\
 \vdots \\
 dw_{n}
-\end{bmatrix} & = & \frac{1}{m}\begin{bmatrix}
+\end{bmatrix} & =\frac{1}{m}\left[ x^{( 1)} dz^{( 1)} +x^{( 2)} dz^{( 2)} +\cdots +x^{( m)} dz^{( m)}\right]\\
+ & =\frac{1}{m}\begin{bmatrix}
 x^{( 1)} & x^{( 2)} & \cdots  & x^{( m)}
 \end{bmatrix} \times \begin{bmatrix}
 dz^{( 1)}\\
@@ -364,13 +365,8 @@ dz^{( 2)}\\
 \vdots \\
 dz^{( m)}
 \end{bmatrix}\\
- &  & \\
- & = & \frac{1}{m}\begin{bmatrix}
-x^{( 1)} dz^{( 1)} +x^{( 2)} dz^{( 2)} +\cdots +x^{( m)} dz^{( m)}
-\end{bmatrix}\\
- &  & \\
- & = & \frac{1}{m} X\cdotp dZ^{\top }
-\end{array} $$
+ & =\frac{1}{m} X\cdotp dZ^{\top }
+\end{aligned} $$
 
 3. Vectorising gradient descent
 
