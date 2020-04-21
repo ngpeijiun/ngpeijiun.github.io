@@ -63,6 +63,8 @@ A^{[ 2]} =\sigma \left( Z^{[ 2]}\right) $$
 
    $$ g( z) =\sigma ( z) =\frac{1}{1+e^{-z}} $$
 
+   $$ g:( -\infty ,0,\infty )\rightarrow ( 0,0.5,1) $$
+
    > ![Sigmoid Function](_media/dl-7.png)
 
    Never use this except for the output layer if you are doing binary classification.
@@ -70,6 +72,8 @@ A^{[ 2]} =\sigma \left( Z^{[ 2]}\right) $$
 2. Hyperbolic Tangent Function
 
    $$ g( z) =\tanh( z) =\frac{\sinh( z)}{\cosh( z)} =\frac{e^{z} -e^{-z}}{e^{z} +e^{-z}} $$
+
+   $$ g:( -\infty ,0,\infty )\rightarrow ( -1,0,1) $$
 
    > ![Hyperbolic Tangent Function](_media/dl-14.png)
 
@@ -83,6 +87,8 @@ A^{[ 2]} =\sigma \left( Z^{[ 2]}\right) $$
 
    $$ g( z) =z^{+} =\max( 0,z) $$
 
+   $$ g:( -\infty ,0,\infty )\rightarrow ( 0,0,\infty ) $$
+
    > ![Rectified Linear Unit](_media/dl-15.png)
 
    If your output is $0$ or $1$, that is binary classification, then the sigmoid activation function is a very natural choice for the output layer. Then for all other units ReLU is increasingly the default choice of activation function. If you not sure what to use for your hidden layer, I would just use the ReLU activation function. It's what most people use these days, although sometimes people also use the $\tanh$ activation function.
@@ -92,6 +98,8 @@ A^{[ 2]} =\sigma \left( Z^{[ 2]}\right) $$
    Leakly ReLU allows a small, positive gradient when the unit is not active. This usually works better than the ReLU activation function, although it's just not used as much in practice.
 
    $$ g( z) =\max( 0.01z,z) $$
+
+   $$ g:( -\infty ,0,\infty )\rightarrow ( -\infty ,0,\infty ) $$
 
    Parametric ReLU (PReLU) takes this idea further by making the coefficient of leakage into a parameter that is learned along with other neural-network parameters.
 
@@ -107,7 +115,9 @@ A^{[ 2]} =\sigma \left( Z^{[ 2]}\right) $$
 
    $$ g( z) =z $$
 
-   If you were to use linear activation functions, then the neural network is just outputting a linear function of the input.
+   $$ g:( -\infty ,0,\infty )\rightarrow ( -\infty ,0,\infty ) $$
+
+   If you were to use linear activation functions, then the neural network is just outputting a linear function of the input. No matter how many layers your neural network has, all it's doing is just computing a linear activation function. So you might as well not have any hidden layers.
 
    $$ a^{[ 1]} =z^{[ 1]} =w^{[ 1]} x+b^{[ 1]}\\
 a^{[ 2]} =z^{[ 2]} =w^{[ 2]} a^{[ 1]} +b^{[ 2]} $$
@@ -118,7 +128,7 @@ a^{[ 2]} & =w^{[ 2]}\underbrace{\left( w^{[ 1]} x+b^{[ 1]}\right)}_{a^{[ 1]}} +b
  & =w^{\prime } x+b^{\prime }
 \end{aligned} $$
 
-   If you use a linear activation function, then no matter how many layers your neural network has, all it's doing is just computing a linear activation function. So you might as well not have any hidden layers.
+   If you have hidden layers of linear activation functions and the output layer as a sigmoid function, then this model is no more expressive than standard logistic regression without any hidden layer.
 
    $$ a^{[ 1]} =z^{[ 1]} =w^{[ 1]} x+b^{[ 1]}\\
 a^{[ 2]} =\sigma \left( z^{[ 2]}\right) =\sigma \left( w^{[ 2]} a^{[ 1]} +b^{[ 2]}\right) $$
@@ -128,3 +138,5 @@ a^{[ 2]} & =\sigma \left( w^{[ 2]}\underbrace{\left( w^{[ 1]} x+b^{[ 1]}\right)}
  & =\sigma \left(\underbrace{w^{[ 2]} w^{[ 1]}}_{w^{\prime }} x+\underbrace{\left( w^{[ 2]} b^{[ 1]} +b^{[ 2]}\right)}_{b^{\prime }}\right)\\
  & =\sigma \left( w^{\prime } x+b^{\prime }\right)
 \end{aligned} $$
+
+   There is just one place where you might use linear activation function, and that is if you are doing machine learning on regression problem, if $y$ is a real number.

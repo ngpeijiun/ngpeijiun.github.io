@@ -1,2 +1,3 @@
 - [Home](/ "Home")
-- [Gradient Tracking Explainer](idea/idea-gradient-tracking-explainer "Sensi Explainer")
+- [Gradient Tracking Explainer](idea/idea-1-gradient-tracking-explainer "Gradient Tracking Explainer")
+- [Reversing Partial Derivatives](idea/idea-1-reversing-partial-derivatives "Reversing Partial Derivatives")

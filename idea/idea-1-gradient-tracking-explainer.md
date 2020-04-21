@@ -1,4 +1,4 @@
-<h1 style="color: #ccc">Idea</h1>
+<h1 style="color: #ccc">Idea 1</h1>
 
 # A Gradient Tracking Method of Explaining Predictions
 

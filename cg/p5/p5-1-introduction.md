@@ -6,7 +6,7 @@
 
 ## What is p5.js?
 
-p5.js is a JavaScript library that starts with the original goal of [Processing](https://processing.org/), to make coding accessible for artists, designers, educators, and beginners, and reinterprets this for today's web. p5.js has addon libraries that make it easy to interact with other HTML5 objects, including text, input, video, webcam, and sound.
+p5.js is a JavaScript library that starts with the original goal of [Processing](https://processing.org/) -- to make coding accessible for artists, designers, educators, and beginners -- and reinterprets this for today's web. p5.js has add-on libraries that make it easy to interact with other HTML5 objects, including text, input, video, webcam, and sound.
 
 ## Getting Started
 
@@ -16,9 +16,10 @@ p5.js is a JavaScript library that starts with the original goal of [Processing]
 
     ```html
     <html>
-        <head></head>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.js"></script>
+        <head>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.js"></script>
             <script src="sketch.js"></script>
+        </head>
         <body></body>
     </html>
     ```
@@ -41,7 +42,7 @@ p5.js is a JavaScript library that starts with the original goal of [Processing]
 
     > ![Ellipse](_media/p5-1-ellipse.png)
 
-4. Next, we will skip ahead to a sketch that is a little more exciting.
+4. Next, we will skip ahead to a sketch that is a little more exciting:
 
     ```javascript
     // sketch.js

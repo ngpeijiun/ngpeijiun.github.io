@@ -4,7 +4,8 @@
 
 - Notes about My Ideas
 
-  - [A Gradient Tracking Method of Explaining Model Predictions](idea/idea-gradient-tracking-explainer)
+  - [A Gradient Tracking Method of Explaining Model Predictions](idea/idea-1-gradient-tracking-explainer)
+  - [Reversing Partial Derivatives](idea/idea-2-reversing-partial-derivatives)
 
 - Notes about Learning
 
@@ -34,3 +35,8 @@
     - STAT 401: Experimental Methods
     - STAT 414: Introduction to Probability Theory
     - STAT 416: Introduction to Mathematical Statistics
+
+- Notes about Primary School Subjects
+
+  - [Mathematics](pri/math/math-1)
+  - [Science](pri/sci/sci-1-diversity)
