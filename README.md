@@ -27,6 +27,11 @@
     *Andrew Ng*<br>
     *deeplearning.ai*
 
+- Notes about Investment
+
+  - [Specified Investment Products (SIPs)](fin/sip/sip-1-unit-trusts)<br>
+    *ABS, SAS*
+
 - Notes about Statistics
 
   - Penn State University - Statistics Online
