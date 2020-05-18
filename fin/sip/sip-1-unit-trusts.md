@@ -8,7 +8,7 @@
 
 1. A unit trust is a pool of money managed collectively by a fund manager. Your money is combined with money from other investors to form a single investment pool. Professional fund managers will then invest this pool of money in a portfolio of assets on your behalf to achieve the investment objective of the unit trust.
 
-2. The number of units you will receive generally depends on the amount of your investment less the sales charge you have to pay divided by the prevailing *net asset value* of the unit trust. You should always refer to the *prospectus and product highlights sheet* of the unit trust to ascertain how units are calculated.
+2. The number of units you will receive generally depends on the amount of your investment less the sales charge you have to pay divided by the prevailing *net asset value* of the unit trust. You should always refer to the *Prospectus and Product Highlights Sheet* of the unit trust to ascertain how units are calculated.
 
 ## Benefits
 
@@ -152,7 +152,7 @@
 
 ## Fees and Charges Incurred
 
-1. For details on fees and charges, you may refer to the *Prospectus* and *Fund Product Highlight Sheet*.
+1. For details on fees and charges, you may refer to the *Prospectus* and *Product Highlights Sheet*.
 
 ### To Be Paid by Investors
 
@@ -186,11 +186,11 @@
 
 ## Pricing
 
-1. Unit trusts are priced either by the *bid and offering pricing* method, or the *single pricing* method. The fees and charges built into the pricing structure will determine the number of units you get upon subscription and the amount you will receive upon redemption.
+1. Unit trusts are priced either by the *bid and offer pricing* method, or the *single pricing* method. The fees and charges built into the pricing structure will determine the number of units you get upon subscription and the amount you will receive upon redemption.
 
-### Bid and Offering Pricing
+### Bid and Offer Pricing
 
-1. The offer is the which the investor pays when buying his units; the bid price is the price which the investor gets when selling his units. The difference between them is called the spread and this is in fact the sales charge which is retained by the distributor.
+1. The offer price is the price which the investor pays when buying his units; the bid price is the price which the investor gets when selling his units. The difference between them is called the spread and this is in fact the sales charge which is retained by the distributor.
 
 ### Single Pricing
 
