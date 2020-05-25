@@ -8,7 +8,7 @@
 
 1. A unit trust is a pool of money managed collectively by a fund manager. Your money is combined with money from other investors to form a single investment pool. Professional fund managers will then invest this pool of money in a portfolio of assets on your behalf to achieve the investment objective of the unit trust.
 
-2. The number of units you will receive generally depends on the amount of your investment less the sales charge you have to pay divided by the prevailing *net asset value* of the unit trust. You should always refer to the *Prospectus and Product Highlights Sheet* of the unit trust to ascertain how units are calculated.
+2. The number of units you will receive generally depends on the amount of your investment less the sales charge you have to pay divided by the prevailing *net asset value* of the unit trust. You should always refer to the *Prospectus* and *Product Highlights Sheet* of the unit trust to ascertain how units are calculated.
 
 ## Benefits
 

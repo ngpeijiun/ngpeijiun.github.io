@@ -68,7 +68,7 @@
 
     Most single premium ILPs offer lower insurance coverage and consequently have lower insurance charges as compared with regular premium ILPs.
 
-    For regular premium ILPs, the insurance charges are not guaranteed and may be adjusted by insurers (within any maximum limits stated in the Policy Contract). An increase in the charges would only arise if there was a sustained worsening of claim experience. If such an increase were deemed necessary, it would be applied to the entire portfolio and not in isolation to an individual policy.
+    For regular premium ILPs, the insurance charges are not guaranteed and may be adjusted by insurers (within any maximum limits stated in the Policy Contract). An increase in the charges would only arise if there was a sustained worsening of claim experience. If such an increase was deemed necessary, it would be applied to the entire portfolio and not in isolation to an individual policy.
 
 3. Units May Be Insufficient to Pay the Insurance Coverage Charges
 
@@ -114,7 +114,7 @@
 
 3. Amount of Insurance Coverage
 
-    You should understand that there's a trade-off between the amount of insurance coverage provided and the amount available for investment. The higher the level of coverage selected, the more units will be deducted to pay for the insurance charges and fewer units will be deducted to pay for the insurance charges and fewer units will remain to accumulate net asset values under your policy.
+    You should understand that there's a trade-off between the amount of insurance coverage provided and the amount available for investment. The higher the level of coverage selected, the more units will be deducted to pay for the insurance charges and fewer units will remain to accumulate net asset values under your policy.
 
     An ILP provides insurance protection in the event of death. Additional benefits may include total and permanent disability, accidental death, critical illness and hospitalisation coverage, which a unit trust does not. If the unexpected event occurs, the beneficiary may receive the death or living benefits from the ILP policy, and not necessarily from the net asset value of the ILP funds. This is different from a unit trust.
 
@@ -144,4 +144,4 @@
 
 1. Under a back-end loaded plan, 100% of premiums are allocated to purchase units from start. However, to help insurers defray distribution and administration costs, back-end charges are imposed if you wish to surrender your plan, in whole or part, or reduce your premium within a certain period of time.
 
-2. It should be noted that, although the premium allocation structure differs for front-end and back-end loaded ILPs, the overall effect of the charges will be similar.
+2. It should be noted that, although the premium allocation structure differs between front-end and back-end loaded ILPs, the overall effect of the charges will be similar.
