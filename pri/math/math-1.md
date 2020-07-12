@@ -92,10 +92,12 @@
 
 2. Parts of fraction
 
-    $$ \frac{3}{10}\begin{array}{ l }
-\rightarrow \text{numerator}\\
-\rightarrow \text{denominator}
-\end{array} $$
+    $$
+    \frac{3}{10}\begin{array}{ l }
+    \rightarrow \text{numerator}\\
+    \rightarrow \text{denominator}
+    \end{array}
+    $$
 
 ## Length
 
