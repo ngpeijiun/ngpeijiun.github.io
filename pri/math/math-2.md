@@ -44,7 +44,7 @@
     - **Digit** 4 is in the **ones place**. It has a **value** of 4.
     - **Digit** 7 is in the **tens place**. It has a **value** of 70.
     - **Digit** 3 is in the **hundreds place**. It has a **value** of 300.
-    - **Digit** 5 is in the **thousands place**. It has a **vaue** of 5000.
+    - **Digit** 5 is in the **thousands place**. It has a **value** of 5000.
 
 ### Comparison (Quantity)
 

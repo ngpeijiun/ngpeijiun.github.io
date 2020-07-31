@@ -1,0 +1,2 @@
+- [Home](/ "Home")
+- [Diversity](pri/sci/sci-1-diversity "Diversity")
