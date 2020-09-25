@@ -1,0 +1,3 @@
+- [Home](/ "Home")
+- [Lower Primary](school/pri/math/math-1 "Lower Primary")
+- [Middle Primary](school/pri/math/math-2 "Middle Primary")

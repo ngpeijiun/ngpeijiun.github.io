@@ -41,7 +41,12 @@
     - STAT 414: Introduction to Probability Theory
     - STAT 416: Introduction to Mathematical Statistics
 
+- Notes about Secondary School Subjects
+
+  - Mathematics
+    - [Algebra](school/sec/math/algebra/algebra-1)
+
 - Notes about Primary School Subjects
 
-  - [Mathematics](pri/math/math-1)
-  - [Science](pri/sci/sci-1-diversity)
+  - [Mathematics](school/pri/math/math-1)
+  - [Science](school/pri/sci/sci-1-diversity)

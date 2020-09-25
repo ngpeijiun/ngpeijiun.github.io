@@ -54,7 +54,7 @@
 4. Equal to, bigger than, the biggest, smaller than, the smallest
 5. Equal to, greater than, the greatest, less than, the least
 6. Maximum, minimum, identical
-7. Ascending order, descending order
+7. Ascending (increasing) order, descending (decreasing) order
 
 ## Arithmetic
 

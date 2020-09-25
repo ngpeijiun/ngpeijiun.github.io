@@ -70,7 +70,7 @@
 
 3. Fish
     - Live in water.
-    - Their bodies are covered with scale.
+    - Their bodies are covered with scales.
     - Breathe through their gills in water.
     - Have fins to help them swim.
     - Most fish lay eggs.
@@ -78,7 +78,7 @@
 
 4. Amphibians
     - Live in water and on land.
-    - Breathe through their most skin in water and through their lungs on land.
+    - Breathe through their moist skin in water and through their lungs on land.
     - Most amphibians lay eggs.
     - Their young usually live in water.
     - Ectothermic
@@ -102,7 +102,7 @@
     - Some can fly and some can glide.
     - Have hair on their bodies.
     - Most mammals give birth to their young, a few lay eggs.
-    - All mammals produce milk for young to feed on.
+    - All mammals produce milk for their young to feed on.
     - Endothermic.
 
 ## Fungi
@@ -131,7 +131,7 @@
 1. Materials
     - Wood (Trees)
     - Glass (Sand)
-    - Rubber (White milkly liquid that flows out from the trunks of rubber trees)
+    - Rubber (White milky liquid that flows out from the trunks of rubber trees)
     - Metals (Ground)
     - Ceramics (Clay)
     - Fabrics (Wool / silk from animals, and cottons from plants)
