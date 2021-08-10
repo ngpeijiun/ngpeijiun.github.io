@@ -92,7 +92,7 @@
 
 1. Your Investment Goals
 
-    You may be investing with specific goals in mind All these goals should be taken into consideration depending on whether you want the investment to provide income or capital growth for your retirement, children's education etc.
+    You may be investing with specific goals in mind. All these goals should be taken into consideration depending on whether you want the investment to provide income or capital growth for your retirement, children's education etc.
 
 2. Risk Profile
 

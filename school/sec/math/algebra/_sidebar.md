@@ -1,0 +1,2 @@
+- [Home](/ "Home")
+- [Pre-algebra](school/sec/math/algebra/algebra-1 "Pre-algebra")

@@ -2,7 +2,7 @@
 
 # p5.js Overview
 
-*Apr 21, 2020*
+Published on *Apr 21, 2020*<br>Last edited on *Oct 3, 2020*
 
 ## Basics
 
@@ -70,7 +70,7 @@
 
 1. Some functionality, loading external files for example, works as expected when the files are placed online via HTTP. However, if you try to view them locally, you will see some kind of "cross-origin" errors in console. The solution is to view them using what is called a local web server.
 
-2. Take the following steps to install a `browser-sync` server which has the added benefits of automatically reloading the webpage when any changes are made in the source code:
+2. Take the following steps to install a `browser-sync` server which has the added benefits of automatically reloading the web page when any changes are made in the source code:
 
     - Install `http-server`:
 
@@ -111,7 +111,7 @@ JavaScript is single threaded and synchronous, meaning one line of code complete
 
 ### Preload
 
-1. Alternatively, you could use the `preload()` function. If a `preload()` block exists it runs first, then `setup()` waits until everything in there has completed before it gets run, so you can make use of things loaded in preload in `setup()` and `draw()`:
+1. Alternatively, you could use the `preload()` function. If a `preload()` block exists it runs first, then `setup()` waits for everything in there to complete before it gets run, so you can make use of things loaded in preload in `setup()` and `draw()`:
 
     ```javascript
     let img
@@ -157,7 +157,7 @@ JavaScript is single threaded and synchronous, meaning one line of code complete
 
 ## Libraries
 
-1. One of the core ideas behind p5.js is that your sketch is not just the graphics canvas but the whole web page in your browser. For this reason, there is the *p5.dom library* that makes it easy to interact with other HTML5 objects, including text, hyperlink, image, input, video, audio, and webcam. There is also a *p5.sound library* that provides a friendly interface to HTML5 web audio API loading, playing, and synthesising sounds.
+1. One of the core ideas behind p5.js is that your sketch is not just the graphics canvas but the whole web page in your browser. For this reason, there is the *p5.dom* library that makes it easy to interact with other HTML5 objects, including text, hyperlink, image, input, video, audio, and webcam. There is also a *p5.sound* library that provides a friendly interface to HTML5 web audio API loading, playing, and synthesising sounds.
 
 ## Browser Functions and Native JavaScript
 
@@ -267,4 +267,29 @@ JavaScript is single threaded and synchronous, meaning one line of code complete
             return <Sketch setup={this.setup} draw={this.draw} />
         }
     }
+    ```
+
+3. Using react-p5 in React with `React.FC` functional components and TypeScript:
+
+    ```typescript
+    import React from 'react'
+    import Sketch from 'react-p5'
+    import p5Types from 'p5'
+
+    let x = 50
+    const y = 50
+
+    const setup = (p5: p5Types, canvasParentRef: Element) => {
+        p5.createCanvas(500, 500).parent(canvasParentRef)
+    }
+
+    const draw = (p5: p5Types) => {
+        p5.background(0)
+        p5.ellipse(x, y, 70, 70)
+        x++
+    }
+
+    const App: React.FC = () => <Sketch setup={setup} draw={draw} />
+
+    export default App
     ```

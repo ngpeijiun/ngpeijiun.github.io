@@ -5,7 +5,8 @@
 - Notes about My Ideas
 
   - [A Gradient Tracking Method of Explaining Model Predictions](idea/idea-1-gradient-tracking-explainer)
-  - [Reversing Partial Derivatives](idea/idea-2-reversing-partial-derivatives)
+  - [Understanding Shapley Value](idea/idea-2-understanding-shapley-value)
+  <!-- - [Reversing Partial Derivatives](idea/idea-2-reversing-partial-derivatives) -->  
 
 - Notes about Learning
 

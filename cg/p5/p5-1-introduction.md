@@ -2,7 +2,7 @@
 
 # Introduction
 
-*Oct 1, 2019*
+Published on *Aug 26, 2019*<br>Last edited on *Apr 21, 2020*
 
 ## What is p5.js?
 
@@ -17,7 +17,7 @@ p5.js is a JavaScript library that starts with the original goal of [Processing]
     ```html
     <html>
         <head>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js"></script>
             <script src="sketch.js"></script>
         </head>
         <body></body>
