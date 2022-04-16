@@ -1,8 +1,8 @@
-<h1 style="color: #ccc">Primary Science 3</h1>
+<h1 style="color: #ccc">Primary Science</h1>
 
 # Interactions
 
-*August 2, 2020*
+*August 2, 2022*
 
 ## Magnets and Their Characteristics
 
@@ -13,19 +13,19 @@
 2. North pole and South pole
     - A magnet has two poles -- *North pole* and *South pole*.
     - The pull of a magnet is strongest at its poles.
-    - *Unlike poles* of magnet *attract*.
-    - *Like poles* of magnet *repel*.
+    - *Unlike poles* of magnet *attract* (pull).
+    - *Like poles* of magnet *repel* (push).
 
 3. Magnetic Earth
     - The Earth acts like a giant magnet with its own North and South poles.
-    - When a magnet is freely suspended, it will always point in the North-South direction.
+    - When a magnet is *freely suspended*, it will always *rest pointing in the North-South direction*.
     - This characteristic of a magnet allows it to be used to make compasses.
 
 4. Use of magnets
-    - Compasses
-    - Magnetic chess boards
-    - Doorstoppers
-    - Refrigerators
+    - *Compasses*
+    - *Magnetic chess boards*
+    - *Doorstoppers*
+    - *Refrigerators*
 
 ## Making Magnets
 

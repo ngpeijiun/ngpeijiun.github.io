@@ -27,12 +27,15 @@
   - [Deep Learning Specialisation](dl/dl-1-introduction)<br>
     *Andrew Ng*<br>
     *deeplearning.ai*
+  <!-- - [Natural Languague Processing Specialisation](nlp/nlp-1-sentiment-analysis-logistic-regression)<br>
+    *deeplearning.ai* -->
 
 - Notes about Investment
 
   - [Specified Investment Products (SIPs)](fin/sip/sip-1-unit-trusts)<br>
     *ABS, SAS*
 
+<!--
 - Notes about Statistics
 
   - Penn State University - Statistics Online
@@ -41,13 +44,14 @@
     - STAT 401: Experimental Methods
     - STAT 414: Introduction to Probability Theory
     - STAT 416: Introduction to Mathematical Statistics
+-->
 
-- Notes about Secondary School Subjects
+- Notes about O-Level Subjects
 
-  - Mathematics
-    - [Algebra](school/sec/math/algebra/algebra-1)
+  - [Mathematics](school/sec/math/m-01-numbers)
+  <!--  - [Algebra](school/sec/math/algebra/algebra-1) -->
 
 - Notes about Primary School Subjects
 
-  - [Mathematics](school/pri/math/math-1)
-  - [Science](school/pri/sci/sci-1-diversity)
+  <!-- - [Mathematics](school/pri/math/math-1) -->
+  - [Science](school/pri/sci/sci-1-introduction)

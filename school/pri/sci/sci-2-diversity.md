@@ -1,4 +1,4 @@
-<h1 style="color: #ccc">Primary Science 1</h1>
+<h1 style="color: #ccc">Primary Science</h1>
 
 # Diversity
 
@@ -19,25 +19,25 @@
     - Non-living things
 
 3. Living things
-    - Groups
-        - Plants
-        - Animals
-        - Fungi
-        - Bacteria
     - Characteristics
         - Need air, water and food
         - Grow
         - Respond to changes around them
         - Reproduce
+    - Groups
+        - Plants
+        - Animals
+        - Fungi
+        - Bacteria
 
 4. Non-living things
     - Materials
         - Wood
-        - Glass
         - Rubber
-        - Metals
-        - Ceramics
         - Fabrics
+        - Ceramics
+        - Glass
+        - Metals
         - Plastics
 
 ## Plants
@@ -130,14 +130,14 @@
 
 1. Materials
     - Wood (Trees)
-    - Glass (Sand)
     - Rubber (White milky liquid that flows out from the trunks of rubber trees)
-    - Metals (Ground)
-    - Ceramics (Clay)
     - Fabrics (Wool / silk from animals, and cottons from plants)
+    - Ceramics (Clay)
+    - Glass (Sand)
+    - Metals (Ground)
     - Plastics (Oil)
 
-1. Strength
+1. Strength ()
     - Strong
     - Not strong
 
