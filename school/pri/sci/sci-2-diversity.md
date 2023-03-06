@@ -2,7 +2,7 @@
 
 # Diversity
 
-*August 1, 2020*
+*February 22, 2023*
 
 ## Diversity
 
@@ -56,62 +56,50 @@
 
 ## Animals
 
-1. Animals
-    - Endothermic
-        - Have a constant body temperature that does not change with the surrounding temperature.
-    - Ectothermic
-        - Do not have a constant body temperature. Their body temperature changes according to the temperature of their surroundings.
-
-2. Insects
-    - Their bodies are covered with hard outer covering, and divided into three parts.
-    - Have three pairs of legs and a pair of feelers.
+1. Insects
+    - Their bodies are covered with **hard outer covering**, and divided into **three parts**.
+    - Have **three pairs of legs** and a pair of feelers.
     - All insects hatch from eggs.
-    - Ectothermic
 
-3. Fish
+2. Fish
     - Live in water.
-    - Their bodies are covered with scales.
-    - Breathe through their gills in water.
-    - Have fins to help them swim.
+    - Their bodies are covered with **scales**.
+    - Breathe through their **gills** in water.
+    - Have **fins** to help them swim.
     - Most fish lay eggs.
-    - Ectothermic
 
-4. Amphibians
+3. Amphibians
     - Live in water and on land.
-    - Breathe through their moist skin in water and through their lungs on land.
+    - Breathe through their **moist skin** in water and through their **lungs** on land.
     - Most amphibians lay eggs.
     - Their young usually live in water.
-    - Ectothermic
 
-5. Reptiles
+4. Reptiles
     - Some live on land and some live in water.
-    - Have dry skin that is usually covered with scales.
+    - Have **dry skin** that is usually covered with scales.
     - Some have shells.
     - Most reptiles lay eggs.
-    - Ectothermic
 
-6. Birds
-    - The only animals covered with feathers.
+5. Birds
+    - The only animals covered with **feathers**.
     - Feathers help them to fly and keep them warm.
-    - Have a beak, a pair of wings, and a pair of legs.
+    - Have a **beak**, a pair of **wings**, and a pair of **legs**.
     - All birds lay eggs.
-    - Endothermic
 
-7. Mammals
+6. Mammals
     - Some live on land and some live in water.
     - Some can fly and some can glide.
-    - Have hair on their bodies.
-    - Most mammals give birth to their young, a few lay eggs.
-    - All mammals produce milk for their young to feed on.
-    - Endothermic.
+    - Have **hair** on their bodies.
+    - Most mammals **give birth** to their young, a few lay eggs.
+    - All mammals **produce milk** for their young to feed on.
 
 ## Fungi
 
 1. Fungi
     - Come in different shapes and sizes.
-    - Some can be very small and can be seen only under a microscope. Example:
-        - Large sizes: mushrooms
-        - Microorganisms: moulds, yeasts
+    - Some can be very small and can be seen only under a **microscope**. Example:
+        - Large sizes: **mushrooms**
+        - **Microorganisms**: **moulds**, **yeasts**
     - Grow in place with a lot of moisture, cannot move from place to place.
     - Feed on living things, dead or alive.
     - Reproduce by spores.
@@ -121,7 +109,7 @@
 
 1. Bacteria
     - Come in different shapes and sizes.
-    - Are very small and can be seen only under a microscope.
+    - Are very small and can be seen only under a **microscope**.
     - Feed on living things, dead or alive.
     - Reproduce by binary fission.
     - Can be useful or harmful to us.
@@ -137,7 +125,7 @@
     - Metals (Ground)
     - Plastics (Oil)
 
-1. Strength ()
+1. Strength
     - Strong
     - Not strong
 

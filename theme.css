@@ -64,7 +64,7 @@ html {
 body {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
-    color: #34495e;
+    color: black;
     font-family: Source Sans Pro, Helvetica Neue, Arial, sans-serif;
     font-size: 15px;
     letter-spacing: 0;
@@ -228,7 +228,7 @@ main.hidden {
 }
 
 .anchor span {
-    color: #34495e
+    color: black;
 }
 
 .anchor:hover {
@@ -716,7 +716,7 @@ body {
 .markdown-section h3,
 .markdown-section h4,
 .markdown-section strong {
-    color: #2c3e50;
+    color: black;
     font-weight: 600
 }
 

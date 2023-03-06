@@ -24,11 +24,13 @@
     - Represents words and documents as vectors.
     - Is a representation that captures relative meaning.
 
-## Word by Word and Word by Doc
+## Co-occurrence Matrices
 
-1. In *word by word design*, the co-occurance of two similar words, is the number of times they occur together within a certain distance $k$.
+1. To construct vector space model based on a co-occurrence matrix
 
-2. In *word by document design*, the number of times a word occurs within a certain category.
+   - In *word by word design*, the co-occurance of two similar words, is the number of times they occur together within a certain distance $k$. The vector representation of the words can be taken from the row of the table to produce a vector of size $n$, where $n$ between $1$ and $V$.
+
+   - In *word by document design*, the number of times a word occurs within a certain category.
 
 ## Euclidian Distance
 

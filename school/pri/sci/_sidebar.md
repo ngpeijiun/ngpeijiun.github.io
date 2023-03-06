@@ -4,3 +4,4 @@
 - [Cycles](school/pri/sci/sci-3-cycles "Cycles")
 - [Systems](school/pri/sci/sci-4-systems "Systems")
 - [Interactions](school/pri/sci/sci-5-interactions "Interactions")
+- [Energy](school/pri/sci/sci-6-energy "Energy")

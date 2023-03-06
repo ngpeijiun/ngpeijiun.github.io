@@ -16,6 +16,10 @@
 
 - Notes about Coding
 
+  - Beginner Friendly
+    - [Introduction to Programming in Python](coding/python-intro/pyi-1-introduction)<br>
+      *MIT Open Courseware*
+
   - Graphics
     - [p5.js](cg/p5/p5-1-introduction)
 
@@ -24,11 +28,14 @@
   - [Machine Learning](ml/ml-1-introduction)<br>
     *Andrew Ng*<br>
     *Stanford University*
+  - [Machine Learning Specialisation](mls/ml-1-univariate-linear-regression)<br>
+    *Andrew Ng*<br>
+    *DeepLearning.AI, Stanford University*
   - [Deep Learning Specialisation](dl/dl-1-introduction)<br>
     *Andrew Ng*<br>
-    *deeplearning.ai*
-  <!-- - [Natural Languague Processing Specialisation](nlp/nlp-1-sentiment-analysis-logistic-regression)<br>
-    *deeplearning.ai* -->
+    *DeepLearning.AI*
+  - [Natural Languague Processing Specialisation](nlp/nlp-1-sentiment-analysis-logistic-regression)<br>
+    *DeepLearning.AI*
 
 - Notes about Investment
 
@@ -49,7 +56,7 @@
 - Notes about O-Level Subjects
 
   - [Mathematics](school/sec/math/m-01-numbers)
-  <!--  - [Algebra](school/sec/math/algebra/algebra-1) -->
+  - [Algebra](school/sec/math/algebra/algebra-1)
 
 - Notes about Primary School Subjects
 

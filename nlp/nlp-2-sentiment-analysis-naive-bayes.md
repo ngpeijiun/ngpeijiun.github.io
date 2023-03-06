@@ -53,7 +53,7 @@
 
     > ![Table of Conditional Probabilities](_media/nlp-12.png)
 
-2. Once you have the probabilities, you can compute the likelihood score as follows:
+2. Once you have the probabilities, you can compute the likelihood ratio as follows:
 
     Tweet: `I am happy today; I am learning.`
 
@@ -61,7 +61,7 @@
     \prod _{i=1}^{n}\frac{P( w_{i} |pos)}{P( w_{i} |neg)} =\left(\frac{0.24}{0.25}\right)^{2} \cdotp \frac{0.15}{0.08} \cdot \left(\frac{0.24}{0.25}\right)^{2} \cdot \frac{0.08}{0.08} \approx 1.59
     $$
 
-    A score greater than $1$ indicates that the class is positive, otherwise it is negative.
+    A ratio greater than $1$ indicates that the class is positive, otherwise it is negative.
 
 ## Laplacian Smoothing
 
@@ -85,7 +85,7 @@
 
 ## Log Likelihood
 
-1. To compute likelihood, we need to get the ratios and use them to compute a score that will allow us to decide whether a tweet is positive or negative. The higher the ratio, the more positive the word is.
+1. We need to get the likelihood ratios and use them to compute a score that will allow us to decide whether a tweet is positive or negative. The higher the ratio, the more positive the word is.
 
     > ![Log Likelihood Ratios](_media/nlp-13.png)
 
@@ -101,7 +101,7 @@
     \log\left(\frac{P( pos)}{P( neg)}\prod _{i=1}^{n}\frac{P( w_{i} |pos)}{P( w_{i} |neg)}\right)  =\log\frac{P( pos)}{P( neg)} +\sum _{i=1}^{n}\log\frac{P( w_{i} |pos)}{P( w_{i} |neg)}
     $$
 
-    The first component is called the log prior and the second component is the log likelihood.
+    The first component is called the log prior ratio and the second component is the log likelihood ratio.
 
 3. We further introduce $\lambda$ as follows:
 
@@ -172,7 +172,7 @@
 
    - Author identification
    - Spam filtering
-   - Information Retrieval
+   - Information retrieval
    - Word disambiguation
 
    This method is usually used as a simple baseline. It is also really fast.

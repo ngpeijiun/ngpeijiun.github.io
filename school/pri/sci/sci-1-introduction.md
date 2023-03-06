@@ -2,7 +2,7 @@
 
 # Introduction
 
-*March 13, 2022*
+*March 7, 2023*
 
 ## Themes
 
@@ -21,6 +21,21 @@
     - There is a great variety of living and non-living things around us.
     - Man can classify living and non-living things based on their similarities and differences to better understand them.
     - Maintaining the diversity of living things around us ensures their continual survival.
+
+### Cycles
+
+1. There are repeated patterns of change in nature. Examples of these cycles are the life cycles of living things and the water cycle. Understanding these cycles helps Man to predict events and processes, and to appreciate Earth as a self-sustaining system.
+
+2. Key Inquiry Questions
+
+    - What makes a cycle?
+    - Why are cycles important to life?
+
+3. Essential Takeaways
+
+    - A cycle is a repeated pattern of change.
+    - Observing cycles helps us to make predictions and understand things around us.
+
 
 ### Systems
 
@@ -49,6 +64,22 @@
 
     - There are interactions among Man, living and non-living things in the environment.
     - Man can interact with the environment and make positive or negative impacts. Man plays an important role in conservation to ensure continuity of life and availability of resources.
+
+### Energy
+
+1. Energy makes changes and movement possible in everyday life. Man uses various forms of energy for many different purposes. Man is not the only living thing that needs energy; all living things obtain energy and use it to carry out life processes. Understanding this theme will allow students to appreciate the importance and uses of energy and the need to conserve it.
+
+2. Key Inquiry Questions
+
+    - Why is energy important?
+    - How is energy used in everyday life?
+    - Why is it important to conserve energy?
+
+3. Essential Takeaways
+
+    - Energy is required to enable things to work or move.
+    - There are different forms of energy and they can be converted from one form to another.
+    - Some sources of energy can be depleted and Man plays an important role in energy conservation.
 
 ## Skills
 
@@ -82,18 +113,26 @@
 
 1. Diversity
 
-    - Diversity of living and non-living things (General characteristics and classification)
-    - Diversity of materials
+    - Plants
+    - Animals
+    - Fungi
+    - Bacteria
+    - Materials
 
 2. Cycles
 
-    - Cycles in plants and animals - Life cycles
-    - Cycles in plants and animals - Reproduction
-    - Cycles in matter and water - Matter
-    - Cycles in matter and water - Water
+    - Life Cycle of Flowering Plants
+    - Reproduction of Flowering Plants
+    - Reproduction of Non-Flowering Plants
+    - Life Cycles of Some Animals
+    - Reproduction of Humans
+    - Matter
+    - Water
+    - Water Cycle
 
 3. Systems
 
+    - Air
     - Plant Parts
     - Plant Respiratory System
     - Plant Transport System
@@ -107,12 +146,17 @@
 
 4. Interactions
 
-    - Interaction of forces (Magnets)
-    - Interaction of forces (Frictional force, gravitational force, force in springs)
-    - Interaction within the environment
+    - Magnets
+    - Forces
+    - Living Together
+    - Food Chains and Food Webs
+    - Adaptations
+    - Impact on Environment
 
 5. Energy
 
-    - Energy forms and uses - Light and heat
-    - Energy forms and uses - Photosynthesis
-    - Energy conversion
+    - Light
+    - Heat
+    - Food
+    - Forms of Energy
+    - Sources of Energy
