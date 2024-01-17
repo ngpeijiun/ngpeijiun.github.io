@@ -2,7 +2,7 @@
 
 # Ratio and Proportion
 
-*Feb 10, 2022*
+*Jan 14, 2024*
 
 ## Ratio
 
@@ -81,7 +81,7 @@
     \end{aligned}
     $$
 
-    Substitute $k=4$ into $(1)$,
+    Substitute $k=40$ into $(1)$,
 
     $$
     y=\frac{40}{x}
@@ -97,7 +97,7 @@
 
     **Solution 2**
 
-    The inverse proportion of number of men to number of days:
+    The inverse proportion of number of men to number of days
 
     $$
     4:\frac{1}{10} =20:\frac{1}{x}

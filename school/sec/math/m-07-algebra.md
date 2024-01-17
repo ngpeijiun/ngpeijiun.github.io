@@ -2,7 +2,7 @@
 
 # Algebra
 
-*Feb 18, 2022*
+*Jan 16, 2024*
 
 ## Algebraic Expression
 
@@ -35,7 +35,7 @@
 
     - Like or unlike terms can be multiplied or divided.
 
-3. Distributive Law in Algebraic Expression
+3. Distributive Law in algebraic expression
 
     **Example**
 
@@ -113,6 +113,34 @@
      & 2x^{2} -x-15\\
      & =( 2x+5)( x-3)
     \end{aligned}
+    $$
+
+4. Algebraic identities
+
+    Algebraic identities are algebraic equations that are true for any value of the variables. They are used to factorise and simply complex equations.
+
+    **Identity I**
+
+    $$
+    ( a+b)^{2} =a^{2} +2ab+b^{2}
+    $$
+
+    **Identity II**
+
+    $$
+    ( a-b)^{2} =a^{2} -2ab+b^{2}
+    $$
+
+    **Identity III**
+
+    $$
+    ( a+b)( a-b) =a^{2} -b^{2}
+    $$
+
+    **Identity IV**
+
+    $$
+    ( x+a)( x+b) =x^{2} +( a+b) x+ab
     $$
 
 ## Simplification of Fractions

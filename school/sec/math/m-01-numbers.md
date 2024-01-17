@@ -2,7 +2,7 @@
 
 # Numbers
 
-*Jan 13, 2022*
+*Jan 14, 2024*
 
 ## Sets of Numbers
 
@@ -65,7 +65,7 @@
 
 2. Lowest common multiple (LCM)
 
-    - Lowest common multiple is the **smallest positive integer** which is a **common multiple** of two or more numbers.
+    - The lowest common multiple is the **smallest positive integer** which is a **common multiple** of two or more numbers.
 
 ## Factors
 
@@ -76,22 +76,24 @@
 
 2. Highest common factor (HCF)
 
-    - Highest common factor is the **largest positive integer** which is a **common factor** of two or more numbers.
+    - The highest common factor is the **largest positive integer** which is a **common factor** of two or more numbers.
 
 ## Prime Factorisation
 
 1. Prime numbers
 
-    - A prime number is an **integer** that can be *divided only by one and itself*.
+    - A prime number is a **natural number** greater than one that can be *divided only by one and itself*.
+    - A composite number is a **natural number** that can be *formed by multiplying two or more prime numbers*.
+    - Any natural number greater than one is either **prime number** or **composite number**.
     - Examples of prime numbers are $2,3,5,7,11,\cdots$
 
 2. Prime factors
 
-    - Prime factors of an **integer** are **factors** of the integer that are also prime numbers.
+    - Prime factors of a **composite number** are **factors** of the composite number that are also prime numbers.
 
 3. Prime factorisation
 
-    - Prime factorisation is the process of expressing an **integer** into the product of **prime factors** of the integer.
+    - Prime factorisation is the process of expressing a **composite number** as the product of **prime factors** of the composite number.
     - Prime factorisation of $300=2\times 2\times 3\times 5\times 5$
 
 ## Square and Cube Numbers
@@ -137,7 +139,7 @@
 
 2. Scientific notation
 
-    - In scientific notation, a number is written in the form of $a\times 10^{n}$, where $a$ is a nonzero real number coefficient and $n$ is an integer.
+    - In scientific notation, a number is written in the form of $A\times 10^{n}$, where $A$ is a real number coefficient such that $1\leqslant A< 10$ and $n$ is an integer.
     - Example of scientific notation is $3.4\times 10^{3}$.
 
 3. Standard form

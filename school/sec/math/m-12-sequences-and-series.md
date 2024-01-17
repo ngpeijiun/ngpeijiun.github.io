@@ -2,13 +2,13 @@
 
 # Sequences and Series
 
-*Feb 24, 2022*
+*Jan 14, 2024*
 
 ## Sequences
 
-1. A sequence is a set of numbers that follows a particular rule.
+1. A sequence is a list of numbers ordered according to a number pattern.
 
-2. The n<sup>th</sup> term, denoted by $T_{n}$, is the n<sup>th</sup> number in the sequence.
+2. The $n^{th}$ term, denoted by $T_{n}$, is the $n^{th}$ number in the sequence and is also known as the **general term** of the sequence.
 
 ## Arithmetic Progression
 

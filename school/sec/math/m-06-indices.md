@@ -2,17 +2,17 @@
 
 # Indices
 
-*Feb 12, 2022*
+*Jan 14, 2024*
 
 ## Indices
 
-1. Index notation (also called exponential notation) is a short way of writing the same number multiplied by itself many times.
+1. Index notation (also known as exponential notation) is a concise way to express a number multiplied by itself many times.
 
     $$
     a^{n}
     $$
 
-    where $a$ is a real number called **base**, and $n$ is an integer called **index**, **power**, or **exponent**.
+    where $a\in \mathbb{R} \setminus \{0\} ,n\in \mathbb{R}$. Here, $a$ is called the **base**, and $n$ is known as the **index**, **power**, or **exponent**.
 
     $a^{n}$ is read as "$a$ to the power of $n$".
 

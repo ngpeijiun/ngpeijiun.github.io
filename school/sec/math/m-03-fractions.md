@@ -2,7 +2,7 @@
 
 # Fractions
 
-*Feb 9, 2022*
+*Jan 14, 2024*
 
 ## Fractions
 
@@ -66,9 +66,17 @@
     \frac{a}{b} =a\div b
     $$
 
-2. If the decimal is a recurring decimal, draw a bar over the part that repeats.
+2. An **exact decimal** is one where all its digits can be written down, e.g. $0.2,3.5,14.75$.
+
+3. A **recurring decimal** is one where the digits go on forever but some of the digits are repeating. They are expressed by putting dots above the repeating digits.
 
     $$
-    \frac{a}{b} =x.yyy\dotsc \text{, the recurring notation is written as } x.\overline{y}\\
-    \frac{a}{b} =x.yzyzyz\dotsc \text{, the recurring notation is written as } x.\overline{yz}
+    \frac{a}{b} =x.yyy\dotsc \text{, the recurring notation is written as } x.\dot{y}\\
+    \frac{a}{b} =x.yzyzyz\dotsc \text{, the recurring notation is written as } x.\dot{y}\dot{z}
+    $$
+
+    For example,
+
+    $$
+    \frac{41}{99} =0.4141\cdots =0.\dot{4}\dot{1}
     $$

@@ -2,11 +2,11 @@
 
 # Percentages
 
-*Feb 10, 2022*
+*Jan 14, 2024*
 
 ## Percentages
 
-1. A percentage is a fraction with the denominator $100$.
+1. A percentage is a fraction with $100$ as the denominator.
 
     $$
     x\%=\frac{x}{100}
@@ -17,6 +17,8 @@
     $$
     \frac{a}{b} \times 100\%=x\%
     $$
+
+    The value of $a$ can be expressed as a percentage $x\%$ of $b$, thereby comparing a part ($a$) to the whole ($b$).
 
 ## Reverse Percentages
 

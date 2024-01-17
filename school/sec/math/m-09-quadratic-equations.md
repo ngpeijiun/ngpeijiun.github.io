@@ -109,11 +109,11 @@
     \left( x+\frac{b}{2a}\right)^{2} & =\frac{b^{2} -4ac}{4a^{2}}\\
     x+\frac{b}{2a} & =\pm \frac{\sqrt{b^{2} -4ac}}{2a}\\
     x & =\pm \frac{\sqrt{b^{2} -4ac}}{2a} -\frac{b}{2a}\\
-     & =\frac{-b\pm \sqrt{b^{2} -4ac}}{2b}
+     & =\frac{-b\pm \sqrt{b^{2} -4ac}}{2a}
     \end{aligned}\\
     $$
 
-    <p style='text-align: right;'>$\blacksquare$</p>
+    <p style='text-align: right;'>■</p>
 
     **Worked Example**
 
