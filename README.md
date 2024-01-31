@@ -41,6 +41,8 @@
 
   - [Specified Investment Products (SIPs)](fin/sip/sip-1-unit-trusts)<br>
     *ABS, SAS*
+  - [Million Dollar Maths](fin/math/mdm-1-the-power-of-exponential-growth.md)<br>
+    *Hugh Barker*
 
 <!--
 - Notes about Statistics
