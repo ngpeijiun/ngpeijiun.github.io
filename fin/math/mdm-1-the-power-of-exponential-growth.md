@@ -19,7 +19,7 @@
 
 3. "The real money in investment will have to be made, as most of it has been made in the past, not out of buying and selling, but of owning and holding..." -- John C. Bogle.
 
-4. However, the concept of "buy low, sell high" remains applicable in investment. The only way to value an asset is by considering its current value and growth potential, and comparing this to other assets you could exchange it for. Remember, the capital invested in one asset represents an opporunity cost, as it precludes investing the same capital in an alternative asset.
+4. However, the concept of "buy low, sell high" remains applicable in investment. The only way to value an asset is by considering its current value and growth potential, and comparing this to other assets you could exchange it for. Remember, the capital invested in one asset represents an opportunity cost, as it precludes investing the same capital in an alternative asset.
 
 5. It is easy to make the mistake of considering irrelevant factors when valuing an asset: how much you paid for it, or how hard you worked to acquire it, or how much you like this asset. This can lead to errors such as the **sunk cost fallacy**. While the aim should always be to sell an asset for more than you paid for it, refusing to sell at a loss can be more damaging than accepting the loss and moving on.
 
@@ -33,10 +33,10 @@
 
 1. Exponential growth is an extremely powerful concept when it comes to wealth acquisition.
 
-2. Starting to invest even without an initial capital of $x$ and progressively contributing (like a regular savings plan, RSP) towards $x$ over time can lead to exponential gains, in contrast to accumulating $x$ first before investing. This concept is analogous to a geometric series, denoted as $O(c^n)$ in Big-O notation.
+2. Starting to invest with smaller, regular contributions, rather than waiting to accumulate a large capital, can lead to exponential growth.
 
     $$
-    S_{n} =\frac{a\left( r^{n} -1\right)}{r-1} =\frac{a( r-1)\left( r^{n-1} +r^{r-2} +\cdots +r+1\right)}{r-1}\\
-    S_{n} =a\left( r^{n-1} +r^{r-2} +\cdots +r+1\right)\\
-    S_{n} =O \left( c^{n}\right)
+    S_{n} =\frac{a}{r-1}\left( r^{n} -1\right) =k\left( r^{n} -1\right)\\
+    \text{For large n, } S_{n} \approx kr^{n}\\
+    \therefore S_{n} \varpropto r^{n}
    $$
