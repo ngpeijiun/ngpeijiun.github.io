@@ -2,15 +2,13 @@
 
 # The Scientific Endeavour
 
-*Jan 20, 2024*
+*Mar 30, 2024*
 
-## The Scientific Endeavour
-
-### What is Science?
+## What is Science?
 
 1. Science is the study of the natural world.
 
-### Scientific Knowledge
+## Scientific Knowledge
 
 1. Science is evidence-based
 
@@ -30,7 +28,7 @@
 
     - A new scientific idea may be proposed in light of new evidence, but a scientific knowledge (theory) should only be changed when the **scientific community** accepts the new idea.
 
-### Practices of Science
+## Practices of Science
 
 1. Posing questions and defining problems
 

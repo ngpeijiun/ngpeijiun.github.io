@@ -2,7 +2,7 @@
 
 # Percentages
 
-*Jan 14, 2024*
+*Mar 14, 2024*
 
 ## Percentages
 
@@ -18,7 +18,7 @@
     \frac{a}{b} \times 100\%=x\%
     $$
 
-    The value of $a$ can be expressed as a percentage $x\%$ of $b$, thereby comparing a part ($a$) to the whole ($b$).
+    The value of $a$ can be expressed as a percentage $x\%$ of $b$, thereby comparing a part to the whole.
 
 ## Reverse Percentages
 

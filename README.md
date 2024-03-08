@@ -8,23 +8,19 @@
   - [Understanding Shapley Value](idea/idea-2-understanding-shapley-value)
   <!-- - [Reversing Partial Derivatives](idea/idea-2-reversing-partial-derivatives) -->  
 
-- Notes about Learning
+- Notes about Generative AI
 
-  - [Learning How to Learning](learn/learn-1-what-is-learning)<br>
-    *Dr. Barbara Oakley, Dr. Terrence Sejnowski*<br>
-    *McMaster University, University of California San Diego*
-
-- Notes about Coding
-
-  - Beginner Friendly
-    - [Introduction to Programming in Python](coding/python-intro/pyi-1-introduction)<br>
-      *MIT Open Courseware*
-
-  - Graphics
-    - [p5.js](cg/p5/p5-1-introduction)
+  - [Introduction to Generative AI](genai/intro/genai-1-introduction)<br>
+    *Google Cloud Training*
+  - [Generative AI for Everyone](genai/for-everyone/genai-1-introduction)<br>
+    *Andrew Ng*<br>
+    *DeepLearning.AI*
 
 - Notes about Machine Learning
 
+  - [AI for Everyone](ai/ai-1-what-is-ai)<br>
+    *Andrew Ng*<br>
+    *DeepLearning.AI*
   - [Machine Learning](ml/ml-1-introduction)<br>
     *Andrew Ng*<br>
     *Stanford University*
@@ -37,12 +33,37 @@
   - [Natural Languague Processing Specialisation](nlp/nlp-1-sentiment-analysis-logistic-regression)<br>
     *DeepLearning.AI*
 
+- Notes about Data Analysis
+  - [Data Analysis and Visualisation Foundations Specialisation](da/da-1-introduction-to-data-analysis)<br>
+    *Rav Ahuja*<br>
+    *IBM*
+
+- Notes about Coding
+
+  - CaC
+    - [Visual Studio Code Settings](coding/cac/vscode-settings)
+  - Beginner Friendly
+    - [Introduction to Programming in Python](coding/python-intro/pyi-1-introduction)<br>
+      *MIT Open Courseware*
+
+- Notes about Computer Graphics
+  - [Web Canvas API](cg/web/canvas/canvas-1-basic-usage)<!--(starts from March 31, 2024--><br>
+    *Canvas tutorial - Web APIs*<br>
+    *MDN Web Docs*
+  - [p5.js](cg/p5/p5-1-introduction)
+
 - Notes about Investment
 
   - [Specified Investment Products (SIPs)](fin/sip/sip-1-unit-trusts)<br>
     *ABS, SAS*
-  - [Million Dollar Maths](fin/math/mdm-1-the-power-of-exponential-growth.md)<br>
+  - [Million Dollar Maths](fin/math/mdm-1-the-power-of-exponential-growth)<br>
     *Hugh Barker*
+
+- Notes about Learning
+
+  - [Learning How to Learning](learn/learn-1-what-is-learning)<br>
+    *Dr. Barbara Oakley, Dr. Terrence Sejnowski*<br>
+    *McMaster University, University of California San Diego*
 
 <!--
 - Notes about Statistics

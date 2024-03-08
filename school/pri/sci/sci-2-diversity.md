@@ -100,7 +100,7 @@
     - Some can be very small and can be seen only under a **microscope**. Example:
         - Large sizes: **mushrooms**
         - **Microorganisms**: **moulds**, **yeasts**
-    - Grow in place with a lot of moisture, cannot move from place to place.
+    - Grow in places with a lot of moisture, cannot move from place to place.
     - Feed on living things, dead or alive.
     - Reproduce by spores.
     - Can be useful and harmful to us.
@@ -119,29 +119,29 @@
 1. Materials
     - Wood (Trees)
     - Rubber (White milky liquid that flows out from the trunks of rubber trees)
-    - Fabrics (Wool / silk from animals, and cottons from plants)
+    - Fabrics (Wool / silk from animals, and cotton from plants)
     - Ceramics (Clay)
     - Glass (Sand)
     - Metals (Ground)
     - Plastics (Oil)
 
-1. Strength
+2. Strength
     - Strong
     - Not strong
 
-2. Flexibility (Ability to change shape)
+3. Flexibility (Ability to change shape)
     - Flexible
     - Stiff
 
-3. Density (Ability to float or sink in water)
+4. Density (Ability to float or sink in water)
     - Float
     - Sink
 
-4. Transparency
+5. Transparency
     - Allow most light to pass through them
     - Allow some light to pass through them
     - Do not allow light to pass through them
 
-5. Waterproof
+6. Waterproof
     - Absorb water
     - Do not absorb water

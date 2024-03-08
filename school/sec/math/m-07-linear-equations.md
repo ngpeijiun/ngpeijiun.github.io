@@ -32,7 +32,7 @@
 
     **Worked Example**
 
-    > Solve the following simutaneous equations using elimination method.
+    > Solve the following simultaneous equations using elimination method.
 
     $$
     4x-2y-4 =0\\

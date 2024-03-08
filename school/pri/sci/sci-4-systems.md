@@ -61,7 +61,7 @@
 
 3. Circulatory System
 
-    - Transports **digested food**, **water** and **oxygen** to, and **waste materials** from all parts all parts of the body
+    - Transports **digested food**, **water** and **oxygen** to, and **waste materials** from all parts of the body
 
 4. Skeletal System
 
@@ -189,13 +189,13 @@
 
 3. Electrical parts
 
-    - Battery <br> Is an **energy source** which has positive and negative end
+    - Battery <br> An **energy source** which has a positive and a negative end.
 
-    - Wire <br> Connects all parts of the circuit together
+    - Wire <br> Connects all parts of the circuit together.
 
     - Switch <br> Is added to a circuit to open or close the circuit
 
-    - Bulb <br> When the metal casing and metal tip are connected to the circuit, the **electric current** flows through the metal filament inside the glass bulb, the filament is heated and glows.
+    - Bulb <br> When the metal casing and metal tip are connected to the circuit, the **electric current** flows through the metal filament inside the glass bulb, the filament heats up and glows.
 
 4. In a **closed circuit**, all parts are properly connected and there are no gaps between the parts. Thus, electric current flows through the circuit.
 

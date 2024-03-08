@@ -34,19 +34,19 @@
 
 2. Female reproductive parts
 
-    - The **style** connects the **stigma** to **ovary** which contains **ovules**. Each ovule contains **one egg cell**.
+    - The **style** connects the **stigma** to the **ovary** which contains **ovules**. Each ovule contains **one egg cell**.
 
 ### Pollination (C2.1)
 
 1. **Pollination** is the process where pollen grains are transferred from anthers to a stigma, either
 
-    - within the same flowers,
+    - within the same flower,
     - across flowers of the same plant,
     - or across flowers from different plants of the same kind
 
-2. Insects, birds or wind help to carry pollen grains to the stigmas of flowers.
+2. Insects, birds or wind helps to carry pollen grains to the stigmas of flowers.
 
-    - Flowers pollinated by insects and birds usually have large and brightly coloured petals, and pleasant scent. Large petals allow bigger insects and birds to land on the flower. Insects and birds are attracted to the colour and scent of the flowers.
+    - Flowers pollinated by insects and birds usually have large and brightly coloured petals, and a pleasant scent. Large petals allow bigger insects and birds to land on the flowers. Insects and birds are attracted to the colour and scent of the flowers.
 
     - Flowers pollinated by wind are usually small and dull coloured.
 
@@ -54,23 +54,23 @@
 
 1. The fusion of the male reproductive cell with the egg cell is called **fertilisation**.
 
-    - When pollen grains land on the surface of stigma, each pollen grain produces a pollen tube.
-    - The pollen tube grows down from the stigma, through the style to the ovary.
-    - When the pollen tube reaches one ovule, the male reproductive cell in the pollen tube fuses with the egg cell.
+    - When the pollen grains land on the surface of stigma, each pollen grain produces a pollen tube.
+    - The pollen tube grows down from the stigma, through the style into the ovary.
+    - When the pollen tube reaches an ovule, the male reproductive cell from the pollen tube fuses with the egg cell.
 
 2. After fertilisation
 
     - Flower petals start to wither.
-    - The ovary enlarges and forms a fruit. The ovules starts to develop into **seeds**.
+    - The ovary enlarges and forms a fruit. The ovules start to develop into **seeds**.
     - The seeds continue to develop inside the fruit and the fruit grows bigger.
 
-3. Some flowers have only one ovule in the ovary, so the fruit will have only one seed, such as mangoes and cherries; while some flowers have many ovules in the ovary, and the fruits will have many seeds, such as tomatoes and papayas.
+3. Some flowers have only one ovule in the ovary, so the fruits will have only one seed, such as mangoes and cherries; while some flowers have many ovules in the ovary, and the fruits will have many seeds, such as tomatoes and papayas.
 
 4. Fruits protect the seeds until they are ready to be released. When this happens, we say that the fruits are ripe.
 
 ### Dispersal (C2.3)
 
-1. **Dispersal** is the process where fruits or seeds of the plants are scattered as far as possible.
+1. **Dispersal** is the process in which fruits or seeds of the plants are scattered as far as possible.
 
 2. Dispersal prevents overcrowding and reduces competition of young plants among themselves and with the parent plant. Plants that grow too closely together have to compete for sunlight, water and minerals.
 
@@ -89,19 +89,19 @@
 
 6. Splitting / explosive action
 
-    - Some fruits split open when they are ripe or when they are dried up to shoot their seeds out in different directions.
+    - Fruits or seeds dispersed by splitting usually have pod-like structures which will split open when they are ripe or when they are dried up to shoot their seeds out in different directions.
 
 ### Germination (C2.4)
 
 1. Seeds develop into young plants if the conditions are suitable. This process is called **germination**.
 
-2. A seed needs air, water and a suitable temperature to germinate. (light is not needed)
+2. A seed needs air, water and a suitable temperature to germinate. (light is not needed.)
 
-3. Root grows first, baby plant gets its nutrients from the food stored in **seed leaves**.
+3. The root grows first, and the baby plant obtains its nutrients from the food stored in the **seed leaves**.
 
-4. Shoot grows after some time and pushes the seed leaves above the soil. Sometimes, seed leaves are still wearing their dried up seed coat on their tips. When the food reserves are used up, seed leaves may turn green and begin photosynthesis.
+4. The shoot grows after some time and pushes the seed leaves above the soil. Sometimes, the seed leaves still retain their dried-up seed coat on their tips. When the food reserves are used up, the seed leaves may turn green and begin photosynthesis.
 
-5. Then, a bud will appear between the seed leaves, grow into true leaves, and take over food production from seed leaves.
+5. Then, a bud will appear between the seed leaves, grows into true leaves, and take over food production from seed leaves.
 
 ## Reproduction of Non-Flowering Plants (C3)
 
@@ -113,7 +113,7 @@
 
 1. Life cycle of mammals (three stages):
 
-    - Egg cell
+    - Egg Cell
     - Young
         - A young mammal looks like adult.
     - Adult
@@ -147,7 +147,7 @@
         - Beetles' eggs are load on leaves.
     - Larva
         - The larva of a butterfly is called a caterpillar. It lives on plants.
-        - The larva** of a mosquito is called a wriggler. It lives in water.
+        - The larva of a mosquito is called a wriggler. It lives in water.
         - The larva of a ladybird beetle lives on plants.
         - Larva eats a lot and **moults** several times as it grows.
     - Pupa
@@ -274,7 +274,7 @@
 2. Water cycle
 
     - When **water vapour** rises and reaches the cooler sky, the water vapour **condenses** into water droplets which gather to form **clouds**.
-    - When water droplets in the clouds become too big and heavy, they fall onto earth as **rain**. Some of the water falls back into water bodies, while some sleeps into the ground.
+    - When water droplets in the clouds become too big and heavy, they fall onto earth as **rain**. Some of the water falls back into water bodies, while some seeps into the ground.
     - Heat from sun causes water to **evaporates** from water bodies, living things also give up **water vapour**.
 
 3. Water is important for
