@@ -1,0 +1,2 @@
+- [Home](/ "Home")
+- [Introduction to Generative AI](genai/for-everyone/genai-1-introduction "Introduction to Generative AI")

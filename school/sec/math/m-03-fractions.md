@@ -2,7 +2,7 @@
 
 # Fractions
 
-*Jan 14, 2024*
+*Mar 14, 2024*
 
 ## Fractions
 
@@ -69,11 +69,6 @@
 2. An **exact decimal** is one where all its digits can be written down, e.g. $0.2,3.5,14.75$.
 
 3. A **recurring decimal** is one where the digits go on forever but some of the digits are repeating. They are expressed by putting dots above the repeating digits.
-
-    $$
-    \frac{a}{b} =x.yyy\dotsc \text{, the recurring notation is written as } x.\dot{y}\\
-    \frac{a}{b} =x.yzyzyz\dotsc \text{, the recurring notation is written as } x.\dot{y}\dot{z}
-    $$
 
     For example,
 
