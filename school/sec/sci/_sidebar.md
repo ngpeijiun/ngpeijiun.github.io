@@ -1,0 +1,2 @@
+- [Home](/ "Home")
+- [The Scientific Endeavour](school/sec/sci/s-01-the-scientific-endeavour "The Scientific Endeavour")

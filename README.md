@@ -10,11 +10,16 @@
 
 - Notes about Generative AI
 
-  - [Introduction to Generative AI](genai/intro/genai-1-introduction)<br>
-    *Google Cloud Training*
   - [Generative AI for Everyone](genai/for-everyone/genai-1-introduction)<br>
     *Andrew Ng*<br>
     *DeepLearning.AI*
+  - [Generative AI with Large Language Models](genai/with-llm/genai-1-intro-and-project-lifecycle)<br>
+    *DeepLearning.AI*<br>
+    *Amazon Web Services*
+
+- Notes about Chatbot
+
+  - [Introduction to Chatbot](chatbot/chatbot-1-intro)
 
 - Notes about Machine Learning
 
@@ -58,6 +63,8 @@
     *ABS, SAS*
   - [Million Dollar Maths](fin/math/mdm-1-the-power-of-exponential-growth)<br>
     *Hugh Barker*
+  - [巴比伦理财圣经](fin/babylon/b-1-intro.md)<br>
+    **George Samuel Clason*
 
 - Notes about Learning
 
@@ -80,6 +87,7 @@
 
   - [Mathematics](school/sec/math/m-01-numbers)
   - [Algebra](school/sec/math/algebra/algebra-1)
+  - [Science](school/sec/sci/s-01-the-scientific-endeavour)
 
 - Notes about Primary School Subjects
 
