@@ -20,7 +20,7 @@ Jun 1, 2024
 
 2.  Most jobs involve a collection of many tasks, so it is useful to think of AI not as automating jobs, but as augmenting or automating tasks.
 
-    > ![Identifying Automation Opportunities](_media/genai-40-automation-opportunities.png)
+    >   ![Identifying Automation Opportunities](_media/genai-40-automation-opportunities.png)
 
 3.  The potential for augmenting/automating a task depends on technical feasibility and business value.
 
@@ -57,23 +57,23 @@ Jun 1, 2024
 
     Generative AI with custom RAG tools can assist with the research portion of the medical procedures that surgeons require.
 
-    > ![Surgeon Workflow](_media/genai-41-surgeon-wf.png)
+    >   ![Surgeon Workflow](_media/genai-41-surgeon-wf.png)
 
 2.  Legal document review
 
     With generative AI, the review of legal documents may become much faster. After building such a system for a highly productive process, however, legal companies may decide to change the workflow to add an additional human verification step to ensure that what the generative AI has generated in the document is comprehensive and correct.
 
-    > ![Legal Workflow](_media/genai-42-legal-wf.png)
+    >   ![Legal Workflow](_media/genai-42-legal-wf.png)
 
 3.  Marketing automation
 
     Sometimes, instead of making incremental improvements to the workflow, such as adding a human verification step, a total redesign with the help of generative AI can make the new workflow more relevant and create new value.
 
-    > ![Marketing Workflow](_media/genai-43-marketing-wf.png)
+    >   ![Marketing Workflow](_media/genai-43-marketing-wf.png)
 
 4.  In addition to searching for growth opportunities by analysing the tasks performed by the employees of a company, another useful framework is to also consider analysing the tasks of your customers. I found that this approach can sometimes lead companies to develop very different products or services for their customers. This can be another recipe for gaining many happy customers and, therefore, pursuing growth for your business.
 
-    > ![Analysing Customers' Tasks](_media/genai-44-customer-tasks.png)
+    >   ![Analysing Customers' Tasks](_media/genai-44-customer-tasks.png)
 
 ### Team to Build Generative AI Software
 
@@ -112,17 +112,17 @@ Jun 1, 2024
 
 1.  Earlier waves of automation tended to expose lower-wage jobs more because AI could handle routine, repetitive work. However, LLMs, and generative AI more broadly, are exposing higher-wage occupations to automation in this wave.
 
-    > ![Impact Higher-Paid Jobs](_media/genai-45-impact-higher-paid-jobs.png)
+    >   ![Impact Higher-Paid Jobs](_media/genai-45-impact-higher-paid-jobs.png)
 
 2.  The impact of generative AI is widespread across every sector, but some sectors are more affected than others.
 
-    > ![Analysis by Functional Role](_media/genai-46-impact-by-role.png)
+    >   ![Analysis by Functional Role](_media/genai-46-impact-by-role.png)
 
 3.  If we look at the data showing the impact of generative AI on automation, one remarkable observation is that sectors not previously highly exposed to automation are now seeing greater potential for augmentation or automation, such as creative and arts management.
 
     If you look at the top few lines on the graph, one recurring theme in all the studies is that a significant portion of the impact of generative AI will be on knowledge workers&mdash;those who generate value primarily through their knowledge, including their expertise, critical thinking, and interpersonal skills. This contrasts with workers who create value mainly through performing physical tasks rather than knowledge tasks.
 
-    > ![Analysis by Industry Sector](_media/genai-47-impact-by-sector.png)
+    >   ![Analysis by Industry Sector](_media/genai-47-impact-by-sector.png)
 
 ## Generative AI and Society
 
@@ -140,7 +140,7 @@ Jun 1, 2024
     -   First, interpreting X-rays has turned out to be harder than it seemed back then, although we are making rapid progress.
     -   Second, radiologists perform around 30 different tasks, with interpreting X-ray images being just one of them.
 
-    > ![Radiologist](_media/genai-48-radiologist.png)
+    >   ![Radiologist](_media/genai-48-radiologist.png)
 
 3.  Concern 3: Human extinction
 

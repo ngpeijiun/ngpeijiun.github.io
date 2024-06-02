@@ -1,2 +1,2 @@
 - [Home](/ "Home")
-- [Introduction to Data Analytics](da/da-1-what-is-data-analytics "Introduction to Data Analytics")
+- [Introduction to Data Analysis](da/da-1-introduction-to-data-analysis "Introduction to Data Analytics")

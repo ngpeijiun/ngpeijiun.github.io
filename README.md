@@ -16,6 +16,10 @@
     *Andrew Ng*<br>
     *DeepLearning.AI*
 
+- Notes about Chatbot
+
+  - [Introduction to Chatbot](chatbot/chatbot-1-intro)
+
 - Notes about Machine Learning
 
   - [AI for Everyone](ai/ai-1-what-is-ai)<br>
@@ -58,6 +62,8 @@
     *ABS, SAS*
   - [Million Dollar Maths](fin/math/mdm-1-the-power-of-exponential-growth)<br>
     *Hugh Barker*
+  - [巴比伦理财圣经](fin/babylon/b-1-intro.md)<br>
+    **George Samuel Clason*
 
 - Notes about Learning
 
@@ -80,6 +86,7 @@
 
   - [Mathematics](school/sec/math/m-01-numbers)
   - [Algebra](school/sec/math/algebra/algebra-1)
+  - [Science](school/sec/sci/s-01-the-scientific-endeavour)
 
 - Notes about Primary School Subjects
 

@@ -12,25 +12,25 @@ Apr 2, 2024
 
 1.  Supervised learning and generative AI are the two most important tools in AI today.
 
-    > ![AI is a set of tools](_media/genai-1-ai-tools.png)
+    >   ![AI is a set of tools](_media/genai-1-ai-tools.png)
 
 2.  The decade of 2010-2020 was marked by large-scale supervised learning, which turned out to have laid the foundation for modern generative AI.
 
-    > ![Large Scale Supervised Learning](_media/genai-2-large-scale-supervised.png)
+    >   ![Large Scale Supervised Learning](_media/genai-2-large-scale-supervised.png)
 
 3.  One way generative AI generates text is by using large language models (LLMs). Given an input such as "I love eating", an LLM can complete this sentence in various ways. The input is also referred to as a prompt.
 
-    > ![Generating text using Large Language Models](_media/genai-3-llm.png)
+    >   ![Generating text using Large Language Models](_media/genai-3-llm.png)
 
 4.  LLMs are built using supervised learning to repeatedly predict the next word in a sequence. A single sentence can be transformed into multiple input (A) and output (B) pairs.
 
-    > ![How Large Language Models work?](_media/genai-4-llm-predict-next.png)
+    >   ![How Large Language Models work?](_media/genai-4-llm-predict-next.png)
 
 ### LLMs as a Thought Partner
 
 1.  LLMs offer a novel way to access information. However, they can sometimes generate inaccurate facts, a phenomenon known as hallucination. Therefore, it is advisable to verify the responses with an authoritative source, especially when accuracy is crucial. Engaging in a detailed question-and-answer exchange can provide LLMs with the necessary context to deliver more accurate answers.
 
-    > ![A new way to find information](_media/genai-5-a-new-way-to-find-info.png)
+    >   ![A new way to find information](_media/genai-5-a-new-way-to-find-info.png)
 
 2.  LLMs can sometimes serve as a thought partner to help  you think things through. For instance, they can assist you in proofreading and rewriting text, or even in writing a short bedtime story for entertainment.
 
@@ -48,7 +48,7 @@ Apr 2, 2024
 
 2.  LLMs excel in tasks involving writing, reading, and chatting.
 
-    > ![AI Applications](_media/genai-6-ai-applications.png)
+    >   ![AI Applications](_media/genai-6-ai-applications.png)
 
 3.  Two different types of LLM applications.
 
@@ -94,13 +94,13 @@ Apr 2, 2024
 
     -   LLMs can be implemented into workflow automation to automatically route customer's emails to the right party.
 
-    > ![Detailed look at email routing prompt](_media/genai-7-routing-email.png)
+    >   ![Detailed look at email routing prompt](_media/genai-7-routing-email.png)
 
 5.  Monitoring reputation
 
     -   LLMs can be implemented into dashboard to analyse review and feedback and track customer sentiments over time.
 
-    > ![Reputation monitoring](_media/genai-8-monitoring-reputation.png)
+    >   ![Reputation monitoring](_media/genai-8-monitoring-reputation.png)
 
 ### Chatting
 
@@ -113,7 +113,7 @@ Apr 2, 2024
 
 2.  Chatbots design patterns
 
-    > ![Chatbots design patterns](_media/genai-9-chatbots.png)
+    >   ![Chatbots design patterns](_media/genai-9-chatbots.png)
 
     The spectrum of common design patterns used by various customer service chatbots includes:
 
@@ -160,7 +160,7 @@ Apr 2, 2024
 
     If you are asking it to summarise a paper that is longer than the input length limitation, you may have to give it one part of the paper at a time.
 
-    > ![Summarise](_media/genai-10-summarise.png)
+    >   ![Summarise](_media/genai-10-summarise.png)
 
 5.  A major limitation of generative AI is that it does not currently work well with structured data, such as database tables. Statistical methods and supervised learning are more effective techniques for analysing and estimating numbers in structured form. Generative AI tends to perform best with unstructured data, including text, image, audio, and video.
 
@@ -175,21 +175,21 @@ Apr 2, 2024
 
 2.  Guide the model to think through its answer
 
-    > ![Guide the model to think through its answer](_media/genai-11-guide-llm.png)
+    >   ![Guide the model to think through its answer](_media/genai-11-guide-llm.png)
 
 3.  Experiment and iterate
 
     There is no perfect prompt that suits every person or situation! Instead, it is better to develop a process for improving prompts through iteration.
 
-    > ![Experiment](_media/genai-12-experiment.png)
+    >   ![Experiment](_media/genai-12-experiment.png)
 
-    > ![Iteratively improving your prompt](_media/genai-13-iteratively-improving.png)
+    >   ![Iteratively improving your prompt](_media/genai-13-iteratively-improving.png)
 
 ### Image Generation
 
 1.  Even though text generation has the biggest impact of generative AI, part of the excitement also surrounds image generation. There are also some multimodal models that can operate on and generate information from multiple modalities, such as text, images, audio and video.
 
-    > ![Example generated images](_media/genai-14-generated-images.png)
+    >   ![Example generated images](_media/genai-14-generated-images.png)
 
 2.  Diffusion model
 
@@ -197,7 +197,7 @@ Apr 2, 2024
 
     Diffusion models are trained on a vast number of images sourced from the internet or other repositories. At the core of diffusion model lies supervised learning.
 
-    > ![Image generation (diffusion model)](_media/genai-15-diffusion-model.png)
+    >   ![Image generation (diffusion model)](_media/genai-15-diffusion-model.png)
 
     -   The initial step involves taking an image and gradually introducing more noise into it.
     -   The diffusion model then takes a noisy image as input and produces an image with reduced noise as output.
@@ -206,12 +206,12 @@ Apr 2, 2024
 
     We feed a pure noise image into the trained diffusion model, which, at each step, removes a bit of noise. In practice, it takes about 100 steps for the diffusion model to generate a pretty nice image.
 
-    > ![Image generation](_media/genai-16-image-generation.png)
+    >   ![Image generation](_media/genai-16-image-generation.png)
 
 4.  Adding text
 
     This algorithm can be slightly modified to add a prompt that allows users to specify what they want to generate. Essentially, the diffusion model receives both a noisy image and a text prompt as input and produces an image with reduced noise as output.
 
-    > ![Adding text](_media/genai-17-diffusion-model-text.png)
+    >   ![Adding text](_media/genai-17-diffusion-model-text.png)
 
-    > ![Image generation from text](_media/genai-18-image-generation-text.png)
+    >   ![Image generation from text](_media/genai-18-image-generation-text.png)
