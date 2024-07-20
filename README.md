@@ -2,11 +2,20 @@
 
 > He who learns but does not think, is lost! He who thinks but does not learn is in great danger.
 
+## Ideas
+
 - Notes about My Ideas
 
   - [A Gradient Tracking Method of Explaining Model Predictions](idea/idea-1-gradient-tracking-explainer)
   - [Understanding Shapley Value](idea/idea-2-understanding-shapley-value)
   <!-- - [Reversing Partial Derivatives](idea/idea-2-reversing-partial-derivatives) -->  
+
+## Artificial Intelligence
+
+- Notes about AI
+
+  - [Intelligent Reasoning Systems](/ais/cognitive-systems/irs-13-introduction-to-cognitive-systems.md)<br>
+    *NUS-ISS*
 
 - Notes about Generative AI
 
@@ -14,14 +23,22 @@
     *Andrew Ng*<br>
     *DeepLearning.AI*
   - [Generative AI with Large Language Models](genai/with-llm/genai-1-intro-and-project-lifecycle)<br>
-    *DeepLearning.AI*<br>
-    *Amazon Web Services*
+    *DeepLearning.AI, Amazon Web Services*
 
-- Notes about Chatbot
+- Notes about Conversational AI
 
   - [Introduction to Chatbot](chatbot/chatbot-1-intro)
 
-- Notes about Machine Learning
+## Data Science
+
+- Notes about Data Analysis
+  - [Data Analysis and Visualisation Foundations Specialisation](da/da-1-introduction-to-data-analysis)<br>
+    *Rav Ahuja*<br>
+    *IBM*
+
+## Machine Learning
+
+- Notes about Core Machine Learning
 
   - [AI for Everyone](ai/ai-1-what-is-ai)<br>
     *Andrew Ng*<br>
@@ -35,13 +52,19 @@
   - [Deep Learning Specialisation](dl/dl-1-introduction)<br>
     *Andrew Ng*<br>
     *DeepLearning.AI*
+
+- Notes about Specialised Machine Learning
+
   - [Natural Languague Processing Specialisation](nlp/nlp-1-sentiment-analysis-logistic-regression)<br>
     *DeepLearning.AI*
+  - [Knowledge Graph Embeddings](kge/kge-1-introduction)<br>
+    *GPT-4o*
 
-- Notes about Data Analysis
-  - [Data Analysis and Visualisation Foundations Specialisation](da/da-1-introduction-to-data-analysis)<br>
-    *Rav Ahuja*<br>
-    *IBM*
+## Computer Science
+
+- Notes about Computer Science Fundamentals
+
+  - [CS50's Introduction to Computer Science](/cs/intro/cs-1-scratch.md)
 
 - Notes about Coding
 
@@ -57,18 +80,33 @@
     *MDN Web Docs*
   - [p5.js](cg/p5/p5-1-introduction)
 
-- Notes about Investment
+- Notes about Game Development
+  - [Game Development](gamedev/gamedev-1-introduction)
+
+## Personal Development
+
+- Notes about Leadership
+
+  - [Leadership Skills](leadership/skills/leader-1-leading-the-self)<br>
+
+- Notes about Business
+
+  - [Introduction to Business](/business/intro/biz-0-course-learning-outcomes.md)
+
+- Notes about Financial Literacy
 
   - [Specified Investment Products (SIPs)](fin/sip/sip-1-unit-trusts)<br>
     *ABS, SAS*
+  - [小狗钱钱](fin/puppy/p-1-sequential-chapter-review)<br>
+    *Bodo Schäfer*
+  - [巴比伦理财圣经](fin/babylon/b-1-intro)<br>
+    *George Samuel Clason*
   - [Million Dollar Maths](fin/math/mdm-1-the-power-of-exponential-growth)<br>
     *Hugh Barker*
-  - [巴比伦理财圣经](fin/babylon/b-1-intro.md)<br>
-    **George Samuel Clason*
 
-- Notes about Learning
+- Notes about Meta Learning
 
-  - [Learning How to Learning](learn/learn-1-what-is-learning)<br>
+  - [Learning How to Learning](learn/how-to-learn/learn-1-what-is-learning)<br>
     *Dr. Barbara Oakley, Dr. Terrence Sejnowski*<br>
     *McMaster University, University of California San Diego*
 
@@ -83,13 +121,19 @@
     - STAT 416: Introduction to Mathematical Statistics
 -->
 
-- Notes about O-Level Subjects
+## SENS
 
-  - [Mathematics](school/sec/math/m-01-numbers)
-  - [Algebra](school/sec/math/algebra/algebra-1)
-  - [Science](school/sec/sci/s-01-the-scientific-endeavour)
+- [Super Human](/sens/super-human/super-1-the-four-killers.md)
+
+## Academic Foundation
 
 - Notes about Primary School Subjects
 
   <!-- - [Mathematics](school/pri/math/math-1) -->
   - [Science](school/pri/sci/sci-1-introduction)
+
+- Notes about Secondary School Subjects
+
+  - Mathematics
+    - [Algebra](/school/sec/math/algebra/al-1.md)
+  - [Science](school/sec/sci/s-01-the-scientific-endeavour)
