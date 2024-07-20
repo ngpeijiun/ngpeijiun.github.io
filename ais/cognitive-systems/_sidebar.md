@@ -1,0 +1,3 @@
+- [Home](/ "Home")
+- [Introduction to Cognitive Systems](ais/cognitive-systems/irs-13-introduction-to-cognitive-systems "Introduction to Cognitive Systems")
+- [Natural Language Processing](ais/cognitive-systems/irs-14-natural-language-processing "Natural Language Processing")
