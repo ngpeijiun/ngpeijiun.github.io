@@ -1,0 +1,4 @@
+- [Home](/ "Home")
+- [Reasoning Systems](ais/reasoning-systems/irs-7-reasoning-systems "Reasoning Systems")
+- [AI with Big Data](ais/reasoning-systems/irs-8-ai-with-big-data "AI with Big Data")
+- [Genetic Algorithms](ais/reasoning-systems/irs-10-genetic-algorithms "Genetic Algorithms")
