@@ -1,0 +1,4 @@
+- [Home](/ "Home")
+- [Search Algorithms](ais/machine-reasoning/irs-1-search-algorithms "Search Algorithms")
+- [Reasoning in AI](ais/machine-reasoning/irs-2-reasoning-in-ai "Reasoning in AI")
+- [Knowledge Graph](ais/machine-reasoning/irs-3-knowledge-graph "Knowledge Graph")
