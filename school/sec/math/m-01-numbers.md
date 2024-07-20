@@ -1,60 +1,118 @@
 <h1 style="color: #ccc">O-Level Mathematics</h1>
 
-# Numbers
+# Number
 
-*Jan 14, 2024*
+*Jan 31, 2025*
 
-## Sets of Numbers
+## Number System
 
-1. Integers
+1.  Natural Numbers ($\mathbb{N}$)
 
-    - Integers are numbers that are expressed *without a fraction*.
-    - They run from **negative infinity to positive infinity**.
-    - The symbol for integers is $\mathbb{Z}$.
-    - Examples of integers are $\cdots,-3,-2,-1,0,1,2,3,\cdots$
+    -   Definition: Positive counting numbers.
+    -   Examples: $1,2,3,4,\cdots$
+    -   Properties:
+        -   Used for counting.
+        -   No zero, negative numbers, or fractions.
+        -   Infinite set.
 
-2. Positive integers
+2.  Whole Numbers
 
-    - Positive integers start from **one to infinity**.
-    - The symbol for positive integers is $\mathbb{Z}^{+}$.
-    - Examples of positive integers are $1,2,3,\cdots$
+    -   Definition: Natural numbers including zero.
+    -   Examples: $0,1,2,3,4,\cdots$
+    -   Properties:
+        -   Includes zero.
+        -   No negative numbers or fractions.
+        -   Infinite set.
 
-3. Negative integers
+3.  Integers ($\mathbb{Z}$)
 
-    - Negative integers start from **negative infinity to negative one**.
-    - The symbol for negative integers is $\mathbb{Z}^{-}$
-    - Examples of negative integers are $\cdots,-3,-2,-1$.
+    -   Definition: Whole numbers and their negatives.
+    -   Examples: $\cdots,-3,-2,-1,0,1,2,3,\cdots$
+    -   Properties:
+        -   Include positive and negative whole numbers.
+        -   No fractions or decimals.
+        -   Infinite set.
 
-4. Natural numbers
+4.  Rational Numbers ($\mathbb{Q}$)
 
-    - Natural numbers are **positive integers**.
-    - They are used for *counting*.
-    - The symbol for natural numbers is $\mathbb{N}$.
-    - Examples of natural numbers are $1,2,3,\cdots$
+    -   Definition: Number that can be written as a fraction ($p/q$), where $p$ and $q$ are integers and $q\neq0$.
+    -   Examples: $\frac{1}{2},-\frac{3}{4},0.75,5$
+    -   Properties:
+        -   Can be expressed as the ratio of two integers.
+        -   Decimal representation is either terminating (e.g., $0.5$) or repeating (e.g., $0.333\cdots$).
+        -   Infinite set.
 
-5. Whole numbers
+5.  Irrational Numbers
 
-    - Whole numbers are **natural numbers including zero**.
-    - The symbol for whole numbers is $\mathbb{W}$.
-    - Examples of whole numbers are $0,1,2,3,\cdots$
+    -   Definition: Numbers that cannot be written as a fraction ($p/q$), where $p$ and $q$ are integers.
+    -   Examples: $\pi\approx3.14159265\cdots$, $\sqrt{2}\approx1.414213\cdots$
+    -   Properties:
+        -   Decimal representation is infinite and non-repeating.
+        -   Cannot be expressed exactly as a fraction.
+        -   Infinite set.
 
-6. Rational numbers
+6.  Real Numbers ($\mathbb{R}$)
 
-    - Rational numbers are numbers that *can be expressed as* $\frac{a}{b}$ where $a$ and $b$ are integers, and $b\neq0$.
-    - The symbol for rational numbers is $\mathbb{Q}$.
-    - Examples of rational numbers are $\frac{1}{2},\frac{5}{3},-\frac{7}{8}$.
+    -   Definition: The set of all rational and irrational numbers.
+    -   Examples: $-2,0,3/4,\pi,\sqrt{2},1.618,\cdots$
+    -   Properties:
+        -   Includes all numbers on the number line.
+        -   Excludes imaginary numbers (e.g., $\sqrt{-1}$).
+        -   Infinite set.
 
-7. Irrational numbers
+7.  Number System Hierarchy
 
-    - Irrational numbers are numbers that *cannot be expressed as* $\frac{a}{b}$ where $a$ and $b$ are integers, and $b\neq0$.
-    - The symbol for irrational numbers is $\mathbb{I}$.
-    - Examples of irrational numbers are $\sqrt{2},\sqrt{3},\sqrt{5},\pi,e$.
+    $$
+    \mathbb{N}\subset\text{Whole Numbers}\subset\mathbb{Z}\subset\mathbb{Q}\subset\mathbb{R}
+    $$
 
-8. Real numbers
+## Prime Numbers
 
-    - Real numbers are a set of **all rational and irrational numbers**.
-    - The symbol for real numbers is $\mathbb{R}$.
-    - Examples of real numbers are $-2,0,\frac{5}{13},\sqrt{2}$.
+1.  Prime Numbers
+
+    -   Definition: A prime number is a natural number greater than $1$ that has exactly two distinct factors: $1$ and itself.
+    -   Examples: $2,3,5,7,11,13,17,19,23,29,31,\cdots$
+
+2.  Properties of Prime Numbers
+
+    -   Divisibility:<br>
+        A prime number is only divisible by $1$ and itself.
+    -   Smallest Prime:<br>
+        The smallest prime number is $2$.
+    -   Only Even Prime:<br>
+        $2$ is the only even prime number; all other even numbers are composite.
+    -   Infinite Set:<br>
+        There are infinitely many prime numbers, as proven by Euclid's theorem.
+    -   Prime Factors:<br>
+        The prime numbers that exactly divide a given number are called its prime factors.
+    -   Prime Factorisation:<br>
+        Every integer greater than $1$ can be uniquely expressed as a product of prime numbers (Fundamental Theorem of Arithmetic).
+
+3.  Composite Numbers
+
+    -   Definition: A composite number is a natural number greater than $1$ that has more than two factors.
+    -   Examples: $4,6,8,9,10,12,\cdots$
+    -   Properties:
+        -   A composite number can be expressed as a product of prime factors.
+        -   Any natural number greater than $1$ is either prime or composite.
+
+4.  Prime Factorisation
+
+    Every integer greater than $1$ has a unique prime factorisation. For example:
+
+    $$
+    30=2\times3\times5\\
+    84=2^2\times3\times7
+    $$
+
+5.  Applications
+
+    -   Cryptography:<br>
+        Prime numbers are used in encryption algorithms such as RSA.
+    -   Computer Science:<br>
+        They play a role in hashing techniques and algorithm design.
+    -   Mathematics:<br>
+        They help in solving problems related to the highest common factor (HCF) and least common multiple (LCM).
 
 ## Multiples
 
@@ -77,24 +135,6 @@
 2. Highest common factor (HCF)
 
     - The highest common factor is the **largest positive integer** which is a **common factor** of two or more numbers.
-
-## Prime Factorisation
-
-1. Prime numbers
-
-    - A prime number is a **natural number** greater than one that can be *divided only by one and itself*.
-    - A composite number is a **natural number** that can be *formed by multiplying two or more prime numbers*.
-    - Any natural number greater than one is either **prime number** or **composite number**.
-    - Examples of prime numbers are $2,3,5,7,11,\cdots$
-
-2. Prime factors
-
-    - Prime factors of a **composite number** are **factors** of the composite number that are also prime numbers.
-
-3. Prime factorisation
-
-    - Prime factorisation is the process of expressing a **composite number** as the product of **prime factors** of the composite number.
-    - Prime factorisation of $300=2\times 2\times 3\times 5\times 5$
 
 ## Square and Cube Numbers
 
