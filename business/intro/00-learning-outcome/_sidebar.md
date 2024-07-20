@@ -1,0 +1,1 @@
+- [Course Learning Outcomes](/business/intro/00-learning-outcome/biz-0-course-learning-outcomes.md "Course Learning Outcomes")

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>Association Rule Mining</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 16px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <h1 style="color: #ccc">Intelligent Reasoning System</h1>
+<h1 id="association-rule-mining">Association Rule Mining</h1>
+<blockquote>
+<p>Items that frequently occur together in the past are likely to occur together again in the future.</p>
+</blockquote>
+<div class="badge">
+    <span class="key">Type</span>
+    <span class="value">Course</span>
+</div>
+<div class="badge">
+    <span class="key">Instructor</span>
+    <span class="value">Barry Shepherd</span>
+</div>
+<div class="badge">
+    <span class="key">Institution</span>
+    <span class="value">NUS-ISS</span>
+</div>
+<div class="badge">
+    <span class="key">Note Updated</span>
+    <span class="value">2025-07-20</span>
+</div>
+<h2 id="introduction">Introduction</h2>
+<p><strong>Association rule mining</strong> identifies frequent patterns or co-occurences in data to uncover useful relationships between items. This technique is commonly used in:</p>
+<ol>
+<li><strong>Market Basket Analysis</strong></li>
+<li><strong>Recommender Systems</strong></li>
+<li><strong>Fraud Detection</strong> (<em>high confidence, high lift, and low support</em>)</li>
+<li><strong>Cross-Sell and Up-Sell Insights</strong></li>
+</ol>
+<h2 id="key-concepts">Key Concepts</h2>
+<p><strong>Association Rules</strong></p>
+<ol>
+<li>Format: <code>If A, then B</code></li>
+<li>Examples
+<ul>
+<li>If <code>user bought whisky</code>, then recommend <code>Coke</code></li>
+<li>If <code>user watched Star Wars</code>, then recommend <code>Dune</code></li>
+</ul>
+</li>
+</ol>
+<p>Rules are typically evaluated using:</p>
+<ol>
+<li><strong>Support</strong>: Probability of (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span>) occurring together</li>
+<li><strong>Confidence</strong>: Probability of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span> given <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span></span></span></span></li>
+<li><strong>Lift</strong>: Measure of how much more likely <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span> is given <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span></span></span></span>, compared to random chance</li>
+</ol>
+<h2 id="market-basket-analysis">Market Basket Analysis</h2>
+<p><strong>Market Basket Analysis (MBA)</strong> analyses transactions to identify <strong>frequent item-sets</strong>—groups of items that commonly occur together in the same basket.</p>
+<pre><code>T1: frozen pizza, cola, milk
+T2: milk, potato chips
+T3: cola, frozen pizza
+T4: milk, peanuts
+T5: cola, peanuts
+T6: cola, potato chips, peanuts
+</code></pre>
+<h2 id="co-occurrence-matrix">Co-occurrence Matrix</h2>
+<p>A symmetrical matrix that captures how often item pairs occur together; the diagonal shows the total number of times each item was bought.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:center">Pizza</th>
+<th style="text-align:center">Milk</th>
+<th style="text-align:center">Cola</th>
+<th style="text-align:center">Chips</th>
+<th style="text-align:center">Peanut</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Pizza</strong></td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Milk</strong></td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Cola</strong></td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Chips</strong></td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Peanut</strong></td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">3</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>Pizza buyers always buy cola.</li>
+<li>But cola buyers do not always buy pizza.</li>
+</ol>
+<p>To deploy pairwise co-occurrence as association rules, a simple dictionary structure may suffice.</p>
+<pre><code>StarWars → [StarTrek, TheMatrix, Dune, ...]
+// a list in descending order of co-occurrence or confidence
+</code></pre>
+<h2 id="rule-metrics">Rule Metrics</h2>
+<p>For a given rule:</p>
+<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>A</mi><mo>→</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A\to B
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span></span></p>
+<p><strong>Rule Support</strong></p>
+<p><strong>Support</strong> measures the probability of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span> occurring together:</p>
+<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>Support</mtext><mo stretchy="false">(</mo><mi>A</mi><mo>∩</mo><mi>B</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mrow><mtext>Freq</mtext><mo stretchy="false">(</mo><mi>A</mi><mo>∩</mo><mi>B</mi><mo stretchy="false">)</mo></mrow><mtext>Total transactions</mtext></mfrac></mrow><annotation encoding="application/x-tex">\text{Support}(A \cap B) = \frac{\text{Freq}(A \cap B)}{\text{Total transactions}}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">Support</span></span><span class="mopen">(</span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∩</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.113em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.427em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Total transactions</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Freq</span></span><span class="mopen">(</span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∩</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<p><strong>Rule Confidence</strong></p>
+<p><strong>Confidence</strong> measures the probability of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span> given <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span></span></span></span>:</p>
+<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>Confidence</mtext><mo stretchy="false">(</mo><mi>A</mi><mo>→</mo><mi>B</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mrow><mtext>Support</mtext><mo stretchy="false">(</mo><mi>A</mi><mo>∩</mo><mi>B</mi><mo stretchy="false">)</mo></mrow><mrow><mtext>Support</mtext><mo stretchy="false">(</mo><mi>A</mi><mo stretchy="false">)</mo></mrow></mfrac></mrow><annotation encoding="application/x-tex">\text{Confidence}(A \to B) = \frac{\text{Support}(A \cap B)}{\text{Support}(A)}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">Confidence</span></span><span class="mopen">(</span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.363em;vertical-align:-0.936em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.427em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Support</span></span><span class="mopen">(</span><span class="mord mathnormal">A</span><span class="mclose">)</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Support</span></span><span class="mopen">(</span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∩</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<p>Confidence is <strong>direction-sensitive</strong>.</p>
+<p><strong>Rule Lift</strong></p>
+<p><strong>Lift</strong> measures likelihood of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span> given <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span></span></span></span>, or <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span> occurring together, compared to random chance:</p>
+<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>Lift</mtext><mo stretchy="false">(</mo><mi>A</mi><mo>∩</mo><mi>B</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mrow><mtext>Support</mtext><mo stretchy="false">(</mo><mi>A</mi><mo>∩</mo><mi>B</mi><mo stretchy="false">)</mo></mrow><mrow><mtext>Support</mtext><mo stretchy="false">(</mo><mi>A</mi><mo stretchy="false">)</mo><mo>×</mo><mtext>Support</mtext><mo stretchy="false">(</mo><mi>B</mi><mo stretchy="false">)</mo></mrow></mfrac></mrow><annotation encoding="application/x-tex">\text{Lift}(A \cap B) = \frac{\text{Support}(A \cap B)}{\text{Support}(A) \times \text{Support}(B)}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">Lift</span></span><span class="mopen">(</span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∩</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.363em;vertical-align:-0.936em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.427em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Support</span></span><span class="mopen">(</span><span class="mord mathnormal">A</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord text"><span class="mord">Support</span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mclose">)</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Support</span></span><span class="mopen">(</span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∩</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<p>Interpretation:</p>
+<ul>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>Lift</mtext><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\text{Lift} &gt; 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7335em;vertical-align:-0.0391em;"></span><span class="mord text"><span class="mord">Lift</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>: Positive association</li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>Lift</mtext><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\text{Lift} = 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord">Lift</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>: No association</li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>Lift</mtext><mo>&lt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\text{Lift} &lt; 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7335em;vertical-align:-0.0391em;"></span><span class="mord text"><span class="mord">Lift</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>: Negative association</li>
+</ul>
+<p>Lift is not direction-sensitive.</p>
+<h2 id="apriori-algorithm">Apriori Algorithm</h2>
+<p><strong>Core Principle</strong></p>
+<p>If an itemset is frequent, all of its subsets must also be frequent.</p>
+<p><strong>Steps</strong></p>
+<ol>
+<li>Generate frequent 1-itemsets with support ≥ threshold.</li>
+<li>Generate frequent 2-itemsets from frequent 1-itemsets, then filter by support ≥ threshold.</li>
+<li>Generate frequent 3-itemsets from frequent 2-itemsets, then filter by support ≥ threshold.</li>
+<li>Repeat until no further frequent itemsets can be found.</li>
+</ol>
+<p><strong>Efficiency</strong></p>
+<ol>
+<li>Uses <strong>pruning</strong> to skip supersets of infrequent itemsets that do not meet the support threshold.</li>
+<li>Implemented using tree-based or hash-based structures.</li>
+</ol>
+<h2 id="applications-beyond-retail">Applications Beyond Retail</h2>
+<ol>
+<li>Telecom: Bundling optional services</li>
+<li>Banking: Discovering cross-sell opportunities</li>
+<li>Insurance: Detecting unusual claim combinations</li>
+<li>Healthcare: Linking treatments to complications</li>
+</ol>
+<h2 id="deployment-example">Deployment Example</h2>
+<p><strong>YouTube</strong></p>
+<ol>
+<li>Count co-viewed video pairs in session.</li>
+<li>Given a seed video, build seed-set using top-N co-occurrence.</li>
+<li>Personalised via history (watched/liked).</li>
+<li>Diversify via graph traversal (neighbouring videos).</li>
+</ol>
+<p><strong>Ranking Criteria</strong></p>
+<ol>
+<li><strong>User-independent</strong>: Ratings, view count</li>
+<li><strong>User-specific</strong>: History</li>
+<li><strong>Diversification</strong>: Avoid overfitting to one seed.</li>
+</ol>
+<h2 id="granularity">Granularity</h2>
+<ol>
+<li>
+<p><strong>Coarse</strong></p>
+<p>Too little detail → trivial rules<br>
+<em>frozen pizza, chips, cola, milk</em></p>
+</li>
+<li>
+<p><strong>Fine</strong></p>
+<p>Too much detail → rule explosion<br>
+<em>cheese pizza, tuna pizza, salami pizza, vegetable pizza, chips, cola, milk</em></p>
+</li>
+</ol>
+<h2 id="taxonomies">Taxonomies</h2>
+<p>Products can be organised hierarchically (e.g., Frozen Food → Ice Cream → Vanilla → Haagen Das).</p>
+<ol>
+<li>
+<p><strong>Roll-up</strong> <em>rare items</em> to higher-level categories.</p>
+<p>If the customer buys a rare-item, roll up to a broader category to ensure the itemset meets support thresholds.</p>
+</li>
+<li>
+<p><strong>Drill-down</strong> very <em>frequent items</em> for finer insights.</p>
+<p>If the customer buys a frequent item, drill down to more specific subcategories to uncover more informative patterns.</p>
+</li>
+</ol>
+<h2 id="virtual-item">Virtual Item</h2>
+<p>Add context as <strong>virtual items</strong>, such as <em>promotion type, time of day, store location, payment method, gender</em>.</p>
+<p><strong>Example</strong></p>
+<pre><code>{sweater, jacket, new customer}
+new customer and jacket → sweater
+
+{outdoor jacket, middle-age, hiking boots}
+outdoor jacket and middle-age → hiking boots
+</code></pre>
+<h2 id="sequence-mining">Sequence Mining</h2>
+<p>Considers <strong>order</strong> of item occurrence.</p>
+<ol>
+<li>Useful in DNA mining, clickstream analysis,etc.</li>
+<li>Algorithms: Extended Apriori (e.g., SPADE)</li>
+</ol>
+<p><strong>Session-Based Recommender Systems</strong></p>
+<p>Many website browsing sessions are made by anonymous users identified only by a cookie ID. As a result, storing historical user data is usually not possible. Recommendations must therefore rely solely on the user's behavior within the current session.</p>
+<p><strong>Example</strong></p>
+<blockquote>
+<p>session1: <strong>home</strong>, <strong>news</strong>, <strong>sport</strong>, finance<br>
+session2: finance, news<br>
+session3: fashion, home, sport<br>
+session4: news, finance, home<br>
+session5: sport, home, finance<br>
+session6: fashion, <strong>home</strong>, <strong>news</strong>, <strong>sport</strong><br>
+session7: <strong>home</strong>, finance, <strong>news</strong>, finance, <strong>sport</strong></p>
+</blockquote>
+<p>Frequent sub-sequence: <strong>home</strong> → <strong>news</strong> → <strong>sport</strong></p>
+<h2 id="summary">Summary</h2>
+<p>Association rule mining is a powerful technique for uncovering relationships in data. It supports both static (unordered) and sequential (ordered) pattern discovery, with wide applications from retail and telecom to healthcare and video recommendations.</p>
+
+            <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+            
+        </body>
+        </html>

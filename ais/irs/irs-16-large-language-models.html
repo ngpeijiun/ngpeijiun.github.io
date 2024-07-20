@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>Large Language Models &lpar;LLMs&rpar;</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 16px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <h1 style="color: #ccc">Intelligent Reasoning System</h1>
+<h1 id="large-language-models-llms">Large Language Models (LLMs)</h1>
+<div class="badge">
+    <span class="key">Type</span>
+    <span class="value">Course</span>
+</div>
+<div class="badge">
+    <span class="key">Instructor</span>
+    <span class="value">Fan Zhenzhen</span>
+</div>
+<div class="badge">
+    <span class="key">Institution</span>
+    <span class="value">NUS-ISS</span>
+</div>
+<div class="badge">
+    <span class="key">Note Updated</span>
+    <span class="value">2025-06-11</span>
+</div>
+<h2 id="transformer-architecture">Transformer Architecture</h2>
+<ol>
+<li>Self-Attention<br>
+Mechanism that allows the model to weigh different words in a sequence based on their contextual importance.</li>
+<li>Architecture<br>
+Multiple decoder blocks with masked self-attention and feed-forward layers.</li>
+<li>Decoder-only models (e.g., GPT)<br>
+Trained to predict the next word using left-to-right context only (causal masking).</li>
+</ol>
+<h2 id="pretrained-llms">Pretrained LLMs</h2>
+<ol>
+<li>Examples: Claude 4, Gemini 2.5 Pro, GPT-4o</li>
+<li>Capabilities
+<ul>
+<li>Language understanding and generation</li>
+<li>Text summarisation</li>
+<li>Machine translation</li>
+<li>Question answering (QA)</li>
+<li>Code generation</li>
+</ul>
+</li>
+</ol>
+<h2 id="roles-of-llms-in-cognitive-systems">Roles of LLMs in Cognitive Systems</h2>
+<ol>
+<li><strong>NLU</strong>: Interprets user input, identifying intent and extracting entities.</li>
+<li><strong>NLG</strong>: Generates fluent, context-aware responses.</li>
+<li><strong>QA</strong>: Answers questions based on context, supporting interactive reasoning.</li>
+<li><strong>RAG</strong>: Combines external knowledge with generation for accurate, up-to-date answers.</li>
+<li><strong>Reasoning</strong>: Performs multi-step logical inference, problem-solving and decision-making (e.g., Chain-of-Thought prompting).</li>
+</ol>
+<h2 id="llm-powered-conversational-ai">LLM-Powered Conversational AI</h2>
+<p>Conversational AI built on LLMs enables sustained, intelligent dialogue through two key capabilities: <strong>memory</strong> and <strong>retrieval</strong>.</p>
+<h2 id="memory">Memory</h2>
+<p>To maintain coherent conversations, the AI retains recent dialogue history within a limited context window.</p>
+<p>Messages are tagged by role:</p>
+<ol>
+<li><strong>System</strong>: instructions</li>
+<li><strong>User</strong>: input</li>
+<li><strong>Assistant</strong>: response</li>
+</ol>
+<p>Typical memory strategies:</p>
+<ol>
+<li>Return the last <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span> messages</li>
+<li>Summarise recent exchanges</li>
+<li>Extract key information from history</li>
+</ol>
+<h2 id="retrieval-augmented-generation-rag">Retrieval-Augmented Generation (RAG)</h2>
+<p>Augments the LLM with an external retrieval mechanism to fetch relevant content before answering:</p>
+<ol>
+<li><strong>Document Preparation</strong><br>
+Splits documents into passages, vectorises them into embeddings, and stores in a vector database.</li>
+<li><strong>Query-Time Retrieval</strong><br>
+Given a user question, retrieves top-<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span> document splits with similar embeddings.</li>
+<li><strong>Answer Generation</strong><br>
+Feeds both the retrieved content and the user question to the LLM for answer generation.</li>
+</ol>
+<h2 id="zero-shot-dense-retrieval">Zero-Shot Dense Retrieval</h2>
+<p>Semantic retrieval technique that uses embedding similarity (dense retrieval) to find relevant documents, even without labelled data (zero-shot).</p>
+<ol>
+<li><strong>Dense Retrieval</strong><br>
+Retrieves relevant content by comparing dense embeddings rather than keyword matches.</li>
+<li><strong>Fine-Tuning Option</strong><br>
+Performance can be improved by fine-tuning embeddings models on relevance-labelled data (e.g., with SentenceTransformer).</li>
+<li><strong>Zero-Shot Scenario</strong><br>
+Required when no relevance-labelled training data is available.</li>
+</ol>
+<h2 id="hypothetical-document-embeddings-hyde">Hypothetical Document Embeddings (HyDE)</h2>
+<p><strong>Motivation</strong></p>
+<p>Improves zero-shot dense retrieval by generating hypothetical answer to the query before retrieving the relevant real content.</p>
+<p><strong>Methodology</strong></p>
+<ol>
+<li><strong>Instruction + Query to LLM</strong><br>
+Generate a <strong>hypothetical document</strong> by prompting the LLM to &quot;<em>write a passage that answers the question</em>&quot;.</li>
+<li><strong>Embedding Conversion</strong><br>
+Convert the generated text to an embedding vector.</li>
+<li><strong>Semantic Search</strong><br>
+Use this embedding to retrieve real documents from the vector database based on similarity.</li>
+</ol>
+<p><strong>Strength</strong></p>
+<ol>
+<li>Leverages generative power of LLMs (e.g., GPT) to form semantically meaningful query proxies.</li>
+<li>Removes the need for direct query-document matching.</li>
+<li>Works in multilingual settings or scientific domains.</li>
+</ol>
+<p><strong>Illustration</strong></p>
+<ol>
+<li>Query → &quot;<em>How long does it take to remove wisdom tooth?</em>&quot;</li>
+<li>Generated → &quot;<em>It usually takes between between 30 minutes and two hours...</em>&quot;</li>
+<li>Retrieved → &quot;<em>Some removals take a few minutes, others over 20 minutes...</em>&quot;</li>
+</ol>
+<h2 id="natural-language-interface-nli-for-tools">Natural Language Interface (NLI) for Tools</h2>
+<p><strong>Concept</strong></p>
+<p>LLMs can serve as <strong>natural language interfaces (NLI)</strong> to <em>invoke</em> and <em>orchestrate</em> <strong>external tools</strong>, such as:</p>
+<ol>
+<li>APIs</li>
+<li>Functions</li>
+<li>Databases</li>
+</ol>
+<p>This transforms user questions into executable tool calls, producing actionable outputs.</p>
+<p><strong>Workflow</strong></p>
+<ol>
+<li><strong>User Question</strong><br>
+Natural language input from user.</li>
+<li><strong>LLM</strong><br>
+Interprets the question and determines intent.</li>
+<li><strong>Parser</strong><br>
+Converts the LLM output into structured format (e.g., function all syntax, API query, database query).</li>
+<li><strong>Tool Execution</strong><br>
+Performs the requested operation (e.g., search, calculation, API request).</li>
+<li><strong>Observation</strong><br>
+Retrieves and analyses tool outputs.</li>
+<li><strong>Loop (if needed)</strong><br>
+LLM may revise the query and chain tool calls until it reaches a final response.</li>
+<li><strong>Output</strong><br>
+Final natural language response returned to user.</li>
+</ol>
+<p><strong>Framework</strong></p>
+<p><strong>LangChain</strong> is a popular framework to implement this architecture by chaining LLM reasoning with tool use.</p>
+<h2 id="llm-powered-autonomous-agents">LLM-Powered Autonomous Agents</h2>
+<blockquote>
+<p><img src="file:////Users/naryaong/Code/git/ngpeijiun.github.io/ais/irs/_media/irs-1-autonomous-agents.png" alt="Autonomous Agents"></p>
+</blockquote>
+<p>LLMs act as the <strong>general problem solver</strong>—the cognitive &quot;brain&quot; of autonomous agents. These agents can operate independently by leveraging:</p>
+<ol>
+<li>
+<p><strong>Planning &amp; Reasoning</strong></p>
+<ul>
+<li>Decompose goals into subgoals.</li>
+<li>Self-prompt, reflect, and self-criticise to refine steps.</li>
+<li>Support iteractive task execution with improvement loops.</li>
+</ul>
+</li>
+<li>
+<p><strong>Memory</strong></p>
+<ul>
+<li><strong>Short-Term</strong><br>
+Retains recent context for ongoing tasks.</li>
+<li><strong>Long-Term</strong><br>
+Stores experiences or facts over time for reuse.</li>
+</ul>
+</li>
+<li>
+<p><strong>Tool Use</strong></p>
+<ul>
+<li>Calls external APIs or functions.</li>
+</ul>
+</li>
+<li>
+<p>Example</p>
+<ul>
+<li>AutoGPT as a reference implementation.</li>
+</ul>
+</li>
+</ol>
+<h2 id="challenges-of-llm-powered-applications">Challenges of LLM-Powered Applications</h2>
+<ol>
+<li>
+<p><strong>Data Privacy and Security</strong></p>
+<ul>
+<li>LLMs are usually <strong>cloud-based</strong>, raising concerns about data leakage, unauthorised access, and compliance (e.g., GDPR).</li>
+</ul>
+</li>
+<li>
+<p><strong>Computational Cost</strong></p>
+<ul>
+<li>Requires <strong>expensive hardware</strong>, energy, and infrastructure.</li>
+<li>High <strong>API costs</strong> for commercial usage.</li>
+</ul>
+</li>
+<li>
+<p><strong>Inference Speed</strong></p>
+<ul>
+<li>LLMs are <strong>large and complex</strong>, making them slow to respond.</li>
+<li>Causes <strong>latency</strong> in real-time systems, worsened by <strong>network delays</strong> for cloud-based models.</li>
+</ul>
+</li>
+<li>
+<p><strong>Bias and Fairness</strong></p>
+<ul>
+<li>LLMs can inherit and <strong>amplify biases</strong> from their training data.</li>
+<li>May lead to <strong>unfair or discriminatory outputs</strong>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Hallucination</strong></p>
+<ul>
+<li>LLMs may generate <strong>plausible-sounding but incorrect information</strong>, especially without grounding in facts.</li>
+</ul>
+</li>
+<li>
+<p><strong>Security Risks</strong></p>
+<ul>
+<li><strong>Malicious use</strong>: Generating harmful, toxic, or misleading content.</li>
+<li>Susceptibility to <strong>prompt injection</strong> or <strong>adversarial attacks</strong>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Other Concerns</strong></p>
+<ul>
+<li>Interpretability, regulation, environment impact, etc.</li>
+</ul>
+</li>
+</ol>
+
+            <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+            
+        </body>
+        </html>

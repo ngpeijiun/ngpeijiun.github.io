@@ -5,21 +5,56 @@
   <title>Ng Pei Jiun</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="description" content="My Learning Notes">
-  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="icon" type="image/png" href="favicon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ysabeau+SC:wght@1..1000&display=swap">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  <link rel="stylesheet" href="theme.css">
+  <link rel="preconnect" href="//fonts.googleapis.com">
+  <link rel="preconnect" href="//fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css2?family=Ysabeau+SC:wght@1..1000&display=swap">
+  <!-- Theme -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@sg-developer-portal/doc-theme-default@0.0.13/public/dist/doc.css" />
+  <!-- Table Of Content -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@developerportalsg/docsify-plugin-toc/dist/light.css" />
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@developerportalsg/docsify-sidebar-collapse@2.0.24/dist/index.css" />
+  <!--<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/themes/vue.css">-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
   <style>
-    .katex-html {
-      font-size: 1.05em;
+    h3 {
+      font-size: 1.3rem !important;
+    }
+    h4,h5,h6 {
+      font-size: 1.25rem !important;
+    }
+    #enhanced-sidebar .text span {
+      white-space: pre-wrap;
+    }
+    #enhanced-sidebar p {
+      margin: 1rem 0;
     }
     .special-label {
       font-family: 'Ysabeau SC', sans-serif;
       font-weight: 700;
+    }
+    .badge {
+      display: inline-flex;
+      font-family: Verdana, sans-serif;
+      font-size: 12px;
+      margin: 2px;
+      border-radius: 3px;
+      overflow: hidden;
+      box-shadow: inset 0 -1px 0 rgba(0,0,0,0.15);
+    }
+    .badge .key {
+      background: #555;
+      color: white;
+      padding: 2px 6px;
+    }
+    .badge .value {
+      background: #007ec6; /* e.g. green for "passing", or #007ec6 for "MIT" */
+      color: white;
+      padding: 2px 6px;
+    }
+    section.content {
+      padding: 2em;
     }
   </style>
 </head>
@@ -29,18 +64,25 @@
     window.$docsify = {
       name: 'Ng Pei Jiun',
       repo: 'https://github.com/ngpeijiun/ngpeijiun.github.io',
+      routerMode: 'history',
       loadSidebar: true,
-      subMaxLevel: 2,
+      enableSidebarCollapse: true,
       auto2top: true,
       executeScript: true,
+      toc: {
+        tocMaxLevel: 5,
+        target: "h2, h3, h4, h5, h6",
+        ignoreHeaders: ["<!-- {docsify-ignore} -->", "<!-- {docsify-ignore-all} -->"],
+      },
     }
   </script>
-  <script src="https://unpkg.com/docsify/lib/docsify.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/marked@4"></script>
-  <script src="https://cdn.jsdelivr.net/npm/docsify-katex@latest/dist/docsify-katex.min.js"></script>
-  <script src="https://unpkg.com/prismjs/components/prism-python.min.js"></script>
-  <script src="https://unpkg.com/prismjs/components/prism-typescript.min.js"></script>
-  <script src="scripts/MathGraph.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+  <script src="//cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/marked@4"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify-katex@latest/dist/docsify-katex.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@developerportalsg/docsify-plugin-toc/dist/docsify-plugin-toc.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@developerportalsg/docsify-sidebar-collapse@2.0.24/dist/index.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/cytoscape@3.33.1/dist/cytoscape.min.js"></script>
+  <script src="/scripts/MathGraph.js"></script>
 </body>
 </html>

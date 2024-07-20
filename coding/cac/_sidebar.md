@@ -1,2 +1,3 @@
 - [Home](/ "Home")
+- [Git Settings](coding/cac/git-settings "Git Settings")
 - [Visual Studio Code Settings](coding/cac/vscode-settings "Visual Studio Code Settings")

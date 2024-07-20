@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>Decision Tree Rule Mining</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 16px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <h1 style="color: #ccc">Intelligent Reasoning System</h1>
+<h1 id="decision-tree-rule-mining">Decision Tree Rule Mining</h1>
+<blockquote>
+<p>Past decisions can be represented as rules; future decisions can be made by following similar rules.</p>
+</blockquote>
+<div class="badge">
+    <span class="key">Type</span>
+    <span class="value">Course</span>
+</div>
+<div class="badge">
+    <span class="key">Instructor</span>
+    <span class="value">Barry Shepherd</span>
+</div>
+<div class="badge">
+    <span class="key">Institution</span>
+    <span class="value">NUS-ISS</span>
+</div>
+<div class="badge">
+    <span class="key">Note Updated</span>
+    <span class="value">2025-07-19</span>
+</div>
+<h2 id="introduction">Introduction</h2>
+<p>A <strong>Decision Tree</strong> is a popular machine learning model used to make decisions or predictions based on data. It resembles a <em>flowchart</em> and supports <strong>deductive reasoning</strong>.</p>
+<ol>
+<li>Commonly used for <strong>classification</strong> tasks.</li>
+<li>Intuitive and interpretable.</li>
+<li>Converts data into <strong>if-then</strong> rules.</li>
+</ol>
+<h2 id="decision-tree-structure">Decision Tree Structure</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Component</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Root Node</td>
+<td style="text-align:left">The starting point of the tree (first decision condition)</td>
+</tr>
+<tr>
+<td style="text-align:left">Decision Nodes</td>
+<td style="text-align:left">Internal nodes where attribute-based tests are performed</td>
+</tr>
+<tr>
+<td style="text-align:left">Leaf Nodes</td>
+<td style="text-align:left">End notes that provide the prediction or class label</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example: Should I accept a new job offer?</strong></p>
+<ol>
+<li><code>salary ≥ $50,000?</code>
+<ul>
+<li><strong>No</strong> → Decline</li>
+<li><strong>Yes</strong> → Continue</li>
+</ul>
+</li>
+<li><code>commute &gt; 1 hour?</code>
+<ul>
+<li><strong>Yes</strong> → Decline</li>
+<li><strong>No</strong> → Continue</li>
+</ul>
+</li>
+<li><code>offers free coffee?</code>
+<ul>
+<li><strong>Yes</strong> → Accept</li>
+<li><strong>No</strong> → Decline</li>
+</ul>
+</li>
+</ol>
+<h2 id="algorithms">Algorithms</h2>
+<p>Many algorithms can be used to construct decision trees from data:</p>
+<ol>
+<li><strong>ID3</strong>, <strong>C4.5</strong>, <strong>C5.0</strong></li>
+<li><strong>CART</strong> (Classification and Regression Trees)</li>
+<li><strong>CHAID</strong> (Chi-Squared Automatic Interaction Detection)</li>
+</ol>
+<h2 id="are-decision-trees-always-understandable">Are Decision Trees Always Understandable?</h2>
+<ol>
+<li><strong>Raw trees</strong> can grow extremely large (e.g., 6000+ nodes) and become hard to interpret.</li>
+<li><strong>Tree pruning</strong> helps reduce complexity:
+<ul>
+<li>Improves <strong>generalisation</strong>.</li>
+<li>Reduces <strong>overfitting</strong>.</li>
+<li>Makes the model <strong>easier to understand</strong>.</li>
+</ul>
+</li>
+</ol>
+<h2 id="tree-pruning">Tree Pruning</h2>
+<p><strong>Why Prune?</strong></p>
+<ol>
+<li>Overfitting happens when a tree perfectly fits training data but performs poorly on new data.</li>
+<li>Pruning can increase accuracy by <em>simplifying</em> the model.</li>
+</ol>
+<p><strong>Accuracy vs. Tree Size</strong></p>
+<ol>
+<li>Accuracy increases with tree size up to a point (optimal size).</li>
+<li>Beyond that, additional complexity reduces performance.</li>
+</ol>
+<p><strong>Pruning Methods</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Method</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>max_depth</code>, <code>min_samples_split</code>, <code>min_samples_leaf</code></td>
+<td style="text-align:left">Manually restrict growth.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>ccp_alpha</code> (Cost Complexity Pruning)</td>
+<td style="text-align:left">Penalise complexity with a regularisation parameter (e.g., <code>ccp_apha = 0.01</code>).</td>
+</tr>
+</tbody>
+</table>
+<h2 id="rule-extraction-from-trees">Rule Extraction from Trees</h2>
+<p>Decision trees can be converted into a <strong>set of rules</strong> by tracing each path from root to leaf.</p>
+<p><strong>Example</strong></p>
+<pre><code>If Married-civ-spouse &lt;= 0.5 and capital-gain &lt;= 7669.5 then class: ≤50K
+If Married-civ-spouse &gt; 0.5 and education-num &gt; 12.5 then class: &gt;50k
+</code></pre>
+<p><strong>Advantages</strong></p>
+<ol>
+<li><strong>Readable</strong> rules</li>
+<li><strong>Modular</strong> logic (reusable and composable)</li>
+<li>Enables <strong>rule set reduction</strong> (e.g., by removing low-importance rules based-on <em>support</em>, <em>confidence</em>, or <em>lift</em>).</li>
+</ol>
+
+            <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+            
+        </body>
+        </html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Redirecting...</title>
+  </head>
+  <body>
+    <script>
+      (function () {
+        console.log('404 here')
+        const path = location.pathname + location.search + location.hash
+        console.log(path)
+
+        if (!path.startsWith('/#')) {
+          window.location.replace('/#' + path)
+        } else {
+          window.history.replaceState(null, '', path.slice(2))
+        }
+      })()
+    </script>
+    <p>Redirecting...</p>
+  </body>
+</html>

@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>Reasoning in Large Language Models</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 16px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <h1 style="color: #ccc">Intelligent Reasoning System</h1>
+<h1 id="reasoning-in-large-language-models">Reasoning in Large Language Models</h1>
+<div class="badge">
+    <span class="key">Type</span>
+    <span class="value">Course</span>
+</div>
+<div class="badge">
+    <span class="key">Instructor</span>
+    <span class="value">Gary Leung</span>
+</div>
+<div class="badge">
+    <span class="key">Institution</span>
+    <span class="value">NUS-ISS</span>
+</div>
+<div class="badge">
+    <span class="key">Note Updated</span>
+    <span class="value">2025-08-11</span>
+</div>
+<h2 id="learning-outcomes">Learning Outcomes</h2>
+<p>By the end of this course, you will be able to:</p>
+<ol>
+<li>Understand what kinds of reasoning tasks large language model (LLMs) can perform.</li>
+<li>Gain a high-level understanding of how to build intelligent systems that leverage the reasoning capabilities of LLMs.</li>
+</ol>
+<h2 id="what-is-reasoning">What is Reasoning?</h2>
+<ol>
+<li>Reasoning is the ability for <strong>complex problem-solving</strong>.</li>
+<li>It serves as a fundamental methodology in Artificial General Intelligence (AGI).</li>
+</ol>
+<h2 id="history-of-llms">History of LLMs</h2>
+<p>LLMs have evolved significantly over the past few decades, beginning with rule-based systems and progressing towards foundation models with reasoning capabilities.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Year</th>
+<th style="text-align:left">Development Highlights</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1966</td>
+<td style="text-align:left">ELIZA</td>
+</tr>
+<tr>
+<td style="text-align:left">1980s-1990s</td>
+<td style="text-align:left">Statistical Language Models</td>
+</tr>
+<tr>
+<td style="text-align:left">2000s</td>
+<td style="text-align:left">Neural Probabilistic Language Models</td>
+</tr>
+<tr>
+<td style="text-align:left">2013</td>
+<td style="text-align:left">Word2Vec (distributed representations of words)</td>
+</tr>
+<tr>
+<td style="text-align:left">2017</td>
+<td style="text-align:left">Transformers (attention mechanisms revolutionised the world)</td>
+</tr>
+<tr>
+<td style="text-align:left">2018</td>
+<td style="text-align:left">BERT</td>
+</tr>
+<tr>
+<td style="text-align:left">2019</td>
+<td style="text-align:left">GPT-2, T5</td>
+</tr>
+<tr>
+<td style="text-align:left">2020</td>
+<td style="text-align:left">GPT-3</td>
+</tr>
+<tr>
+<td style="text-align:left">Late 2022</td>
+<td style="text-align:left">ChatGPT, GPT-3.5 (conversational LLMs)</td>
+</tr>
+<tr>
+<td style="text-align:left">Mar 2023</td>
+<td style="text-align:left">GPT-4, Claude 3</td>
+</tr>
+<tr>
+<td style="text-align:left">Apr 2024</td>
+<td style="text-align:left">LLaMA 3</td>
+</tr>
+<tr>
+<td style="text-align:left">May 2024</td>
+<td style="text-align:left">GPT-4o (fully multimodal)</td>
+</tr>
+<tr>
+<td style="text-align:left">Jun 2024</td>
+<td style="text-align:left">Claude 3.5</td>
+</tr>
+<tr>
+<td style="text-align:left">Mar 2025</td>
+<td style="text-align:left">Gemini 2.5 (CoT reasoning)</td>
+</tr>
+<tr>
+<td style="text-align:left">Apr 2025</td>
+<td style="text-align:left">LLaMA 4</td>
+</tr>
+<tr>
+<td style="text-align:left">May 2025</td>
+<td style="text-align:left">Claude 4</td>
+</tr>
+</tbody>
+</table>
+<p>LLMs can now mimic the structure of logical reasoning, even without explicit symbolic rules.</p>
+<h2 id="reasoning-techniques">Reasoning Techniques</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Technique</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Pre-Training</td>
+<td style="text-align:left">Foundation training using <strong>self-supervised learning</strong> on large text corpora. Builds broad language capabilities.</td>
+</tr>
+<tr>
+<td style="text-align:left">Alignment Training</td>
+<td style="text-align:left">Aligns output with human values and instructions using techniques like <strong>instruction tuning</strong> and <strong>RLHF</strong>.</td>
+</tr>
+<tr>
+<td style="text-align:left">Fine-Tuning</td>
+<td style="text-align:left">Specialises the model for a specific domain or task (e.g., legal, medical) using <strong>supervised learning</strong>.</td>
+</tr>
+<tr>
+<td style="text-align:left">In-Context Learning</td>
+<td style="text-align:left">Solves tasks using information within the <strong>prompt</strong>—supports <strong>zero-shot</strong>, <strong>few-shot</strong>, and <strong>chain-of-thought</strong> reasoning without updating weights.</td>
+</tr>
+<tr>
+<td style="text-align:left">Mixture of Experts (MoE)</td>
+<td style="text-align:left">Dynamically <strong>routes</strong> inputs to a subset of expert modules, improving efficiency and scalability.</td>
+</tr>
+<tr>
+<td style="text-align:left">Autonomous Agent</td>
+<td style="text-align:left">Equips the model to <strong>reason</strong>, <strong>plan</strong>, and <strong>act</strong> independently using memory, tool use, and reflection loops.</td>
+</tr>
+</tbody>
+</table>
+<p>Source: Jiang et al. (2023), <em>A Survey of Reasoning with Foundation Models</em></p>
+<h2 id="reasoning-tasks">Reasoning Tasks</h2>
+<p>LLMs can perform a wide range of reasoning tasks across domains. These are often supported by prompt engineering, fine-tuning, or tool integration.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Category</th>
+<th style="text-align:left">Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Mathematical Reasoning</td>
+<td style="text-align:left">Arithmetic, geometry, theorem proving, scientific reasoning</td>
+</tr>
+<tr>
+<td style="text-align:left">Logical Reasoning</td>
+<td style="text-align:left">Propositional and predicate logic</td>
+</tr>
+<tr>
+<td style="text-align:left">Causal Reasoning</td>
+<td style="text-align:left">Decision making, explanation, policy optimisation, counterfactuals</td>
+</tr>
+<tr>
+<td style="text-align:left">Visual Reasoning</td>
+<td style="text-align:left">2D/3D visual reasoning</td>
+</tr>
+<tr>
+<td style="text-align:left">Multimodal Reasoning</td>
+<td style="text-align:left">Reasoning across text, image, audio</td>
+</tr>
+<tr>
+<td style="text-align:left">Embodied Reasoning</td>
+<td style="text-align:left">Introspective, multi-agent, and autonomous reasoning</td>
+</tr>
+<tr>
+<td style="text-align:left">Commonsense Reasoning</td>
+<td style="text-align:left">Physical/spatial commonsense, commonsense QA</td>
+</tr>
+<tr>
+<td style="text-align:left">Other Tasks</td>
+<td style="text-align:left">Theory of Mind, abstract/medical reasoning, long-chain, bioinformatics</td>
+</tr>
+</tbody>
+</table>
+<h3 id="commonsense-reasoning">Commonsense Reasoning</h3>
+<p>Commonsense reasoning refers to the model's ability to apply everyday knowledge and intuitive logic to infer plausible outcomes or validate consistency.</p>
+<ol>
+<li>
+<p>HellaWag Benchmark</p>
+<p>A multiple-choice test designed to evaluate commonsense understanding in narrative completion tasks. GPT-4 achieves 95.3% accuracy on HellaSwag (source: GPT-4 Technical Report).</p>
+</li>
+<li>
+<p>SUMMEDIT Dataset</p>
+<p>Evaluates consistency of text edits in summaries. The task involves identifying whether edits are factually consistent or not.</p>
+<p>References:</p>
+<ul>
+<li><a href="https://github.com/salesforce/factualNLG">Salesforce factualNLG GitHub</a></li>
+<li><a href="https://huggingface.co/datasets/Salesforce/summedits">Hugging Face SUMMEDIT Dataset</a></li>
+</ul>
+</li>
+</ol>
+<h3 id="causal-reasoning">Causal Reasoning</h3>
+<p>Causal reasoning involves understanding and manipulating cause-effect relationships, not just correlations.</p>
+<ol>
+<li>
+<p><strong>Causal Graphs</strong></p>
+<p>For main causal reasoning tasks:</p>
+<ul>
+<li><strong>Causal Discovery</strong>: Identify cause-effect structure from data.<br>
+Example: Does <code>education → wage</code>?</li>
+<li><strong>Effect Inference</strong>: Estimate effects of interventions.<br>
+Example: Will more <code>study time</code> improve <code>exam score</code>?</li>
+<li><strong>Attribution</strong>: Identify main contributors to an outcome.<br>
+Example: What led to the <code>sales drop</code>—<code>advertising</code> or <code>price</code>?</li>
+<li><strong>Judgment</strong>: Decision-making based on causal knowledge.<br>
+Example: Will <code>smoking</code> cause <code>lung cancar</code>?</li>
+</ul>
+</li>
+<li>
+<p>Tuebingen Cause-Effect Pairs Benchmark</p>
+<ul>
+<li>Decide whether <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span></span></span></span> causes <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span> or <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span> causes <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span></span></span></span>.</li>
+<li>ChatGPT achieves 92.5% accuracy, outperforming traditional algorithms (70-80%).</li>
+<li>Source: <a href="https://github.com/amit-sharma/chatgpt-causality-pairs">ChatGPT causality pairs GitHub</a></li>
+</ul>
+</li>
+</ol>
+<h3 id="logical-reasoning">Logical Reasoning</h3>
+<p>Logical reasoning tasks require consistent deduction from structured facts and rules.</p>
+<ol>
+<li>Big-Bench-Hard Dataset
+<ul>
+<li>Includes both &quot;Answer-Only&quot; and &quot;Chain-of-Thought&quot; (CoT) prompting.</li>
+<li>CoT significantly improves accuracy by showing intermediate reasoning steps.</li>
+</ul>
+</li>
+<li>Benchmarks and Tools
+<ul>
+<li>FOLIO (Fact-based evaluation)<br>
+<a href="https://github.com/Yale-LILY/FOLIO">Yale-LILY/FOLIO GitHub</a></li>
+<li>PrOntoQA (Ontology-based inference)<br>
+<a href="https://github.com/asaparov/prontoqa">asaparov/prontoqa GitHub</a></li>
+<li>ProofWriter (Proof generation from facts and rules)<br>
+<a href="https://proofwriter.apps.allenai.org/">AllenAI Proofwriter</a></li>
+</ul>
+</li>
+</ol>
+<h3 id="mathematical-reasoning">Mathematical Reasoning</h3>
+<p>Mathematical reasoning evaluates a model's ability to solve multi-step arithmetic and word problems.</p>
+<ol>
+<li>
+<p>GSM8K Benchmark</p>
+<p>A dataset of 8.5K high-quality grade school math problems with annotated solutions. The problems emphasise <strong>step-by-step reasoning</strong> and <strong>unit-aware calculations</strong>. GPT-4 ranks among the top performers on the leaderboard in both 8-shot and Chain-of-Thought (CoT) prompting variants.</p>
+<p>Sources:</p>
+<ul>
+<li><a href="https://github.com/openai/grade-school-math">OpenAI GSM8K GitHub</a></li>
+<li><a href="https://github.com/paperswithcode">Papers with Code - Arithmetic Reasoning Leaderboard</a></li>
+</ul>
+</li>
+</ol>
+<h3 id="abstract-reasoning">Abstract Reasoning</h3>
+<p>Abstract reasoning involves pattern recognition, analogy, and symbolic manipulation. It if often not based on explicit logical deduction but instead relies on intuitive and implicit recognition of structure.</p>
+<ol>
+<li>
+<p>BIG-Bench-F Database</p>
+<p>Example task: Rearranging elements in a list by switching pairs. LLMs often underperform due to difficulty in generalising symbolic transformations.</p>
+<p>Source: Gendron et al. (2023), <em>Large Language Models Are Not Strong Abstract Reasoners</em></p>
+</li>
+</ol>
+<h3 id="defeasible-reasoning">Defeasible Reasoning</h3>
+<p>Defeasible reasoning is a type of non-monotonic logic where conclusions can be reversed or weakened with new evidence.</p>
+<ol>
+<li>
+<p>Key Idea</p>
+<p>Reasoning is not fixed—new information can override prior inferences.</p>
+</li>
+<li>
+<p>Example</p>
+<ul>
+<li>Premise: &quot;<em>The drinking glass fell</em>&quot;</li>
+<li>Implication: &quot;<em>The glass broke</em>&quot;</li>
+<li>Update: &quot;<em>The glass fell on a pillow</em>&quot;</li>
+<li>Result: &quot;<em>Weakens the original implication</em>&quot;</li>
+</ul>
+</li>
+<li>
+<p>CURIOUS Model</p>
+<p>Uses an <strong>inference graph</strong> to model question scenarios and update conclusions accordingly.</p>
+<p>Source: A. Madaam et al., <em>Think about it! Improving defeasible reasoning by first modelling the question scenario</em></p>
+</li>
+</ol>
+<h2 id="long-chain-reasoning">Long-Chain Reasoning</h2>
+<p>Long-chain reasoning refers to the ability of a language model to handle <strong>multi-step, extended</strong> reasoning tasks that involve chaining together multiple <strong>logical inferences</strong>, <strong>decisions</strong>, or <strong>retrieval steps</strong>. It is crucial for <strong>planning</strong>, <strong>multi-hop QA</strong>, <strong>multi-turn dialogues</strong>, and <strong>complex decision-making</strong>. Larger models (e.g., GPT-4) perform significantly better than smaller ones (e.g., GPT-3.5) due to improved attention span and memory.</p>
+<h3 id="chain-of-thought-cot-prompting">Chain-of-Thought (CoT) Prompting</h3>
+<p>Standard prompting often yields shallow responses with incorrect answers. Chat of Thought (CoT) prompting encourages the model to generate intermediate reasoning steps before giving the final answer. This enhances accuracy and interpretability.</p>
+<p>Source: J. Wei et al., <em><a href="https://arxiv.org/pdf/2201.11903">Chain-of-Thought Prompting Elicits Reasoning in Large Language Models</a></em></p>
+<h3 id="fine-tuned-cot-reasoning-teacher">Fine-Tuned CoT (Reasoning Teacher)</h3>
+<p>Use a large language model to generate high-quality reasoning traces, then train a smaller student model.</p>
+<p>Steps:</p>
+<ol>
+<li>Teacher generates full reasoning paths.</li>
+<li>Outputs that lead to correct answers are curated.</li>
+<li>Student is fine-tuned on these CoT traces.</li>
+</ol>
+<p>Source: N. Ho et al., <em>Large Language Models Are Reasoning Teachers</em>, ACL 2023</p>
+<h3 id="tree-of-thoughts-tot-prompting">Tree of Thoughts (ToT) Prompting</h3>
+<p>Tree of Thoughts (ToT) prompting enhances reasoning by allowing the model to explore multiple branches of thought rather than following a single linear path. As it generates these branches, the model evaluates and prunes them to focus on the most promising directions, ultimately converging on optimal solutions. This approach is particularly effective for decision-making and planning tasks that benefit from breadth-first exploration.</p>
+<p>Source: <a href="https://github.com/dave1010/tree-of-thought-prompting">Tree-of-Thought Prompting</a></p>
+<h2 id="case-studies">Case Studies</h2>
+<p>Think about how the ideas in multi-step reasoning by LLMs could be applied in your own field or projects.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Application Domain</th>
+<th style="text-align:left">Reference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Dialogue</td>
+<td style="text-align:left"><a href="https://arxiv.org/pdf/2305.11792">arXiv:2305.11792</a>, <a href="https://arxiv.org/html/2403.04656v1">arXiv:2403.04656</a></td>
+</tr>
+<tr>
+<td style="text-align:left">Forensic Investigation</td>
+<td style="text-align:left"><a href="https://arxiv.org/pdf/2402.19366">arXiv:2402.19366</a></td>
+</tr>
+<tr>
+<td style="text-align:left">Medical Diagnosis</td>
+<td style="text-align:left"><a href="https://www.nature.com/articles/s41746-024-01010-1">Natura Article</a>, <a href="https://www.linkedin.com/pulse/tree-thoughts-advanced-chatgpt-skills-clinicians-sam/">LinkedIn</a></td>
+</tr>
+<tr>
+<td style="text-align:left">Price Negotiation</td>
+<td style="text-align:left"><a href="https://arxiv.org/pdf/2402.05863">arXiv:2402.05863</a></td>
+</tr>
+<tr>
+<td style="text-align:left">Supply Chain Management</td>
+<td style="text-align:left"><a href="https://arxiv.org/pdf/2307.03875">arXiv:2307.03875</a></td>
+</tr>
+</tbody>
+</table>
+
+            <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+            
+        </body>
+        </html>

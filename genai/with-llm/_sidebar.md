@@ -1,0 +1,3 @@
+- [Home](/ "Home")
+- [Introduction to Generative AI and LLMs](genai/with-llm/genai-1-intro-and-project-lifecycle "Introduction to Generative AI and LLMs")
+- [LLM Pre-Training and Scaling Laws](genai/with-llm/genai-2-llm-pretraining-and-scaling-law "LLM Pre-Training and Scaling Laws")

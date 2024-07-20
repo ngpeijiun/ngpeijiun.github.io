@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>Introduction to Cognitive Systems</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+            
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 16px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <h1 style="color: #ccc">Intelligent Reasoning System</h1>
+<h1 id="introduction-to-cognitive-systems">Introduction to Cognitive Systems</h1>
+<div class="badge">
+    <span class="key">Type</span>
+    <span class="value">Course</span>
+</div>
+<div class="badge">
+    <span class="key">Instructor</span>
+    <span class="value">Fan Zhenzhen</span>
+</div>
+<div class="badge">
+    <span class="key">Institution</span>
+    <span class="value">NUS-ISS</span>
+</div>
+<div class="badge">
+    <span class="key">Note Updated</span>
+    <span class="value">2025-07-19</span>
+</div>
+<h2 id="course-learning-outcomes">Course Learning Outcomes</h2>
+<ol>
+<li>Identify business scenarios that require or benefit from cognitive systems.</li>
+<li>Understand key concepts and techniques for simulating human interaction and reasoning.</li>
+<li>Design applications using standard architectures based on business requirements.</li>
+<li>Develop, integrate, and evaluate such systems using existing tools and libraries.</li>
+</ol>
+<h2 id="cognitive-systems">Cognitive Systems</h2>
+<h3 id="human-cognition">Human Cognition</h3>
+<p>Core mental processes that enable intelligent behaviours:</p>
+<ol>
+<li><strong>Perception</strong><br>
+Interprets sensory input to understand the environment.</li>
+<li><strong>Attention</strong><br>
+Focuses on relevant information while filtering distractions.</li>
+<li><strong>Memory</strong><br>
+Holds and processes information temporarily via short-term or working memory, and retains knowledge over time via long-term memory for later recall.</li>
+<li><strong>Thought</strong><br>
+Performs reasoning, problem-solving, and decision-making.</li>
+<li><strong>Language</strong><br>
+Understanding and expressing through structured communications.</li>
+<li><strong>Learning</strong><br>
+Acquiring or updating knowledge, skills, and behaviours.</li>
+</ol>
+<h3 id="what-are-cognitive-systems">What are Cognitive Systems?</h3>
+<p>Cognitive systems emulate human cognitive functions—<strong>perception</strong>, <strong>attention</strong>, <strong>memory</strong>, <strong>thought</strong>, <strong>language</strong>, and <strong>learning</strong>—using computational techniques to interact, reason, and adapt intelligently:</p>
+<ol>
+<li><strong>Perception</strong><br>
+Interprets sensory data using <strong>computer vision</strong> (CNNs) and <strong>speech recognition</strong> (deep ASR).</li>
+<li><strong>Attention</strong><br>
+Focuses on relevant information with <strong>attention mechanisms</strong> (GPT, BERT, and ViT), <strong>prompting</strong> (grounding responses in quotes), and <strong>retrieval-augmented generation (RAG)</strong>.</li>
+<li><strong>Memory</strong><br>
+Stores and retrieves information from long-term memory—such as <strong>neural weights</strong>, <strong>knowledge graphs</strong>, and <strong>databases</strong>—while holding and processing information in working memory, such as in <strong>Chain-of-Thought (CoT) prompting</strong>.</li>
+<li><strong>Thought</strong><br>
+Applies <strong>symbolic reasoning</strong>, <strong>Bayesian inference</strong>, <strong>inductive learning</strong>, and <strong>planning and optimisation</strong> to support problem-solving and decision-making.</li>
+<li><strong>Language</strong><br>
+Performs <strong>natural language understanding (NLU)</strong> for understanding input, <strong>natural language generation (NLG)</strong> for generating output, and <strong>structured data</strong> (JSON, XML) for system communication—now all unified through <strong>large language models (LLMs)</strong>.</li>
+<li><strong>Learning</strong><br>
+Learns and adapts through techniques such as <strong>supervised/unsupervised learning</strong>, <strong>reinforcement learning</strong>, <strong>fine-tuning</strong>, <strong>transfer learning</strong> and <strong>online learning</strong>, as well as <strong>symbolic rule updates</strong> in knowledge graphs or expert systems.</li>
+</ol>
+<h2 id="spectrums-of-ai">Spectrums of AI</h2>
+<ol>
+<li><strong>Task Objective</strong> (x-axis)<br>
+From algorithmic <strong>optimality</strong> (precise, efficient solutions) to human-like <strong>creativity</strong> (original, expressive responses).</li>
+<li><strong>Cognitive Orientation</strong> (y-axis)<br>
+From <strong>action-oriented</strong> tasks (direct exection, control) to <strong>thought-oriented</strong> tasks (reasoning, planning, brainstorming).</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">Optimality (X-)</th>
+<th style="text-align:center">Creativity (X+)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><strong>Thought-Oriented (Y+)</strong></td>
+<td style="text-align:center">Analytical Reasoners<br>Examples: <strong>Expert Systems</strong>, <strong>Bayesian Networks</strong>, <strong>Planners and Optimisers</strong>.</td>
+<td style="text-align:center">Creative Thinkers<br>Examples: <strong>ChatGPT</strong>, <strong>Claude</strong>, <strong>DALL·E</strong>.</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>Action-Oriented (Y-)</strong></td>
+<td style="text-align:center">Precise Executors<br>Examples: <strong>Robotic Process Automation (RPA)</strong>, <strong>Factory Robots</strong>, <strong>Robot Vacuums</strong>.</td>
+<td style="text-align:center">Adaptive Performers<br>Examples: <strong>AI Agents</strong>, <strong>Autonomous Drones</strong>, <strong>Robot Performers</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="history-of-ai">History of AI</h2>
+<ol>
+<li>1950s-1960s: The Early Days<br>
+This was the era of symbolic AI—early programs like Logic Theorist and General Problem Solver showed the first signs of machines &quot;thinking&quot;.</li>
+<li>1970s: The First AI Winter<br>
+Hype outpaced progress. When AI could not deliver on its big promises, funding dried up and enthusiasm cooled off.</li>
+<li>1980s: Rise of Expert Systems<br>
+AI bounced back with rule-based systems that mimicked human experts. These were used in medicine, finance, and more.</li>
+<li>1990s: The Second AI Winter<br>
+Expert systems hit their limits. Once again, interest and investment dipped.</li>
+<li>2000s: Machine Learning Era Begins<br>
+With more data and better computing, focus shifted to statistical methods and machine learning. Things started heating up again.</li>
+<li>2010s-2020s: Deep Learning &amp; AI Explosion<br>
+Breakthroughs in deep learning, especially in NLP, vision, and speech, pushed AI into the spotlight. Transformers (introduced in the 2017 <em>Attention is All You Need</em> paper) changed everything. Today, we have foundation models, multimodal AI, and real-world applications everywhere.</li>
+</ol>
+<h2 id="ai-applications">AI Applications</h2>
+<ol>
+<li>Processes: Workflow Automation<br>
+Streamlines operations by automating tasks, interpreting data, and supporting decisions to improve speed and consistency.</li>
+<li>Products: Intelligent Systems<br>
+Embeds intelligence into devices and software to enhance user experience.</li>
+<li>Insights: Data Science<br>
+Derives patterns and predictions from data to inform decisions.</li>
+</ol>
+
+            
+            
+        </body>
+        </html>

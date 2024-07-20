@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>Reasoning in KRR</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 16px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <h1 style="color: #ccc">Intelligent Reasoning System</h1>
+<h1 id="reasoning-in-krr">Reasoning in KRR</h1>
+<div class="badge">
+    <span class="key">Type</span>
+    <span class="value">Course</span>
+</div>
+<div class="badge">
+    <span class="key">Instructor</span>
+    <span class="value">Wang Aobo</span>
+</div>
+<div class="badge">
+    <span class="key">Institution</span>
+    <span class="value">NUS-ISS</span>
+</div>
+<div class="badge">
+    <span class="key">Note Updated</span>
+    <span class="value">2025-09-04</span>
+</div>
+<h2 id="introduction">Introduction</h2>
+<p>Knowledge Representation and Reasoning (KRR) studies how to model information about the world in a way that enables a computer to solve complex tasks like diagnosis, planning, or question answering. The main goals are to represent <strong>facts</strong> and <strong>rules</strong> about a domain and enable systems to <strong>reason</strong> over them to draw conclusions.</p>
+<p><strong>Forms of Knowledge Representation</strong></p>
+<ol>
+<li>Logic-Based
+<ul>
+<li>Propositional Logic: Statements that are true/false.</li>
+<li>First-Order Logic: Adds quantifiers, relations, and variables for richer representation.</li>
+</ul>
+</li>
+<li>Semantic Networks
+<ul>
+<li>Nodes = concepts, edges = relationships.</li>
+</ul>
+</li>
+<li>Frames and Ontologies
+<ul>
+<li>Structured templates with slots for attributes and relationships.</li>
+</ul>
+</li>
+<li>Production Rules
+<ul>
+<li>IF condition THEN action.</li>
+</ul>
+</li>
+<li>Bayesian Networks
+<ul>
+<li>Probabilistic representation of uncertain relationships.</li>
+</ul>
+</li>
+</ol>
+<p><strong>Reasoning Methods</strong></p>
+<ol>
+<li>Deductive Reasoning: From general rules to specific facts.</li>
+<li>Inductive Reasoning: From specific examples to general rules.</li>
+<li>Abductive Reasoning: From observations to best explanations.</li>
+<li>Analogical Reasoning: Transfer knowledge from similar past cases (via similarity).</li>
+<li>Probabilistic Reasoning: Handling uncertainty with probability theory.</li>
+</ol>
+<h2 id="symbolic-vs-statistical-approaches">Symbolic vs. Statistical Approaches</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Symbolic (Knowledge-Driven)</th>
+<th style="text-align:left">Statistical (Data-Driven)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Explicit rules &amp; logic</td>
+<td style="text-align:left">Learnt patterns from data</td>
+</tr>
+<tr>
+<td style="text-align:left">Interpretable reasoning</td>
+<td style="text-align:left">Black-box decision-making</td>
+</tr>
+<tr>
+<td style="text-align:left">Relies on curated knowledge</td>
+<td style="text-align:left">Requires large datasets</td>
+</tr>
+<tr>
+<td style="text-align:left">Weak in noisy/ambiguous inputs</td>
+<td style="text-align:left">Can generalise from examples</td>
+</tr>
+</tbody>
+</table>
+<p>Hybrid systems combine both for better robustness.</p>
+<h3 id="limitation-of-data-driven-approaches">Limitation of Data-Driven Approaches</h3>
+<p><strong>Overconfidence in Solving Problems</strong></p>
+<p>Benchmark success ≠ real-world readiness</p>
+<p>Example–Car Navigation</p>
+<ol>
+<li>Path planning works in controlled settings.</li>
+<li>Minor changes in environment can cause failures.</li>
+</ol>
+<p><strong>Adversarial Vulnerabilities in DNNs</strong></p>
+<ol>
+<li>Stop Sign Attack: Stickers on a stop sign cause misclassification as &quot;Speed limit 45&quot;.</li>
+<li>Adversarial Apparel: Special T-shirt patterns fool object detectors, mislabelling or missing pedestrians entirely.</li>
+</ol>
+<p><strong>Knowledge Awareness Gap</strong></p>
+<ol>
+<li>Purse statistical systems (e.g., DNNs) lack built-in commonsense or symbolic constraints.</li>
+<li>A KRR layer could reject absurd outputs by cross-checking it against known rules, map data, or context (e.g., the car's map says there is a stop sign at the junction, even though DNN interprets it as a speed limit).</li>
+</ol>
+<p><strong>Driverless vs. Careless</strong></p>
+<ol>
+<li>Without safety-critical reasoning checks, &quot;driverless&quot; AI may become &quot;careless&quot; AI.</li>
+<li>KRR can add <strong>guardrails</strong> through explicit rules and logical consistency checks.</li>
+</ol>
+<h2 id="cognitive-system-architecture">Cognitive System Architecture</h2>
+<p><img src="file:////Users/naryaong/Code/git/ngpeijiun.github.io/ais/irs/_media/irs-9-cognitive-system.png" alt="Cognitive System"></p>
+<p>A <strong>cognitive system</strong> interacts with <strong>The World</strong> by receiving inputs, processing them, and producing outputs that affect the environment.</p>
+<p><strong>Single System Loop</strong></p>
+<ol>
+<li>Input from the world is processed by the cognitive system.</li>
+<li>The system's output acts back on the world, closing the loop.</li>
+</ol>
+<p><strong>Multiple Systems</strong></p>
+<ol>
+<li>Several cognitive systems can operate simultaneously, each exchaning information with the world and each other.</li>
+<li>Inter-system communication supports cooperation or competition.</li>
+</ol>
+<h3 id="internal-of-a-cognitive-system">Internal of a Cognitive System</h3>
+<p><img src="file:////Users/naryaong/Code/git/ngpeijiun.github.io/ais/irs/_media/irs-10-internal-of-cognitive-system.png" alt="Internal of a Cognitive System"></p>
+<p>Intelligence can be understood as <strong>selecting the right action</strong> for a given state of the world. A cognitive system typically comprises the following components:</p>
+<ol>
+<li>
+<p><strong>Metacognition</strong></p>
+<ul>
+<li>Oversees and monitors the system's reasoning processes.</li>
+<li>Adjusts strategies based on self-assessment and context.</li>
+</ul>
+</li>
+<li>
+<p><strong>Deliberation</strong> – Core decision-making process integrating:</p>
+<ul>
+<li><strong>Memory</strong>: Stores knowledge for immediate and long-term use.</li>
+<li><strong>Learning</strong>: Acquires or updates knowledge from data and experience.</li>
+<li><strong>Reasoning</strong>: Applies logic and inference to solve problems.</li>
+<li>Memory, learning, and reasoning are mutually connected to reinforce each other.</li>
+</ul>
+</li>
+<li>
+<p><strong>Reaction</strong></p>
+<ul>
+<li>Handles rapid, reflexive responses without extensive deliberation.</li>
+</ul>
+</li>
+</ol>
+<p>Flow:</p>
+<ol>
+<li>Input enters the system and may pass through reaction for fast responses or deliberation for considered actions.</li>
+<li>Output is returned to the world, potentially triggering further cycles.</li>
+</ol>
+<h2 id="soar-cognitive-architecture">SOAR Cognitive Architecture</h2>
+<p><img src="file:////Users/naryaong/Code/git/ngpeijiun.github.io/ais/irs/_media/irs-11-soar.png" alt="SOAR Cognitive Architecture"></p>
+<p>Developed by Newell &amp; Laid (1983–present), SOAR is a <strong>white box</strong> architecture—its internal reasoning is explicit and interpretable, often as <strong>graphs of objects and relations</strong>.</p>
+<p>Production System Structure</p>
+<ol>
+<li><strong>Working Memory</strong>: Holds the current state and temporary information for ongoing tasks.</li>
+<li><strong>Long-Term Memory</strong>
+<ul>
+<li><strong>Procedural</strong>: Rules and skills for performing actions.</li>
+<li><strong>Episodic</strong>: Records of specific events or experiences (for analogy-based reasoning).</li>
+<li><strong>Semantic</strong>: General facts and knowledge about the world.</li>
+</ul>
+</li>
+</ol>
+<p>In SOAR, <strong>procedural</strong>, <strong>episodic</strong>, and <strong>semantic memories</strong> feed into <strong>working memory</strong> to support <strong>deliberation</strong>, guiding <strong>reasoning</strong> and <strong>learning</strong> for <strong>decision-making</strong>.</p>
+<h3 id="soar-with-llm-reasoning">SOAR with LLM Reasoning</h3>
+<p>The <strong>SOAR cognitive architecture</strong> provides a framework to simulate problem-solving through working memory, long-term memory, and production rules. When paired with large language models (LLMs), SOAR can appear to reason by chaining steps together in natural language form (e.g., Chain-of-Thought prompting).</p>
+<p><strong>Example: The Water Jug Puzzle</strong></p>
+<p><img src="file:////Users/naryaong/Code/git/ngpeijiun.github.io/ais/irs/_media/irs-12-water-jag-puzzle.png" alt="The Water Jug Puzzle"></p>
+<ol>
+<li>Problem: Measure exactly 1L of water using 5L and 3L mug without graduation.</li>
+<li>LLM-Based Approach: The model can generate a plausible step-by-step plan (fill, transfer, empty, etc), mimicking human reasoning.</li>
+<li>Mechanism: This is not logical computation but next-token prediction conditioned on training examples and patterns.</li>
+</ol>
+<p><strong>Chain-of-Thought Prompting</strong></p>
+<ol>
+<li>Standard prompting often produces direct but wrong answers.</li>
+<li>CoT prompting guides the model to break problems into smaller steps, often improving accuracy (e.g., arithmetic or counting apples).</li>
+<li>However, CoT remains <strong>approximate reasoning</strong>, vulnerable to <strong>invalid inference</strong> (e.g., marble-box logic puzzle: coherent steps but unsound conclusions).</li>
+</ol>
+<p><strong>Limitations of LLM Reasoning in SOAR</strong></p>
+<ol>
+<li>Token Prediction ≠ True Reasoning
+<ul>
+<li>LLMs generate &quot;the most likely next word&quot;.</li>
+<li>They retrieve <em>surface-level correlations</em>, not guaranteed <em>deductive closure</em>.</li>
+<li>Example: Copilot retrieves plausible code snippets but does not plan or prove correctness.</li>
+</ul>
+</li>
+<li>Vulnerabilities
+<ul>
+<li><strong>Hijacking CoT (H-CoT)</strong>: Attackers can reuse safe reasoning templates to generate unsafe outputs.</li>
+<li><strong>Hallucinations</strong>: LLMs may fabricate steps that look logical but fail under scrutiny.</li>
+</ul>
+</li>
+<li>Bias and Fragility
+<ul>
+<li>Answer-Order Bias: Multiple-choice outputs are skewed towards &quot;A&quot; regardless of semantics.</li>
+<li>Extraction Mismatch: First-token logit vs. final text output may not agree.
+<blockquote>
+<p><img src="file:////Users/naryaong/Code/git/ngpeijiun.github.io/ais/irs/_media/irs-13-first-token-logit-mismatch.png" alt="First-Token Logit Mismatch"></p>
+</blockquote>
+</li>
+<li>Data contamination: Success on tests like Wug Test may reflect memorisation, not generalisation.</li>
+</ul>
+</li>
+<li>Unsound Reasoning
+<ul>
+<li>Studies show CoT outputs often lack logical soundness: correct-looking chains may contain invalid inferences.</li>
+<li>Accuracy is not the same as valid reasoning (e.g., LLaMA, Mistral, Zephyr benchmarks show large gap between correct answers and sound reasoning).</li>
+</ul>
+</li>
+<li>Approximation not Deduction
+<ul>
+<li>Fine-tuning improves retrieval of known patterns, but does not give models the ability to compute new logical consequences.</li>
+<li>Thus, LLM reasoning remains brittle outside training distribution.</li>
+</ul>
+</li>
+<li>Multimodal Extensions
+<ul>
+<li>Models like Gemini extend reasoning across text, audio, vision, and video.</li>
+<li>While powerful, they inherit the same core limitions: prediction without guarenteed logical validity.</li>
+</ul>
+</li>
+</ol>
+<p><strong>Summary for SOAR with LLM Reasoning</strong></p>
+<ol>
+<li>Strengths
+<ul>
+<li>Natural language reasoning simulation.</li>
+<li>Useful for exploration, brainstorming, and generating candidate solutions.</li>
+</ul>
+</li>
+<li>Limitations
+<ul>
+<li>Prone to bias, hallucination, adversarial hijacking, and unsound reasoning.</li>
+<li>Lacks interpretability, formal guarantees, and safety guardrails.</li>
+</ul>
+</li>
+<li>Conclusion: LLM reasoning with SOAR demonstrates plausible reasoning but not reliable reasoning. Without symbolic grounding, LLMs in SOAR risk producing solutions that are fluent yet incorrect.</li>
+</ol>
+<h3 id="soar-with-symbolic-reasoning">SOAR with Symbolic Reasoning</h3>
+<p><strong>Example: The Water Jug Problem</strong></p>
+<p>The Water Jug Problem is a classic reasoning task: measure exactly 1 litre using a 5L jug and 3L jug.</p>
+<p><strong>Problem Formalisation</strong></p>
+<ol>
+<li><strong>Initial State</strong>: <code>[0, 0]</code> (both jugs empty).</li>
+<li><strong>Goal State</strong>: <code>[*, 1]</code> (3L jug has 1L; 5L jug may contain any amount).</li>
+<li><strong>Operators</strong>: Fill, Empty, or Pour betweeen jugs.</li>
+<li>States are expressed symbolically for Soar to manipulate.</li>
+</ol>
+<p><strong>Working Memory</strong></p>
+<ol>
+<li>Stores the <em>current state</em> in the form <code>[x, y]</code>.
+<ul>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span> is the amount in the 5L jug.</li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span> is the amount in the 3L jug.</li>
+</ul>
+</li>
+<li>Each operator applied procedures a new state → constructing <em>state space</em>.</li>
+<li>Example transitions:
+<ul>
+<li><code>[0, 0] → Fill(3L) → [0, 3]</code></li>
+<li><code>[0, 0] → Fill(5L) → [5, 0]</code></li>
+</ul>
+</li>
+</ol>
+<p><strong>Long-Term Memory</strong></p>
+<ol>
+<li>Encodes knowledge of actions as objects and relations.</li>
+<li>Examples:
+<ul>
+<li><code>Fill(3L)</code>, <code>Fill(5L)</code></li>
+<li><code>Empty(3L)</code>, <code>Empty(5L)</code></li>
+<li><code>Pour(5L, 3L)</code>, <code>Pour(3L, 5L)</code></li>
+</ul>
+</li>
+</ol>
+<p><strong>Search and Reasoning</strong></p>
+<ol>
+<li>The system applies operators to expand possible states.</li>
+<li>SOAR's reasoning cycle evaluates these states against the goal condition.</li>
+<li>Once a path leads to <code>[*, 1]</code>, the problem is solved.</li>
+<li>This illustrates how symbolic reasoning and memory interact to achieve a goal.</li>
+</ol>
+<h3 id="application-soar-in-robotics">Application: SOAR in Robotics</h3>
+<p>SOAR principles are also applied in robotics to combine symbolic reasoning with sensor-based perception.</p>
+<p><strong>Memory Structures</strong></p>
+<ol>
+<li>Wall Memory
+<ul>
+<li>Built from ultrasonic sensor arrays.</li>
+<li>Integrates multiple sensor readings to improve confidence in detecting a nearby wall.</li>
+<li>Provides reliable context for wall-following behaviour.</li>
+</ul>
+</li>
+<li>Action Memory
+<ul>
+<li>Stores information about both:
+<ul>
+<li>The environments (e.g., detected walls), and</li>
+<li>The robot's past actions.</li>
+</ul>
+</li>
+<li>Uses a weighted average of past responses to bias immediate actions, ensuring smoother adjustments rather than erratic moves.</li>
+</ul>
+</li>
+</ol>
+<p><strong>Process Flow</strong></p>
+<ol>
+<li>Sonar readings → processed by a wall-detector algorithm.</li>
+<li>Output represented in a 24-element sector array, encoding spatial wall information.</li>
+<li>Knowledge in long-term memory specifies how to act (e.g., &quot;if wall detected on left, steer right&quot;).</li>
+<li>Working memory holds the current context (wall position + last move).</li>
+<li>The wall-following behaviour produces the motor response.</li>
+</ol>
+<p><strong>Significance</strong></p>
+<ol>
+<li>Demonstrates how symbolic reasoning (rules, states, operators) and reactive behaviour (sensor readings, immediate actions) are integrated.</li>
+<li>Bridges knowledge representation with real-world action control, enabling adaptive control.</li>
+</ol>
+<h2 id="symbolic-reasoning">Symbolic Reasoning</h2>
+<p>Symbolic reasoning refers to the use of <strong>structured knowledge representations</strong> (rules, logic, frames, ontologies) to capture meaning and support reasoning. Unlike statistical methods, it provides interpretable and explicit processes for inference.</p>
+<p><strong>Frame</strong></p>
+<p><strong>Frames</strong> are structured data representations for stereotypical situations. They contains <strong>slots</strong> (attributes) and <strong>fillers</strong> (values), and can include <strong>default values</strong> and <strong>inheritance</strong>.</p>
+<p>Example</p>
+<pre><code class="language-yaml"><span class="hljs-string">Ate</span>
+    <span class="hljs-attr">subject:</span> <span class="hljs-string">Ashok</span>
+    <span class="hljs-attr">object:</span> <span class="hljs-string">a</span> <span class="hljs-string">frog</span>
+    <span class="hljs-attr">location:</span>
+    <span class="hljs-attr">time:</span>
+    <span class="hljs-attr">utensils:</span>
+    <span class="hljs-attr">object-alive:</span> <span class="hljs-literal">false</span>
+    <span class="hljs-attr">object-is:</span> <span class="hljs-string">in-subject</span>
+    <span class="hljs-attr">subject-mood:</span> <span class="hljs-string">happy</span>
+</code></pre>
+<p>Properties of Frames</p>
+<ol>
+<li>Slots and Fillers</li>
+<li>Provide default values</li>
+<li>Represent stereotypes</li>
+<li>Exhibit inheritance</li>
+</ol>
+<p><em>Complex Frames Systems</em> can connect multiple entities:</p>
+<ol>
+<li>Person: Angela Smith</li>
+<li>Restaurant: Olive Garden (Atlanta, $$)</li>
+<li>Event: Ate (lasagna)</li>
+</ol>
+<p>This supports structured knowledge representation and richer reasoning.</p>
+<p><strong>Thematic Role Systems</strong></p>
+<p>A <strong>thematic role system</strong> is a type of frame system focusing on verbs. It defines semantic roles such as agent, beneficiary, thematic object, and instrument.</p>
+<p>Example: <em>Ashok made pancakes for David with a griddle.</em></p>
+<pre><code class="language-yaml"><span class="hljs-attr">verb:</span> <span class="hljs-string">make</span>
+<span class="hljs-attr">agent:</span> <span class="hljs-string">Ashok</span>
+<span class="hljs-attr">beneficiary:</span> <span class="hljs-string">David</span>
+<span class="hljs-attr">thematic object:</span> <span class="hljs-string">pancakes</span>
+<span class="hljs-attr">instrument:</span> <span class="hljs-string">griddle</span>
+</code></pre>
+<p>These roles help in resolving ambiguity and understanding verb semantics.</p>
+<p><strong>Common Sense Reasoning</strong></p>
+<p>A central problem in AI since the 1950s is enabling machines to use <strong>commonsense knowledge</strong>.</p>
+<p>Approach: Encode text into frames with the help of a knowledge base.</p>
+<p>Example: <em>Sam went to the meeting with Bob by train.</em></p>
+<p>Initial shallow analysis (POS, NER):</p>
+<pre><code class="language-yaml"><span class="hljs-attr">person:</span> <span class="hljs-string">Sam</span>
+<span class="hljs-attr">verb:</span> <span class="hljs-string">go</span>
+<span class="hljs-attr">noun:</span> <span class="hljs-string">meeting</span>
+<span class="hljs-attr">person:</span> <span class="hljs-string">Bob</span>
+<span class="hljs-attr">noun:</span> <span class="hljs-string">train</span>
+</code></pre>
+<p>Refined using KB for prepositions:</p>
+<ol>
+<li><em>by</em> → conveyance/location</li>
+<li><em>with</em> → co-agent/instrument</li>
+<li><em>to</em> → destination/event</li>
+</ol>
+<p>Final Thematic Role:</p>
+<pre><code class="language-yaml"><span class="hljs-attr">agent:</span> <span class="hljs-string">Sam</span>
+<span class="hljs-attr">verb:</span> <span class="hljs-string">go</span>
+<span class="hljs-attr">event:</span> <span class="hljs-string">meeting</span>
+<span class="hljs-attr">co-agent:</span> <span class="hljs-string">Bob</span>
+<span class="hljs-attr">conveyance:</span> <span class="hljs-string">train</span>
+</code></pre>
+<p><strong>Resolving Verb Ambiguity with Primitive Actions</strong></p>
+<p>Verbs can have multiple senses. Symbolic reasoning breaks them into <strong>primitives actions</strong>.</p>
+<p>Example: <em>go</em></p>
+<ol>
+<li>Move to another location: <code>go_1</code></li>
+<li>Change in level: <code>go_2</code></li>
+<li>Attend an event: <code>go_3</code></li>
+</ol>
+<p>Disambiguation allows refinement:</p>
+<pre><code class="language-yaml"><span class="hljs-attr">agent:</span> <span class="hljs-string">Sam</span>
+<span class="hljs-attr">verb:</span> <span class="hljs-string">go_3</span> <span class="hljs-string">(attend)</span>
+<span class="hljs-attr">event:</span> <span class="hljs-string">meeting</span>
+<span class="hljs-attr">co-agent:</span> <span class="hljs-string">Bob</span>
+<span class="hljs-attr">conveyance:</span> <span class="hljs-string">train</span>
+</code></pre>
+<p><strong>Knowledge Graph</strong></p>
+<p><strong>Knowledge graphs</strong> represent <strong>entities</strong> and <strong>relations</strong> in a <em>network structure</em>. They support reasoning by linking concepts with semantic relations: <code>IsA</code>, <code>PartOf</code>, <code>UsedFor</code>, <code>CapableOf</code>.</p>
+<p>Example: <em>Car</em></p>
+<ol>
+<li><code>IsA -&gt; Vehicle</code></li>
+<li><code>PartOf -&gt; Mobility</code></li>
+<li><code>CapableOf -&gt; Travel</code></li>
+<li><code>LocationOf -&gt; Garage</code></li>
+</ol>
+<p>ConceptNet and Google Knowledge Graph are large-scale implementations used in AI systems.</p>
+<p><strong>Summary</strong></p>
+<ol>
+<li><strong>Frames</strong>: Structured representations with slots, fillers, and inheritance.</li>
+<li><strong>Thematic Role</strong>: Specialised frames for verbs, supporting ambiguity resolution.</li>
+<li><strong>Commonsense Reasoning</strong>: Uses KBs and prepositions to refine interpretation.</li>
+<li><strong>Verb Disambiguation</strong>: Primitive actions distinguish multiple senses.</li>
+<li><strong>Knowledge Graphs</strong>: Connect concepts into network, enabling richer reasoning.</li>
+</ol>
+<p>Symbolic reasoning complements statistical approaches by providing explainability, structure, and commonsense grounding.</p>
+<h2 id="case-study-voice-assistant">Case Study: Voice Assistant</h2>
+<p>Voice assistants (e.g., Alexa, Siri, Google Assistant) showcase how <strong>reasoning in KRR and LLMs</strong> integrates across multiple stages of natural language understanding, dialog management, knowledge retrieval, and natural language generation.</p>
+<p><strong>End-to-End Architecture</strong></p>
+<ol>
+<li>Automatic Speech Recognition (ASR)
+<ul>
+<li>Converts spoken input into text.</li>
+<li>Example: &quot;<em>What is the weather in Seattle today?</em>&quot; → words.</li>
+</ul>
+</li>
+<li>Natural Language Understanding (NLU)
+<ul>
+<li>Extracts <strong>intent</strong> (<code>WeatherForecast</code>) and <strong>slots</strong> (<code>location = Seattle</code>, <code>startDate = Today</code>).</li>
+<li>Produces a structured logical form or JSON-like representation.<pre><code class="language-json"><span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;type&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;IntentRequest&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;intent&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+        <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;WeatherForecast&quot;</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">&quot;slots&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+            <span class="hljs-attr">&quot;location&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Seattle&quot;</span><span class="hljs-punctuation">,</span>
+            <span class="hljs-attr">&quot;startDate&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Today&quot;</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-punctuation">}</span>
+    <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+</li>
+</ul>
+</li>
+<li>Dialog Manager
+<ul>
+<li>Interfaces with <strong>skills</strong> (domain-specific modules).</li>
+<li>Map intent/slots to appropriate backend knowledge resources.</li>
+</ul>
+</li>
+<li>Skill Execution
+<ul>
+<li>Skill backend performs API calls or queries a <strong>knowledge base</strong>.</li>
+<li>Example: Query → <code>SearchAction(WeatherForecast(location=Seattle, startDate=Today))</code></li>
+</ul>
+</li>
+<li>Knowledge Base Reasoning</li>
+<li>Natural Language Generation (NLG)</li>
+<li>Text-to-Speech (TTS)</li>
+</ol>
+
+            <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+            
+        </body>
+        </html>

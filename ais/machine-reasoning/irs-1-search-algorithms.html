@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>Search Algorithms</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 16px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <h1 style="color: #ccc">Machine Reasoning</h1>
+<h1 id="search-algorithms">Search Algorithms</h1>
+<p><em>Mar 13, 2025</em></p>
+<h2 id="machine-reasoning-overview">Machine Reasoning Overview</h2>
+<ol>
+<li>
+<p>Human Intelligence</p>
+<p>Intelligence measures a human or AI's ability to achieve goals (<em>Legg &amp; Hutter, 2007</em>).</p>
+<ul>
+<li><strong>Problem-solving using knowledge</strong>:
+<ul>
+<li><strong>Analogy &amp; Metaphor</strong> → Applying known concepts to new situations.</li>
+<li><strong>Intuition &amp; Experience</strong> → Drawing on expertise to make rapid judgements.</li>
+<li><strong>Deliberate Reasoning</strong> → Step-by-step logical deduction to discover new knowledge.</li>
+</ul>
+</li>
+<li>Machine intelligence follows similar principles: <strong>search</strong>, <strong>representation</strong>, <strong>reasoning</strong>, and <strong>learning</strong>.</li>
+</ul>
+</li>
+<li>
+<p>Artificial Intelligence (AI)</p>
+<p>AI enables <strong>problem-solving</strong> and <strong>decision-making</strong> through computational methods.</p>
+</li>
+<li>
+<p>Evaluating Machine Intelligence</p>
+<ul>
+<li><strong>Turing Test</strong> (<em>Alan Turing, 1950</em>): A machine is considered intelligent if a judge cannot distinguish it from a human in conversation.</li>
+<li>AI can <strong>exceed human intelligence</strong> in specific domains.</li>
+</ul>
+</li>
+<li>
+<p>AI Family</p>
+<ul>
+<li><strong>Predictive AI</strong> → Predicting outcomes (e.g., recommender systems).</li>
+<li><strong>Generative AI</strong> → Generating content (e.g., LLMs for text, GANs for images).</li>
+<li><strong>Multimodal AI</strong> → Processing multiple data types (e.g., vision-language models).</li>
+</ul>
+</li>
+<li>
+<p>Sub-Fields of AI</p>
+<ul>
+<li>Core AI Methodologies (Foundational Techniques)
+<ul>
+<li><strong>Optimisation</strong></li>
+<li><strong>Machine Learning</strong></li>
+<li><strong>Deep Learning</strong></li>
+<li><strong>Large Language Models (LLMs)</strong></li>
+<li><strong>Evolutionary Computation</strong></li>
+</ul>
+</li>
+<li>Perception and Interaction (Textual, Auditory, and Visual Data)
+<ul>
+<li><strong>Natural Language Processing (NLP)</strong></li>
+<li><strong>Speech Recognition and Processing</strong></li>
+<li><strong>Computer Vision</strong></li>
+</ul>
+</li>
+<li>Data Science (Extracting Actionable Insights from Data)
+<ul>
+<li><strong>Data Mining</strong> (Techniques for Finding Patterns)</li>
+<li><strong>Data Analytics</strong> (Interpretation and Decision-Making)</li>
+<li><strong>Data-Centric AI</strong> (Contrasted with Model-Centric AI)</li>
+</ul>
+</li>
+<li>Decision-Making and Automation
+<ul>
+<li><strong>Expert Systems (e.g., Diagnostic Systems)</strong></li>
+<li><strong>Recommender Systems</strong></li>
+<li><strong>Robotics</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Processing Unstructured Data</p>
+<ul>
+<li><strong>Traditional ML</strong> → Struggles with text, images, and audio due to manual <strong>feature engineering</strong>.</li>
+<li><strong>Deep Learning</strong> → Excels at these unstructured data by automating <strong>feature extraction</strong> through hierarchical learning.</li>
+</ul>
+</li>
+<li>
+<p>From Raw Data to Intelligence</p>
+<ul>
+<li><strong>Data Collection</strong> → Gather raw data.</li>
+<li><strong>Data Processing</strong> → Clean and normalise data.</li>
+<li><strong>Information Extraction</strong> → Identify entities, relationships, and key facts.</li>
+<li><strong>Pattern Recognition</strong> → Detect trends, correlations, and hidden structures.</li>
+<li><strong>Knowledge Formation</strong> → Organise facts and patterns into knowledge bases.</li>
+<li><strong>Inference &amp; Reasoning</strong> → Use knowledge to derive insights, draw conclusions, and make decisions.</li>
+</ul>
+</li>
+<li>
+<p>Cornerstones of Machine Reasoning</p>
+<ul>
+<li><strong>Search &amp; Optimisation</strong> → Finding optimal solutions.</li>
+<li><strong>Knowledge Representation</strong> → Graphs (ontologies, rules), ML models.</li>
+<li><strong>Inference &amp; Reasoning</strong> → Deduction, abduction, analogy.</li>
+<li><strong>Learning &amp; Generalisation</strong> → Pattern recognition, induction, prediction.</li>
+</ul>
+</li>
+<li>
+<p>Knowledge-Intensive Tasks</p>
+<p><strong>Analytic Tasks</strong></p>
+<ul>
+<li><strong>Regression</strong> → Predicting outcomes.
+<ul>
+<li>House Price Prediction → Predicting house prices based on location, size, number of rooms, and past sales data.</li>
+<li>Stock Market Forecasting → Estimating future stock prices based on historical trends and economic indicators.</li>
+</ul>
+</li>
+<li><strong>Classification</strong> → Categorising data.
+<ul>
+<li>Email Span Detection → Classifying emails as &quot;spam&quot; or &quot;not spam&quot; based on content and sender information.</li>
+<li>Sentiment Analysis → Classifying customer reviews as positive, neutral, or negative based on text content.</li>
+</ul>
+</li>
+<li><strong>Clustering</strong> → Grouping similar data.
+<ul>
+<li>Customer Segmentation → Grouping shoppers based on buying behaviour for targetted marketing.</li>
+<li>Image Segmentation → Grouping pixels in an image into distinct regions for object detection or recognition.</li>
+</ul>
+</li>
+<li><strong>Diagnosis</strong> → Identifying cause.
+<ul>
+<li>Medical Diagnosis → Identifying whether a patient has a disease based on symptoms and test results.</li>
+<li>Root Cause Analysis in Manufacturing → Determining why a machine failed based on sensor readings.</li>
+</ul>
+</li>
+<li><strong>Monitoring</strong> → Detecting anomalies.
+<ul>
+<li>Fraud Detection in Banking → Identifying unusual credit card transactions that indicate fraud.</li>
+<li>Network Security Monitoring → Detecting abnormal traffic patterns that suggest a cyberattack.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Synthetic Tasks</strong></p>
+<ul>
+<li><strong>Design</strong> → Structuring components.
+<ul>
+<li>Designing a New Subway System → Planning station locations and train lines for optimal coverage.</li>
+<li>Developing a Smart City Layout → Structuring roads, green spaces, and utilities for sustainability.</li>
+</ul>
+</li>
+<li><strong>Planning</strong> → Sequencing actions.
+<ul>
+<li>Event Logistics Planning → Sequencing venue setup, guest arrivals, catering, and security coordination for a large-scale event.</li>
+<li>Disaster Response Coordination → Sequencing rescue operations, medical aid deployment, and infrastructure restoration after a disaster.</li>
+</ul>
+</li>
+<li><strong>Scheduling</strong> → Allocating resources.
+<ul>
+<li>Airline Flight Schedules → Assigning planes and crews to routes while minimising delays.</li>
+<li>Hospital Shift Scheduling → Ensuring enough doctors and nurses are available at all times.</li>
+</ul>
+</li>
+<li><strong>Optimisation</strong> → Finding optimal solutions.
+<ul>
+<li>Portfolio Optimisation → Allocating investments to maximise returns and minimise risk.</li>
+<li>Supply Chain Optimisation → Minimising costs while ensuring timely delivery of goods.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>AI Challenges</p>
+</li>
+</ol>
+<pre><code>-   **Data Bias** → AI models inherit biases from training data.
+-   **Lack of Explainability** → Deep learning models are &quot;black boxes&quot;.
+    -   **XAI (Explainable AI)** improves transparency.
+-   **Shallow Understanding** → AI often relies on statistical patterns instead of causal reasoning.
+    -   **Conversational AI (e.g., ChatGPT-4o)** → Shows improved understanding through intuitive and context-aware responses.
+    -   **Reasoning AI (e.g., ChatGPT-o1)** → Shows improved understanding through logical step-by-step reasoning.
+</code></pre>
+<h2 id="uninformed-search">Uninformed Search</h2>
+<ol>
+<li>
+<p><strong>Tree Search</strong></p>
+<ul>
+<li>
+<p><strong>Depth-First Search (DFS)</strong></p>
+<p>Explores a single branch of the tree as deeply as possible before backtracking.</p>
+</li>
+<li>
+<p><strong>Breadth-First Search (BFS)</strong></p>
+<p>Explores all nodes at the current depth level before moving deeper. It guarantees finding the <strong>shortest path</strong> when the target is reached.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Tree vs. Graph</p>
+<ul>
+<li>A <strong>tree</strong> is a hierarchical structure with a single root and no cycles, ensuring unique paths between nodes. In contrast, a <strong>graph</strong> is more general, allowing cycles and multiple paths, making it suitable for complex networks.</li>
+<li>Every tree is a graph, but not every graph is a tree. Specifically, a tree is a connected undirected graph with no cycles.</li>
+</ul>
+</li>
+<li>
+<p><strong>Graph Search</strong></p>
+<ul>
+<li><strong>Dijkstra's algorithm</strong>, also known as <strong>uniform-cost search (UCS)</strong>, in an <strong>uninformed search</strong> method used to find the <strong>shortest path</strong> in a <strong>weighted graph</strong>. It expands the node with the <strong>lowest cumulative cost</strong> at each step.</li>
+</ul>
+</li>
+<li>
+<p>Optimality of Uniform-Cost Search</p>
+<ul>
+<li><strong>Breadth-first search (BFS)</strong> is <strong>optimal</strong> for <strong>unweighted graphs</strong> as it expands nodes level by level, ensuring the shortest path.</li>
+<li><strong>Uniform-cost search (UCS)</strong> is <strong>optimal</strong> for <strong>weighted graphs</strong> as it expands the node with the <strong>lowest cumulative cost</strong> at each step.</li>
+<li>If <strong>all edge weights are equal</strong>, <strong>UCS behaves identically to BFS</strong>, as both expand nodes in the same order.</li>
+</ul>
+</li>
+</ol>
+<h2 id="informed-search">Informed Search</h2>
+<ol>
+<li>
+<p><strong>Combinatorial Explosion</strong></p>
+<p>A small increase in elements causes an <strong>exponential growth</strong> in the search space, making problems significantly harder.</p>
+<p>Examples:</p>
+<ul>
+<li>Travelling Salesman Problem → Route optimisation grows factorially with more locations.</li>
+<li>Enigma Codes → Decryption complexity due to vast possible settings.</li>
+<li>British Bombe → Used in WWII to break Enigma encryption.</li>
+</ul>
+</li>
+<li>
+<p><strong>Informed Search</strong></p>
+<p>Informed search strategies expand nodes based on <strong>estimated optimality</strong> using an <strong>evaluation function</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span>, typically incorporating <strong>heuristics</strong>.</p>
+<p>Common informed search strategies:</p>
+<ul>
+<li>Using <strong>heuristic only</strong>: Greedy Best-First Search (GBFS), Hill Climbing, Tabu Search</li>
+<li>Using <strong>heuristic and cumulative cost</strong>: A* Search, Beam Search</li>
+<li>Using <strong>heuristic and randomness</strong>: Genetic Algorithm</li>
+</ul>
+</li>
+<li>
+<p><strong>Heuristic Function</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">h(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">h</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></p>
+<ul>
+<li>Estimates the <strong>shortest path cost</strong> from <strong>node</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> to the <strong>goal node</strong>.</li>
+<li>Examples:
+<ul>
+<li><strong>Manhattan Distance</strong></li>
+<li><strong>Straight-line Distance</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Evaluation Function</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></p>
+<p>A key component of the evaluation function <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span> is the heuristic function <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">h(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">h</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span>. When no additional information is available other than the heuristic:</p>
+<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo><mo>=</mo><mi>h</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(n)=h(n)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">h</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></span></p>
+</li>
+<li>
+<p><strong>Greedy best-first search (GBFS)</strong> minimises the estimated cost from the current node to the goal node by expanding the node with the smallest <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span> at each step. While it tracks expanded nodes in a <strong>search tree</strong>, GBFS may settle for locally optimal paths, missing the global optimum.</p>
+<p><strong>Hill climbing</strong> is a more restrictive local search variant of GBFS. Unlike GBFS, it does not maintain a search tree or track expanded nodes. Instead, it moves to the next node with the smallest <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span>, discarding other options at the same level.</p>
+<p>In both GBFS and hill climbing, the evaluation function relies solely on the heuristic function:</p>
+<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo><mo>=</mo><mi>h</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(n) = h(n)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">h</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></span></p>
+</li>
+<li>
+<p>Improving Local Search</p>
+<p>Local search methods, like hill climbing, move to better neighbouring nodes but lack mechanisms to avoid revisiting solutions. While hill climbing avoids bad moves by &quot;climbing uphill&quot;, it can still get stuck in <strong>local maxima, plateaus, or ridges</strong>, and may <strong>cycle through suboptimal solutions</strong>.</p>
+<p><strong>Tabu Search</strong></p>
+<ul>
+<li>Uses a <strong>tabu list</strong> to temporarily forbid moves that lead back to previous solutions.</li>
+<li>Prevents cycling and local optima traps.</li>
+<li>Tabu restrictions are time-based, meaning moves are feasible again after a set certain number of iterations.</li>
+</ul>
+<p><strong>Simulated Annealing</strong></p>
+<ul>
+<li>Combines hill climbing with a <strong>random walk</strong>.</li>
+<li><strong>Accepts worse moves</strong> with a probability <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi></mrow><annotation encoding="application/x-tex">P</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span></span></span></span>, determined by a temperature parameter <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span></span></span></span>.</li>
+<li>Early in the search, high <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span></span></span></span> allows &quot;downhill&quot; moves to escape local optima.</li>
+<li>Over time, as <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span></span></span></span> decreases, the algorithm focuses more on convergence.</li>
+</ul>
+</li>
+<li>
+<p><strong>A* search</strong> is a well-known <strong>best-first search</strong> algorithm that combines <strong>uniform-cost search (UCS)</strong>, which expands the node with the <strong>lowest cumulative cost</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">g(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span>, and <strong>greedy best-first search (GBFS)</strong>, which expands the node with the <strong>lowest heuristic estimate</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">h(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">h</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span>. A* is <strong>more efficient</strong> than UCS as it prioritises promising paths based on <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">h(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">h</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span>. It also guarantees finding the shortest path guided by <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">g(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span> if <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">h(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">h</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span> is <strong>admissible</strong>, ensuring <strong>global optimality</strong>.</p>
+<p>The evaluation function in A* search is:</p>
+<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo><mo>=</mo><mi>g</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo><mo>+</mo><mi>h</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(n)=g(n)+h(n)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">h</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></span></p>
+<ul>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">g(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span>: The <strong>actual cost</strong> from the <strong>start node</strong> to node <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span>.</li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">h(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">h</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span>: The <strong>estimated cost</strong> from node <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> to the <strong>goal node</strong>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Beam search</strong> is a <strong>best-first search</strong> algorithm commonly used in NLP, especially for sequence generation in <strong>transformers</strong>. It models word sequences as nodes and transitions as edges, aiming to generate the most probable <strong>word sequence</strong>.</p>
+<p>How Beam Search Works:</p>
+<ol>
+<li><strong>Ranking Candidates</strong>: Scores candidate sequences based on log-probabilities from the language model.</li>
+<li><strong>Expanding Top Candidates</strong>: Retains the top <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span></span></span></span> most probable sequences (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span></span></span></span> is also called the <strong>beam width</strong>).</li>
+<li><strong>Pruning Less-Promising Sequences</strong>: Discards lower-scoring sequences at each step.</li>
+</ol>
+<p><strong>Probability Score Calculation</strong></p>
+<p>For a candidate sequence <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">S_n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> at node <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span>, the language model generates possible next words. The updated sequence's score is:</p>
+<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi mathvariant="normal">Score</mi><mo>⁡</mo><mo stretchy="false">(</mo><msub><mi>S</mi><mi>n</mi></msub><mo>∪</mo><mo stretchy="false">{</mo><msub><mi>w</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub><mo stretchy="false">}</mo><mo stretchy="false">)</mo><mo>=</mo><mi mathvariant="normal">Score</mi><mo>⁡</mo><mo stretchy="false">(</mo><msub><mi>S</mi><mi>n</mi></msub><mo stretchy="false">)</mo><mo>+</mo><mi>log</mi><mo>⁡</mo><mrow><mi>P</mi><mo stretchy="false">(</mo><msub><mi>w</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>∣</mo><msub><mi>S</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></mrow><annotation encoding="application/x-tex">\operatorname{Score}(S_n\cup\{w_{n+1}\})=\operatorname{Score}(S_n)+\log{P(w_{n+1}\mid S_n)}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop"><span class="mord mathrm">Score</span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∪</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mclose">})</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop"><span class="mord mathrm">Score</span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span></span></p>
+<p>where:</p>
+<ul>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Score</mi><mo>⁡</mo><mo stretchy="false">(</mo><msub><mi>S</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\operatorname{Score}(S_n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop"><span class="mord mathrm">Score</span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>: Cumulative log-probability of sequence <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">S_n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>.</li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>log</mi><mo>⁡</mo><mrow><mi>P</mi><mo stretchy="false">(</mo><msub><mi>w</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>∣</mo><msub><mi>S</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></mrow><annotation encoding="application/x-tex">\log{P(w_{n+1}\mid S_n)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span>: Log-probability of adding <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>w</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">w_{n+1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6389em;vertical-align:-0.2083em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span></span></span></span>.</li>
+</ul>
+<p><strong>Score Update Formula</strong></p>
+<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mtable rowspacing="0.25em" columnalign="right left" columnspacing="0em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mtext>Score</mtext><mo stretchy="false">(</mo><msub><mi>S</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub><mo stretchy="false">)</mo></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><mtext>Score</mtext><mo stretchy="false">(</mo><msub><mi>S</mi><mi>n</mi></msub><mo stretchy="false">)</mo><mo>+</mo><mi>log</mi><mo>⁡</mo><mi>P</mi><mo stretchy="false">(</mo><msub><mi>w</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>∣</mo><msub><mi>S</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><mi>log</mi><mo>⁡</mo><mi>P</mi><mo stretchy="false">(</mo><msub><mi>w</mi><mi>i</mi></msub><mi mathvariant="normal">∣</mi><msub><mi>w</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>w</mi><mn>2</mn></msub><mo separator="true">,</mo><mo>⋯</mo><mtext> </mtext><mo separator="true">,</mo><msub><mi>w</mi><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow></msub><mo stretchy="false">)</mo><mo>+</mo><mi>log</mi><mo>⁡</mo><mi>P</mi><mo stretchy="false">(</mo><msub><mi>w</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>∣</mo><msub><mi>w</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>w</mi><mn>2</mn></msub><mo separator="true">,</mo><mo>⋯</mo><mtext> </mtext><mo separator="true">,</mo><msub><mi>w</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></munderover><mi>log</mi><mo>⁡</mo><mi>P</mi><mo stretchy="false">(</mo><msub><mi>w</mi><mi>i</mi></msub><mi mathvariant="normal">∣</mi><msub><mi>w</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>w</mi><mn>2</mn></msub><mo separator="true">,</mo><mo>⋯</mo><mtext> </mtext><mo separator="true">,</mo><msub><mi>w</mi><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow></msub><mo stretchy="false">)</mo></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></munderover><mi>log</mi><mo>⁡</mo><mi>P</mi><mo stretchy="false">(</mo><msub><mi>w</mi><mi>i</mi></msub><mi mathvariant="normal">∣</mi><msub><mi>w</mi><mrow><mo>&lt;</mo><mi>i</mi></mrow></msub><mo stretchy="false">)</mo></mrow></mstyle></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{aligned}
+\text{Score}( S_{n+1}) &amp; =\text{Score}( S_{n}) +\log P( w_{n+1} \mid S_{n})\\
+&amp; =\sum _{i=1}^{n}\log P( w_{i} |w_{1} ,w_{2} ,\cdots ,w_{i-1}) +\log P( w_{n+1} \mid w_{1} ,w_{2} ,\cdots ,w_{n})\\
+&amp; =\sum _{i=1}^{n+1}\log P( w_{i} |w_{1} ,w_{2} ,\cdots ,w_{i-1})\\
+&amp; =\sum _{i=1}^{n+1}\log P( w_{i} |w_{&lt; i})
+\end{aligned}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:11.4866em;vertical-align:-5.4933em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:5.9933em;"><span style="top:-8.9544em;"><span class="pstrut" style="height:3.8011em;"></span><span class="mord"><span class="mord text"><span class="mord">Score</span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span><span style="top:-6.643em;"><span class="pstrut" style="height:3.8011em;"></span><span class="mord"></span></span><span style="top:-3.2642em;"><span class="pstrut" style="height:3.8011em;"></span><span class="mord"></span></span><span style="top:0.1145em;"><span class="pstrut" style="height:3.8011em;"></span><span class="mord"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:5.4933em;"><span></span></span></span></span></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:5.9933em;"><span style="top:-8.9544em;"><span class="pstrut" style="height:3.8011em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord text"><span class="mord">Score</span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span><span style="top:-6.643em;"><span class="pstrut" style="height:3.8011em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6514em;"><span style="top:-1.8723em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.05em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.2777em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">∣</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span><span style="top:-3.2642em;"><span class="pstrut" style="height:3.8011em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.8011em;"><span style="top:-1.8723em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.05em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.2777em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">∣</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span><span style="top:0.1145em;"><span class="pstrut" style="height:3.8011em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.8011em;"><span style="top:-1.8723em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.05em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.2777em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">∣</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mrel mtight">&lt;</span><span class="mord mathnormal mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1774em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:5.4933em;"><span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p>where <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>w</mi><mrow><mo>&lt;</mo><mi>i</mi></mrow></msub></mrow><annotation encoding="application/x-tex">w_{\lt i}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6079em;vertical-align:-0.1774em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mrel mtight">&lt;</span><span class="mord mathnormal mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1774em;"><span></span></span></span></span></span></span></span></span></span> represents all words preceding <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>w</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">w_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>. The cumulative log-probabilities are updated incrementally for the entire sequence.</p>
+</li>
+<li>
+<p>Summary of different search algorithms</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Property</th>
+<th style="text-align:left">BFS</th>
+<th style="text-align:left">UCS</th>
+<th style="text-align:left">GBFS</th>
+<th style="text-align:left">Hill Climbing</th>
+<th style="text-align:left">A*</th>
+<th style="text-align:left">Beam</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Expand Size</td>
+<td style="text-align:left">1 node</td>
+<td style="text-align:left">1 node</td>
+<td style="text-align:left">1 node</td>
+<td style="text-align:left">1 node</td>
+<td style="text-align:left">1 node</td>
+<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span></span></span></span> nodes</td>
+</tr>
+<tr>
+<td style="text-align:left">Edge Weight</td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">Yes</td>
+<td style="text-align:left">Yes/No</td>
+<td style="text-align:left">Yes/No</td>
+<td style="text-align:left">Yes</td>
+<td style="text-align:left">Yes</td>
+</tr>
+<tr>
+<td style="text-align:left">Cumulative Cost</td>
+<td style="text-align:left">Yes</td>
+<td style="text-align:left">Yes</td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">Yes</td>
+<td style="text-align:left">Yes</td>
+</tr>
+<tr>
+<td style="text-align:left">Heuristic Cost</td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">Yes</td>
+<td style="text-align:left">Yes</td>
+<td style="text-align:left">Yes</td>
+<td style="text-align:left">Yes</td>
+</tr>
+<tr>
+<td style="text-align:left">Pruning</td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">Yes</td>
+<td style="text-align:left">No</td>
+<td style="text-align:left">Yes</td>
+</tr>
+<tr>
+<td style="text-align:left">Optimality</td>
+<td style="text-align:left">Global</td>
+<td style="text-align:left">Global</td>
+<td style="text-align:left">Local</td>
+<td style="text-align:left">Local</td>
+<td style="text-align:left">Global</td>
+<td style="text-align:left">Local</td>
+</tr>
+<tr>
+<td style="text-align:left">Speed</td>
+<td style="text-align:left">Slow</td>
+<td style="text-align:left">Slow</td>
+<td style="text-align:left">Fast</td>
+<td style="text-align:left">Very Fast</td>
+<td style="text-align:left">Fast</td>
+<td style="text-align:left">Very Fast</td>
+</tr>
+<tr>
+<td style="text-align:left">Memory</td>
+<td style="text-align:left">High</td>
+<td style="text-align:left">High</td>
+<td style="text-align:left">High</td>
+<td style="text-align:left">Very Low</td>
+<td style="text-align:left">High</td>
+<td style="text-align:left">Low</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>If all edge weights are equal, UCS is identical to BFS.</li>
+<li>Without pruning, Hill Climbing is identical to GBFS.</li>
+<li>A* search is a combination of UCS and GBFS, using both cumulative cost and heuristic cost.</li>
+<li>When <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\beta=1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>, beam search is identical to Hill Climbing .</li>
+</ul>
+</li>
+</ol>
+<h2 id="constraint-satisfaction-problems">Constraint Satisfaction Problems</h2>
+<ol>
+<li>
+<p>Solving a problem using a search approach</p>
+<p>A search approach involves exploring the search space to identify a solution that is both:</p>
+<ul>
+<li>Valid<br>
+Meets a set of constraints or business requirements (passes the goal test).</li>
+<li>Optimal<br>
+Represents the most cost-effective solution available.</li>
+</ul>
+<p>Basic search algorithm:</p>
+<ol>
+<li>Initialisation<br>
+Define the pool of potential solution candidates, forming the search space.</li>
+<li>Exploration<br>
+Select one candidate solution for evaluation. This can be done using:
+<ul>
+<li>Uninformed search: No prior knowledge is used.</li>
+<li>Informed search: Heuristic or domain knowledge guides the search.</li>
+</ul>
+</li>
+<li>Constraint checking<br>
+<ul>
+<li>Evaluate whether the candidate satisfies all the constraints.</li>
+</ul>
+</li>
+<li>Optimality checking<br>
+<ul>
+<li>Determine whether the candidate is the most optimal solution found so far.</li>
+</ul>
+</li>
+<li>Termination<br>
+Repeat steps 2-4 until a stopping criterion is met (e.g., a valid and optimal solution is found, or all possibilities are exhausted).</li>
+</ol>
+<p>Each search step in the process also serves as an inference step.</p>
+</li>
+<li>
+<p>A constraint satisfaction problem (CSP) is a computational problem that requires finding values for a set of variables subject to constraints on which combinations of values are allowed.</p>
+<ul>
+<li>Variables<br>
+A CSP has a set of variables <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>=</mo><mo stretchy="false">{</mo><msub><mi>x</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>x</mi><mn>2</mn></msub><mo separator="true">,</mo><mo>⋯</mo><mtext> </mtext><mo separator="true">,</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">X=\{x_1,x_2,\cdots,x_n\}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">}</span></span></span></span>.</li>
+<li>Domains<br>
+Each variable <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">x_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> has a domain <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">D_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> of possible values it can take. The domain can be finite (e.g., <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">{</mo><mn>1</mn><mo separator="true">,</mo><mn>2</mn><mo separator="true">,</mo><mn>3</mn><mo stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">\{1,2,3\}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">3</span><span class="mclose">}</span></span></span></span>) or infinite (e.g., all real numbers).</li>
+<li>Constraints<br>
+A CSP also has a set of constraints. Each constraint restricts the ways that the values can be assigned to the variables. For example, a constraint might say <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>1</mn></msub><mo mathvariant="normal">≠</mo><msub><mi>x</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">x_1\neq x_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel"><span class="mrel"><span class="mord vbox"><span class="thinbox"><span class="rlap"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="inner"><span class="mord"><span class="mrel"></span></span></span><span class="fix"></span></span></span></span></span><span class="mrel">=</span></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>, or <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>2</mn></msub><mo>+</mo><msub><mi>x</mi><mn>3</mn></msub><mo>≤</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">x_2+x_3\leq10</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.786em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">10</span></span></span></span>.</li>
+</ul>
+<p>A solution to the CSP is an assignment of a value to every variable, chosen from each variable's domain, that satisfies all the constraints simultaneously.</p>
+</li>
+<li>
+<p>CSPs appear in many real-world scenarios, such as assigning teachers to classes, creating timetables, scheduling transportation, and factory scheduling and resource allocation. Additionally, a wide range of well-known problems can be framed as CSPs, including map colouring, cryptography, the N-Queens problem, and various routing problems (e.g., TSP/VRP).</p>
+</li>
+<li>
+<p>Solving techniques</p>
+<ul>
+<li>DFS, when applied to CSPs, assigns values to variables one at a time in a sequential manner. This approach is commonly referred to as backtracking search. As a basic uninformed search algorithm for solving CSPs, it is capable of solving the N-Queens problem for <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>≈</mo><mn>25</mn></mrow><annotation encoding="application/x-tex">n\approx25</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4831em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">25</span></span></span></span>.</li>
+</ul>
+</li>
+<li>
+<p>Improving backtracking efficiency</p>
+<ul>
+<li>Variable and value ordering heuristics
+<ul>
+<li>Most constrained variable (MCV)<br>
+Also known as mininum remaining value (MRV), this is a variable ordering heuristic that selects the variable with the fewest legal values (i.e., the most constrained) first. This approach helps reduce potential conflicts eartly by prioritising the most challenging variables.</li>
+<li>Least constraining value (LCV)<br>
+This is a value ordering heuristic used when assigning a value to a selected variable. It chooses the value that eliminates the fewest options for other variables, thereby maximising flexibility for future assignments.</li>
+</ul>
+</li>
+<li>Constraint propagation
+<ul>
+<li>Forward checking<br>
+After assigning a value to a variable, eliminate inconsistent values from the domains of unassigned variables. This prevents infeasible paths from being explored.</li>
+<li>Arc consistency (AC)<br>
+Use algorithm like AC-3 to ensure that every value in the domain of a variable satisfies the constraints relative to other variables. This further prunes the search space.</li>
+</ul>
+</li>
+<li>Dynamic variable reordering<br>
+<ul>
+<li>Adjust the order of variables dynamically during search, depending on how the constraints and domains evolve.</li>
+</ul>
+</li>
+<li>Backjumping
+<ul>
+<li>Instead of backtracking to the immediate previous variable, backtrack to the most recent variable that is responsible for the conflict. This skips irrelevant parts of the search tree.</li>
+</ul>
+</li>
+<li>Local search
+<ul>
+<li>Use local search techniques like min-conflicts heuristics to handle CSPs efficiently in cases where backtracking becomes computationally expensive.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Fail-fast principle</p>
+<p>The fail-fast principle ensures that an algorithm quickly identifies and eliminates paths that cannot lead to a solution, allowing it to focus on more promising areas of the search space. Techniques such as variable ordering heuristic (e.g., MCV and LCV) and constraint propagation are employed to enhance the efficiency of backtracking by adhering to this principle.</p>
+</li>
+</ol>
+<h2 id="google-or-tools">Google OR-Tools</h2>
+<ol>
+<li>
+<p><a href="https://developers.google.com/optimization">Google OR-Tools</a> is an open-source software suite for combinatorial optimisation. It allows users to model and solve complex optimisation problems in the field of Operational Research, including vehicle routing, flows, integer and linear programming, and constraint programming.</p>
+</li>
+<li>
+<p>OR-Tools includes solvers for the following:</p>
+<ul>
+<li>Vehicle routing<br>
+Identifies optimal vehicle routes while considering specific constraints.</li>
+<li>Integer and linear programming<br>
+Solves optimisation problems by maximising or minimising a linear objective function subject to linear inequalities (e.g., assigning tasksk to workers).</li>
+<li>Constraint programming<br>
+Provides methods to find feasible solutions for problems defined by constraints.</li>
+<li>Graph Algorithms<br>
+Offers tools for solving graph-related problems, such as finding shortest paths, minimum-cost flows, maximum flows, and linear sum assignments.</li>
+</ul>
+</li>
+<li>
+<p>Installing OR-Tools</p>
+<pre><code class="language-bash">pip install ortools
+</code></pre>
+</li>
+<li>
+<p>N-Queens problem</p>
+<ul>
+<li>Problem statement<br>
+How can <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span> queens be placed on an <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>×</mo><mi>N</mi></mrow><annotation encoding="application/x-tex">N\times N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span> chessboard such that no two queens threaten each other?</li>
+</ul>
+</li>
+<li>
+<p>Solving the N-Queens problem</p>
+<ul>
+<li>Constraint propagation<br>
+At each step, impose constraints to narrow down possible placements. For example, when a queen is placed on the board, restrict other queens from being placed on the same row, column, or diagonals as the current queen.</li>
+<li>Backtracking<br>
+If the solver reaches a point when no valid placement is possible for the next queen, it backtracks by adjusting the position of a previously placed queen. For example, the solver may move a queen to a different square in its current column to explore new possibilities.</li>
+</ul>
+</li>
+<li>
+<p>Solving the N-Queens using CP Solver</p>
+<pre><code class="language-python"><span class="hljs-keyword">from</span> ortools.constraint_solver <span class="hljs-keyword">import</span> pywrapcp
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">main</span>(<span class="hljs-params">board_size</span>):
+    <span class="hljs-comment"># Creates the solver</span>
+    solver = pywrapcp.Solver(<span class="hljs-string">&quot;n-queens&quot;</span>)
+
+    <span class="hljs-comment"># Creates variables</span>
+    queens = [solver.IntVar(<span class="hljs-number">0</span>, board_size - <span class="hljs-number">1</span>, <span class="hljs-string">f&quot;x<span class="hljs-subst">{i}</span>&quot;</span>) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(board_size)]
+
+    <span class="hljs-comment"># Creates constraints</span>
+    solver.Add(solver.AllDifferent(queens))
+    solver.Add(solver.AllDifferent([queens[i] + i <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(board_size)]))
+    solver.Add(solver.AllDifferent([queens[i] - i <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(board_size)]))
+
+    <span class="hljs-comment"># Add decision builder</span>
+    db = solver.Phase(queens, solver.CHOOSE_FIRST_BOUND, solver.ASSIGN_MIN_VALUE)
+</code></pre>
+</li>
+</ol>
+<h2 id="more-graph-search-algorithms">More Graph Search Algorithms</h2>
+<ol>
+<li>
+<p>More Graph Search Algorithms</p>
+<ul>
+<li><strong>Pathfinding</strong>
+<ul>
+<li>Focuses on finding the shortest route between nodes.</li>
+<li>Essential for navigation, logistics, and network optimisation.</li>
+<li>Common algorithms: Dijkstra's algorithm, A* search, Bellman-Ford.</li>
+</ul>
+</li>
+<li><strong>Centrality</strong>
+<ul>
+<li>Identifies the most &quot;important&quot; nodes in graph.</li>
+<li>Used in social network analysis, internet ranking (PageRank), and epidemic modelling.</li>
+<li>Key measures: Degree, Betweenness, Closeness, Eigenvector centrality.</li>
+</ul>
+</li>
+<li><strong>Community Detection</strong>
+<ul>
+<li>Groups nodes into densely connected subgraphs.</li>
+<li>Useful in social networks, fraud detection, and biological network analysis.</li>
+<li>Common methods: Modularity Maximisation, Louvain algorithm, Spectral clustering.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Reference books</p>
+<ul>
+<li>Graph Algorithms: Practical Examples in Apache Spark and Neo4j</li>
+</ul>
+</li>
+</ol>
+
+            <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+            
+        </body>
+        </html>

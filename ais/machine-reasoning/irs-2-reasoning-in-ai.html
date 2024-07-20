@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>Reasoning in Artificial Intelligence</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 16px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <h1 style="color: #ccc">Machine Reasoning</h1>
+<h1 id="reasoning-in-artificial-intelligence">Reasoning in Artificial Intelligence</h1>
+<p><em>Feb 9, 2025</em></p>
+<h2 id="knowledge-based-reasoning">Knowledge-Based Reasoning</h2>
+<ol>
+<li>
+<p>Reasoning, in a broad sense, refers to the cognitive process humans use to:</p>
+<ul>
+<li>Draw conclusions, solve problems, or make decisions based on a body of knowledge known as the knowledge base.</li>
+<li>Generate new knowledge by combining different pieces of information from the knowledge base.</li>
+</ul>
+</li>
+<li>
+<p>There are several key reasoning methods:</p>
+<ul>
+<li>Deductive reasoning</li>
+<li>Abductive reasoning</li>
+<li>Inductive reasoning</li>
+<li>Analogical reasoning</li>
+</ul>
+</li>
+<li>
+<p>These reasoning methods can be supported by various inference techniques:</p>
+<ul>
+<li>Forward chaining</li>
+<li>Backward chaining</li>
+<li>A combination of both forward and backward chaining</li>
+</ul>
+</li>
+<li>
+<p>Reasoning focuses on the cognitive (thought) process of drawing conclusions. It emphasises logic, principles, and evidence, addressing the &quot;what&quot; and &quot;why&quot;.</p>
+</li>
+<li>
+<p>Inference focuses on the mechanisms and algorithms used to draw conclusions, explaining the &quot;how&quot;.</p>
+</li>
+<li>
+<p>Deduction</p>
+<p>Deduction allows us to infer a conclusion based on a rule and a known fact.</p>
+<p>Given <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>→</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A\rightarrow B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span>, we can conclude <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span>.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Expression</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Rule</td>
+<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>→</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A\rightarrow B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span></td>
+</tr>
+<tr>
+<td style="text-align:left">Fact</td>
+<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span></span></span></span></td>
+</tr>
+<tr>
+<td style="text-align:left">Conclusion</td>
+<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span></td>
+</tr>
+</tbody>
+</table>
+<p>Deduction is widely applied in fields such as Discrete Mathematics, Mathematical Logic, and Formal Logic.</p>
+</li>
+<li>
+<p>Abduction</p>
+<p>Abduction is the process of reasoning backwards to identify a possible cause or explanation.</p>
+<p>Given <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>→</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A\rightarrow B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span>, we can hypothesise <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span></span></span></span>.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Expression</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Rule</td>
+<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>→</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A\rightarrow B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span></td>
+</tr>
+<tr>
+<td style="text-align:left">Fact</td>
+<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span></td>
+</tr>
+<tr>
+<td style="text-align:left">Hypothesis</td>
+<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span></span></span></span></td>
+</tr>
+</tbody>
+</table>
+<p>Abduction is commonly used in probabilistic reasoning and Bayesian networks, as well as in areas such as diagnostics, hypothesis generation, and problem-solving, where the goal is to identify the most likely explanation for the observed facts.</p>
+</li>
+<li>
+<p>Inductive generalisation</p>
+<p>Inductive generalisation refers to reasoning from specific cases to a general conclusion. It involves observations or premises about individual elements and extends them to the entire set.</p>
+<p>Given <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>=</mo><mo stretchy="false">{</mo><mi>a</mi><mo separator="true">,</mo><mi>b</mi><mo separator="true">,</mo><mi>c</mi><mo stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">X=\{a,b,c\}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathnormal">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">b</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">c</span><span class="mclose">}</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>→</mo><mi>P</mi><mo separator="true">,</mo><mi>b</mi><mo>→</mo><mi>P</mi><mo separator="true">,</mo><mi>c</mi><mo>→</mo><mi>P</mi></mrow><annotation encoding="application/x-tex">a\rightarrow P,b\rightarrow P,c\rightarrow P</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">b</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">c</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span></span></span></span>, we can conclude <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>→</mo><mi>P</mi></mrow><annotation encoding="application/x-tex">X\rightarrow P</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span></span></span></span>.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Expression</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Rule</td>
+<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>→</mo><mi>P</mi><mo separator="true">,</mo><mi>b</mi><mo>→</mo><mi>P</mi><mo separator="true">,</mo><mi>c</mi><mo>→</mo><mi>P</mi></mrow><annotation encoding="application/x-tex">a\rightarrow P,b\rightarrow P,c\rightarrow P</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">b</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">c</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span></span></span></span></td>
+</tr>
+<tr>
+<td style="text-align:left">Fact</td>
+<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>=</mo><mo stretchy="false">{</mo><mi>a</mi><mo separator="true">,</mo><mi>b</mi><mo separator="true">,</mo><mi>c</mi><mo stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">X=\{a,b,c\}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathnormal">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">b</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">c</span><span class="mclose">}</span></span></span></span></td>
+</tr>
+<tr>
+<td style="text-align:left">Conclusion</td>
+<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>→</mo><mi>P</mi></mrow><annotation encoding="application/x-tex">X\rightarrow P</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span></span></span></span></td>
+</tr>
+</tbody>
+</table>
+<p>Inductive generalisation is heuristic in nature, meaning its conclusions are based on observed patterns and are not guaranteed to be certain. It it commonly applied in areas such as predicate logic, propositional calculus, neural networks, decision trees, and more.</p>
+</li>
+<li>
+<p>Analogy</p>
+<p>Analogy involves reasoning based on similarities between two systems or situations. By mapping knowledge from a familiar domain, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span></span></span></span>, to a less familiar domain, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span>, conclusions about <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span> can be inferred.</p>
+<p>Given two domains <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span>, with identifiable similarities, properties in <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span></span></span></span> are used to infer similar properties in <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span>.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Expression</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Known Domain</td>
+<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span></span></span></span>: A well-understood system</td>
+</tr>
+<tr>
+<td style="text-align:left">New Domain</td>
+<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span>: A less familiar system</td>
+</tr>
+<tr>
+<td style="text-align:left">Conclusion</td>
+<td style="text-align:left">Properties of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span> are inferred based on <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span></span></span></span></td>
+</tr>
+</tbody>
+</table>
+<p>Analogy is commonly applied in Similarity-Based Reasoning, Case-Based Reasoning, and k-Nearest Neighbours, such as in customer profiling for recommendation.</p>
+</li>
+<li>
+<p>Reasoning is traditionally modelled through formal proofs or argument sketches.</p>
+<p><strong>Example.</strong></p>
+<blockquote>
+<p>To prove that the sum of two even numbers is even.</p>
+</blockquote>
+<p><strong>Formal Proof.</strong></p>
+<p>A even number can be written as <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>k</mi></mrow><annotation encoding="application/x-tex">2k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord">2</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span>, where <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span> is an integer.</p>
+<p>Let <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><mn>2</mn><msub><mi>k</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">a=2k_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord">2</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0315em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>=</mo><mn>2</mn><msub><mi>k</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">b=2k_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord">2</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0315em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>.</p>
+<p>Their sum is <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>+</mo><mi>b</mi><mo>=</mo><mn>2</mn><msub><mi>k</mi><mn>1</mn></msub><mo>+</mo><mn>2</mn><msub><mi>k</mi><mn>2</mn></msub><mo>=</mo><mn>2</mn><mo stretchy="false">(</mo><msub><mi>k</mi><mn>1</mn></msub><mo>+</mo><msub><mi>k</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">a+b=2k_1+2k_2=2(k_1+k_2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord">2</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0315em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord">2</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0315em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">2</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0315em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0315em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>, which is divisible by <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span></span></span></span>.</p>
+<p>Therefore, the sum is even.</p>
+<p style='text-align: right;'>■</p>
+<p><strong>Argument Sketch.</strong></p>
+<p>The sum of two even numbers is even because each even number can be written as a multiple of 2, and adding two multiples of 2 always gives another multiple of 2.</p>
+</li>
+<li>
+<p>Reasoning with formal proof</p>
+<ul>
+<li>Premise<br>
+A statement or proposition that provides evidence or support for a conclusion.</li>
+<li>Conclusion<br>
+The statement or proposition that follows logically from the premises.</li>
+</ul>
+<p>Premises lead to a conclusion through reasoning:</p>
+<ul>
+<li>The process starts by accepting specific premises. From these premises, intermediate conclusions are derived using inference rules, such as <em>modus ponens</em>.</li>
+<li>The reasoning concludes by accepting new conclusions, which are inferred either directly or indirectly from the initial premises.</li>
+</ul>
+<p>Example</p>
+<ul>
+<li>Premise 1: All humans are mortal.</li>
+<li>Premise 2: Socrates is a human.</li>
+<li>Intermediate Conclusion: Socrates belongs to the category of mortal beings.</li>
+<li>Final Conclusion: Socrates is mortal.</li>
+</ul>
+</li>
+<li>
+<p>Reasoning goes beyond proof</p>
+<p>Reasoning is not confined to formal proofs. It involves drawing new ideas or conclusions based on initial beliefs, which may need to be abandoned when they no longer hold true. More broadly, reasoning requires the regular updating and revision of prior opinions in response to new information.</p>
+</li>
+<li>
+<p>The need for inductive reasoning</p>
+<p>Traditionally, reasoning has been viewed primarily through the lens of deductive reasoning. Deductive reasoning involves applying universal principles to arrive at specific conclusions. For example:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Deductive Reasoning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Knowledge</td>
+<td style="text-align:left">All apples have seeds</td>
+</tr>
+<tr>
+<td style="text-align:left">From universal to individual</td>
+<td style="text-align:left">The next apple will have seeds</td>
+</tr>
+</tbody>
+</table>
+<p>While deductive reasoning is essential, it has been argued that reasoning extends beyond deduction. Inductive reasoning plays a complementary role by developing general rules based on specific observations. This approach operates differently:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Inductive Reasoning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Data</td>
+<td style="text-align:left">Many apples have been found to have seeds</td>
+</tr>
+<tr>
+<td style="text-align:left">From individual to universal</td>
+<td style="text-align:left">The next apple will have seeds</td>
+</tr>
+</tbody>
+</table>
+<p>Together, deductive and inductive reasoning provide a more comprehensive understanding of how we draw conclusions and form knowledge.</p>
+</li>
+<li>
+<p>Truth in reasoning</p>
+<ul>
+<li>Deductive reasoning<br>
+Relies on <em>modus ponens</em> and ensures logical certainty. If the premises are true and the reasoning process is valid, the conclusion is guaranteed to be true.</li>
+<li>Abductive reasoning<br>
+Seeks the most plausible hypothesis to explain an observed fact. While the hypothesis may be reasonable, its truth is not guaranteed, as other potential explanations may exist.</li>
+<li>Other methods<br>
+Inductive and analogical reasoning do not guarantee true conclusions, even when the premises are true. Nevertheless, these methods are invaluable in knowledge-based system (KBS), particularly in contexts where deductive rules are unavailable or insufficient.</li>
+</ul>
+</li>
+</ol>
+<h2 id="rule-based-reasoning">Rule-Based Reasoning</h2>
+<ol>
+<li>
+<p>Rules are the natural representation of human knowledge used in decision-making.</p>
+</li>
+<li>
+<p>A rule has two components:</p>
+<ul>
+<li>The <em>if</em> part<br>
+Known as the antecedent or condition</li>
+<li>The <em>then</em> part<br>
+Known as the consequent or action</li>
+</ul>
+</li>
+<li>
+<p>A rule-based reasoning system comprises the following components:</p>
+<ul>
+<li>Knowledge base (long-term memory)<br>
+A repository that stores domain-specific rules.</li>
+<li>Working memory (short-term memory)<br>
+A dynamic storage area that holds the facts and information relevant to the current reasoning process.</li>
+<li>Inference engine<br>
+A component that performs pattern matching and executes the rules.</li>
+</ul>
+</li>
+<li>
+<p>The inference engine compares the conditions of each rule in the knowledge base (KB) with the available facts.</p>
+<ul>
+<li>If a rule's condition matches a fact, the rule is fired, and its corresponding action is executed.</li>
+<li>The action may update the fact set by modifying existing facts or adding new ones.</li>
+<li>These updates can activate other rules whose conditions are now satisfied, creating inference chains where new rules are fired sequentially.</li>
+</ul>
+</li>
+<li>
+<p>Match phase</p>
+<ul>
+<li>Pattern matching<br>
+In this step, the inference engine compares the conditions of rules (antecedents) with the facts in the working memory. If a condition matches, the corresponding rule becomes eligible for execution.</li>
+<li>Approximate matching (optional in fuzzy or similar systems)<br>
+In systems utilising fuzzy logic or probabilistic reasoning, rules can be triggered based on a degree of similarity or likelihood rather than requiring exact matching.</li>
+</ul>
+</li>
+<li>
+<p>Fire phase</p>
+<ul>
+<li>Conflict set<br>
+When multiple rules are activated based on the facts in working memory, they form a conflict set. This occurs when the conditions of multiple rules match the same set of facts, but the rules lead to different conclusions or actions.</li>
+<li>Conflict resolution<br>
+If multiple rules are eligible to fire simultaneously (i.e., their conditions are satisfied), the system uses a conflict resolution strategy to determine which rule to execute.</li>
+</ul>
+<p>Common conflict resolution order:</p>
+<ul>
+<li>Highest priority (salience of rules)<br>
+Rules with a higher assigned priority are executed first.</li>
+<li>Most specific (specificity of rules)<br>
+Rules with the longest and most detailed matching conditions are favoured.</li>
+<li>Most recent data (recency of facts)<br>
+Rules associated with the most recently updated facts in working memory are prioritised.</li>
+</ul>
+<p>Conflict resolution is essential for detecting KB completeness, ensuring knowledge verification, or identifying potential conflicts (e.g., conflicting rules in the HDB policy).</p>
+</li>
+<li>
+<p>Firing order</p>
+<p>The order in which rules are fired depends on the order of facts in the working memory, not the order of rules themselves. By default, many systems use a <em>last-in</em>, <em>first-out</em> (LIFO) approach, where the most recently added facts in working memory influence rule firing.</p>
+</li>
+<li>
+<p>Rules can be structured as a search tree:</p>
+<ul>
+<li>Rule-based reasoning involves navigating a knowledge base of rules to draw conclusions or determine actions.</li>
+<li>The process of exploring this search space is known as chaining, which serves as the inference step.</li>
+</ul>
+</li>
+<li>
+<p>Inference techniques</p>
+<ul>
+<li>Forward chaining (data-driven reasoning)
+<ul>
+<li>Starts with known data and applies business rules to infer new information.</li>
+<li>Can result in unnecessary processing if the inferred data is not directly relevant to the goal.</li>
+</ul>
+</li>
+<li>Backward chaining (goal-driven reasoning)
+<ul>
+<li>Starts with a specific goal and works backwards to identify the required steps or data.</li>
+<li>Particularly effective for problem-solving and investigative tasks.</li>
+</ul>
+</li>
+</ul>
+<p>Many KBS, whether rule-based or case-based, employee a combination of forward and backward chaining techniques.</p>
+</li>
+<li>
+<p>Generation and Test is a foundational inference paradigm in classical AI, involving the following steps:</p>
+<ul>
+<li>Generation<br>
+Create a potential solution, often using forward chaining.</li>
+<li>Test<br>
+Evaluate the solution's validity against the requirements, typically using backward chaining. These steps are generally executed in tandem.</li>
+</ul>
+<p>When multiple potential solutions exist, the focus shifts to gathering evidence to efficiently narrow down the solution set.</p>
+<p>This paradigm was utilised by early expert systems like DENDRAL (for chemical analysis) and MYCIN (for medical diagnosis).</p>
+</li>
+<li>
+<p>Summary of different intelligent systems:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Intelligent Systems</th>
+<th style="text-align:left">Reasoning Methods</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Rule-Based Systems</td>
+<td style="text-align:left">Deductive Reasoning</td>
+</tr>
+<tr>
+<td style="text-align:left">Case-Based Systems</td>
+<td style="text-align:left">Analogical Reasoning</td>
+</tr>
+<tr>
+<td style="text-align:left">Diagnostics Systems</td>
+<td style="text-align:left">Abductive Reasoning</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ol>
+<h2 id="formal-logic">Formal Logic</h2>
+<ol>
+<li>
+<p>Propositional logic is a branch of formal logic that deals on propositions, which are declarative statements that can either be true or false. Examples:</p>
+<ul>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span></span></span></span>: &quot;It is raining.&quot;</li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi></mrow><annotation encoding="application/x-tex">q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span></span></span></span>: &quot;2 + 2 = 4&quot;</li>
+</ul>
+</li>
+<li>
+<p>Propositional logic expressions are formed using propositions and logical connectives. The truth value of these expressions can be evaluated using truth tables, which determine the truth value of a compound proposition based on the truth values of its components.</p>
+</li>
+<li>
+<p>Logical connectives are operators that combine or modify propositions to form compound propositions.</p>
+<ul>
+<li>AND (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∧</mo></mrow><annotation encoding="application/x-tex">\land</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5556em;"></span><span class="mord">∧</span></span></span></span>): True if both propositions are true. (conjunction)
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span></span></span></span></th>
+<th style="text-align:center"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span></th>
+<th style="text-align:center"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>∧</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A\land B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∧</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">T</td>
+<td style="text-align:center">T</td>
+<td style="text-align:center">T</td>
+</tr>
+<tr>
+<td style="text-align:center">T</td>
+<td style="text-align:center">F</td>
+<td style="text-align:center">F</td>
+</tr>
+<tr>
+<td style="text-align:center">F</td>
+<td style="text-align:center">T</td>
+<td style="text-align:center">F</td>
+</tr>
+<tr>
+<td style="text-align:center">F</td>
+<td style="text-align:center">F</td>
+<td style="text-align:center">F</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>OR (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∨</mo></mrow><annotation encoding="application/x-tex">\lor</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5556em;"></span><span class="mord">∨</span></span></span></span>): True if at least one proposition is true. (disjunction)
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span></span></span></span></th>
+<th style="text-align:center"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span></th>
+<th style="text-align:center"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>∨</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A\lor B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∨</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">T</td>
+<td style="text-align:center">T</td>
+<td style="text-align:center">T</td>
+</tr>
+<tr>
+<td style="text-align:center">T</td>
+<td style="text-align:center">F</td>
+<td style="text-align:center">T</td>
+</tr>
+<tr>
+<td style="text-align:center">F</td>
+<td style="text-align:center">T</td>
+<td style="text-align:center">T</td>
+</tr>
+<tr>
+<td style="text-align:center">F</td>
+<td style="text-align:center">F</td>
+<td style="text-align:center">F</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>NOT (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">¬</mi></mrow><annotation encoding="application/x-tex">\neg</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord">¬</span></span></span></span>): Negates the truth value of a proposition. (negation)
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span></span></span></span></th>
+<th style="text-align:center"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">¬</mi><mi>A</mi></mrow><annotation encoding="application/x-tex">\neg A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">¬</span><span class="mord mathnormal">A</span></span></span></span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">T</td>
+<td style="text-align:center">F</td>
+</tr>
+<tr>
+<td style="text-align:center">F</td>
+<td style="text-align:center">T</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>IMPLIES (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span>): True unless the first proposition is true and the second is false. (implication/if-then)
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span></span></span></span></th>
+<th style="text-align:center"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span></th>
+<th style="text-align:center"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>→</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A\rightarrow B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">T</td>
+<td style="text-align:center">T</td>
+<td style="text-align:center">T</td>
+</tr>
+<tr>
+<td style="text-align:center">T</td>
+<td style="text-align:center">F</td>
+<td style="text-align:center">F</td>
+</tr>
+<tr>
+<td style="text-align:center">F</td>
+<td style="text-align:center">T</td>
+<td style="text-align:center">T</td>
+</tr>
+<tr>
+<td style="text-align:center">F</td>
+<td style="text-align:center">F</td>
+<td style="text-align:center">T</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>EQUIVALENT (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>↔</mo></mrow><annotation encoding="application/x-tex">\leftrightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">↔</span></span></span></span>): True if both propositions have the same truth value. (biconditional/if and only if)
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span></span></span></span></th>
+<th style="text-align:center"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span></th>
+<th style="text-align:center"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>↔</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A\leftrightarrow B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">↔</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">T</td>
+<td style="text-align:center">T</td>
+<td style="text-align:center">T</td>
+</tr>
+<tr>
+<td style="text-align:center">T</td>
+<td style="text-align:center">F</td>
+<td style="text-align:center">F</td>
+</tr>
+<tr>
+<td style="text-align:center">F</td>
+<td style="text-align:center">T</td>
+<td style="text-align:center">F</td>
+</tr>
+<tr>
+<td style="text-align:center">F</td>
+<td style="text-align:center">F</td>
+<td style="text-align:center">T</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</li>
+<li>
+<p>Examples of how logical connectives can represent real-world scenarios:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Expression</th>
+<th style="text-align:left">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span></span></span></span></td>
+<td style="text-align:left">Sam has the flu.</td>
+</tr>
+<tr>
+<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi></mrow><annotation encoding="application/x-tex">q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span></span></span></span></td>
+<td style="text-align:left">Sam has a cough.</td>
+</tr>
+<tr>
+<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>∧</mo><mi>q</mi></mrow><annotation encoding="application/x-tex">p\land q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.75em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∧</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span></span></span></span></td>
+<td style="text-align:left">Sam has the flu AND Sam has a cough.</td>
+</tr>
+<tr>
+<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>∧</mo><mi mathvariant="normal">¬</mi><mi>q</mi></mrow><annotation encoding="application/x-tex">p\land\neg q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.75em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∧</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord">¬</span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span></span></span></span></td>
+<td style="text-align:left">Sam has the flu AND Sam does not have no cough.</td>
+</tr>
+<tr>
+<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>→</mo><mi>q</mi></mrow><annotation encoding="application/x-tex">p\rightarrow q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span></span></span></span></td>
+<td style="text-align:left">IF Sam has the flu, THEN Sam has a cough.</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>Logical equivalence</p>
+<p>Logical equivalence refers to two expressions being true under the same conditions, meaning they always have the same truth value. It is denoted as <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>≡</mo><mi>β</mi></mrow><annotation encoding="application/x-tex">\alpha \equiv \beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4637em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span></span></span></span>, which holds if and only if <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>⊨</mo><mi>β</mi></mrow><annotation encoding="application/x-tex">\alpha \models \beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.999em;vertical-align:-0.249em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⊨</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi><mo>⊨</mo><mi>α</mi></mrow><annotation encoding="application/x-tex">\beta \models \alpha</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.999em;vertical-align:-0.249em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⊨</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span></span></span></span> (i.e., <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi></mrow><annotation encoding="application/x-tex">\alpha</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span></span></span></span> logically entails <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span></span></span></span>, and vice versa).</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Expression</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Commutativity of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∧</mo></mrow><annotation encoding="application/x-tex">\land</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5556em;"></span><span class="mord">∧</span></span></span></span></td>
+<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>α</mi><mo>∧</mo><mi>β</mi><mo stretchy="false">)</mo><mo>≡</mo><mo stretchy="false">(</mo><mi>β</mi><mo>∧</mo><mi>α</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(\alpha\land\beta)\equiv(\beta\land\alpha)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∧</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∧</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mclose">)</span></span></span></span></td>
+</tr>
+<tr>
+<td style="text-align:left">Commutativity of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∨</mo></mrow><annotation encoding="application/x-tex">\lor</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5556em;"></span><span class="mord">∨</span></span></span></span></td>
+<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>α</mi><mo>∨</mo><mi>β</mi><mo stretchy="false">)</mo><mo>≡</mo><mo stretchy="false">(</mo><mi>β</mi><mo>∨</mo><mi>α</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(\alpha\lor\beta)\equiv(\beta\lor\alpha)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∨</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∨</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mclose">)</span></span></span></span></td>
+</tr>
+<tr>
+<td style="text-align:left">Associativity of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∧</mo></mrow><annotation encoding="application/x-tex">\land</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5556em;"></span><span class="mord">∧</span></span></span></span></td>
+<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo fence="true">(</mo><mo stretchy="false">(</mo><mi>α</mi><mo>∧</mo><mi>β</mi><mo stretchy="false">)</mo><mo>∧</mo><mi>γ</mi><mo fence="true">)</mo></mrow><mo>≡</mo><mrow><mo fence="true">(</mo><mi>α</mi><mo>∧</mo><mo stretchy="false">(</mo><mi>β</mi><mo>∧</mo><mi>γ</mi><mo stretchy="false">)</mo><mo fence="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">\left((\alpha\land\beta)\land\gamma\right)\equiv\left(\alpha\land(\beta\land\gamma)\right)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;">(</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∧</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∧</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.05556em;">γ</span><span class="mclose delimcenter" style="top:0em;">)</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;">(</span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∧</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∧</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.05556em;">γ</span><span class="mclose">)</span><span class="mclose delimcenter" style="top:0em;">)</span></span></span></span></span></td>
+</tr>
+<tr>
+<td style="text-align:left">Associativity of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∨</mo></mrow><annotation encoding="application/x-tex">\lor</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5556em;"></span><span class="mord">∨</span></span></span></span></td>
+<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo fence="true">(</mo><mo stretchy="false">(</mo><mi>α</mi><mo>∨</mo><mi>β</mi><mo stretchy="false">)</mo><mo>∨</mo><mi>γ</mi><mo fence="true">)</mo></mrow><mo>≡</mo><mrow><mo fence="true">(</mo><mi>α</mi><mo>∨</mo><mo stretchy="false">(</mo><mi>β</mi><mo>∨</mo><mi>γ</mi><mo stretchy="false">)</mo><mo fence="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">\left((\alpha\lor\beta)\lor\gamma\right)\equiv\left(\alpha\lor(\beta\lor\gamma)\right)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;">(</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∨</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∨</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.05556em;">γ</span><span class="mclose delimcenter" style="top:0em;">)</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;">(</span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∨</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∨</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.05556em;">γ</span><span class="mclose">)</span><span class="mclose delimcenter" style="top:0em;">)</span></span></span></span></span></td>
+</tr>
+<tr>
+<td style="text-align:left">Double-Negation Elimination</td>
+<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">¬</mi><mo stretchy="false">(</mo><mi mathvariant="normal">¬</mi><mi>α</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\neg(\neg\alpha)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">¬</span><span class="mopen">(</span><span class="mord">¬</span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mclose">)</span></span></span></span></td>
+</tr>
+<tr>
+<td style="text-align:left">Contraposition</td>
+<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>α</mi><mo>⇒</mo><mi>β</mi><mo stretchy="false">)</mo><mo>≡</mo><mo stretchy="false">(</mo><mi mathvariant="normal">¬</mi><mi>β</mi><mo>⇒</mo><mi mathvariant="normal">¬</mi><mi>α</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(\alpha\Rightarrow\beta)\equiv(\neg\beta\Rightarrow\neg\alpha)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⇒</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">¬</span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⇒</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">¬</span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mclose">)</span></span></span></span></td>
+</tr>
+<tr>
+<td style="text-align:left">Implication Elimination</td>
+<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>α</mi><mo>⇒</mo><mi>β</mi><mo stretchy="false">)</mo><mo>≡</mo><mo stretchy="false">(</mo><mi mathvariant="normal">¬</mi><mi>α</mi><mo>∨</mo><mi>β</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(\alpha\Rightarrow\beta)\equiv(\neg\alpha\lor\beta)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⇒</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">¬</span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∨</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="mclose">)</span></span></span></span></td>
+</tr>
+<tr>
+<td style="text-align:left">Biconditional Elimination</td>
+<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>α</mi><mo>⇔</mo><mi>β</mi><mo stretchy="false">)</mo><mo>≡</mo><mrow><mo fence="true">(</mo><mo stretchy="false">(</mo><mi>α</mi><mo>⇒</mo><mi>β</mi><mo stretchy="false">)</mo><mo>∧</mo><mo stretchy="false">(</mo><mi>β</mi><mo>⇒</mo><mi>α</mi><mo stretchy="false">)</mo><mo fence="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">(\alpha\Leftrightarrow\beta)\equiv\left((\alpha\Rightarrow\beta)\land(\beta\Rightarrow\alpha)\right)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⇔</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;">(</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⇒</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∧</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⇒</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mclose">)</span><span class="mclose delimcenter" style="top:0em;">)</span></span></span></span></span></td>
+</tr>
+<tr>
+<td style="text-align:left">de Morgan</td>
+<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">¬</mi><mo stretchy="false">(</mo><mi>α</mi><mo>∧</mo><mi>β</mi><mo stretchy="false">)</mo><mo>≡</mo><mo stretchy="false">(</mo><mi mathvariant="normal">¬</mi><mi>α</mi><mo>∨</mo><mi mathvariant="normal">¬</mi><mi>β</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\neg(\alpha\land\beta)\equiv(\neg\alpha\lor\neg\beta)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">¬</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∧</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">¬</span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∨</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">¬</span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="mclose">)</span></span></span></span></td>
+</tr>
+<tr>
+<td style="text-align:left">de Morgan</td>
+<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">¬</mi><mo stretchy="false">(</mo><mi>α</mi><mo>∨</mo><mi>β</mi><mo stretchy="false">)</mo><mo>≡</mo><mo stretchy="false">(</mo><mi mathvariant="normal">¬</mi><mi>α</mi><mo>∧</mo><mi mathvariant="normal">¬</mi><mi>β</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\neg(\alpha\lor\beta)\equiv(\neg\alpha\land\neg\beta)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">¬</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∨</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">¬</span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∧</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">¬</span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="mclose">)</span></span></span></span></td>
+</tr>
+<tr>
+<td style="text-align:left">Distributivity of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∧</mo></mrow><annotation encoding="application/x-tex">\land</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5556em;"></span><span class="mord">∧</span></span></span></span> over <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∨</mo></mrow><annotation encoding="application/x-tex">\lor</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5556em;"></span><span class="mord">∨</span></span></span></span></td>
+<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo fence="true">(</mo><mi>α</mi><mo>∧</mo><mo stretchy="false">(</mo><mi>β</mi><mo>∨</mo><mi>γ</mi><mo stretchy="false">)</mo><mo fence="true">)</mo></mrow><mo>≡</mo><mrow><mo fence="true">(</mo><mo stretchy="false">(</mo><mi>α</mi><mo>∧</mo><mi>β</mi><mo stretchy="false">)</mo><mo>∨</mo><mo stretchy="false">(</mo><mi>α</mi><mo>∧</mo><mi>γ</mi><mo stretchy="false">)</mo><mo fence="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">\left(\alpha\land(\beta\lor\gamma)\right)\equiv\left((\alpha\land\beta)\lor(\alpha\land\gamma)\right)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;">(</span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∧</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∨</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.05556em;">γ</span><span class="mclose">)</span><span class="mclose delimcenter" style="top:0em;">)</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;">(</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∧</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∨</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∧</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.05556em;">γ</span><span class="mclose">)</span><span class="mclose delimcenter" style="top:0em;">)</span></span></span></span></span></td>
+</tr>
+<tr>
+<td style="text-align:left">Distributivity of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∨</mo></mrow><annotation encoding="application/x-tex">\lor</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5556em;"></span><span class="mord">∨</span></span></span></span> over <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∧</mo></mrow><annotation encoding="application/x-tex">\land</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5556em;"></span><span class="mord">∧</span></span></span></span></td>
+<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo fence="true">(</mo><mi>α</mi><mo>∨</mo><mo stretchy="false">(</mo><mi>β</mi><mo>∧</mo><mi>γ</mi><mo stretchy="false">)</mo><mo fence="true">)</mo></mrow><mo>≡</mo><mrow><mo fence="true">(</mo><mo stretchy="false">(</mo><mi>α</mi><mo>∨</mo><mi>β</mi><mo stretchy="false">)</mo><mo>∧</mo><mo stretchy="false">(</mo><mi>α</mi><mo>∨</mo><mi>γ</mi><mo stretchy="false">)</mo><mo fence="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">\left(\alpha\lor(\beta\land\gamma)\right)\equiv\left((\alpha\lor\beta)\land(\alpha\lor\gamma)\right)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;">(</span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∨</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∧</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.05556em;">γ</span><span class="mclose">)</span><span class="mclose delimcenter" style="top:0em;">)</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;">(</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∨</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∧</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∨</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.05556em;">γ</span><span class="mclose">)</span><span class="mclose delimcenter" style="top:0em;">)</span></span></span></span></span></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>First-order logic (FOL), also known as predicate logic or predicate calculus, is a formal system for expressing statements about objects, their properties, and their relationships. It extends propositional logic by introducing objects, predicates, and quantifiers, making it significantly more expressive.</p>
+<ul>
+<li>Terms: Represent objects in the domain of discourse.
+<ul>
+<li>Constants: Specific objects (e.g., <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">a</span></span></span></span>, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span>, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>John</mtext></mrow><annotation encoding="application/x-tex">\text{John}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord">John</span></span></span></span></span>).</li>
+<li>Variables: Represent general object (e.g., <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span>, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span>, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi></mrow><annotation encoding="application/x-tex">z</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span></span></span></span>).</li>
+<li>Functions: Map objects to other objects (e.g., <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>Father</mtext><mo stretchy="false">(</mo><mtext>John</mtext><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\text{Father}(\text{John})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">Father</span></span><span class="mopen">(</span><span class="mord text"><span class="mord">John</span></span><span class="mclose">)</span></span></span></span> represents John's father).</li>
+</ul>
+</li>
+<li>Predicates: Describe properties of objects or relationships between objects. Predicates always return a truth value (true or false).<br>
+Example: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>Likes</mtext><mo stretchy="false">(</mo><mtext>John</mtext><mo separator="true">,</mo><mtext>IceCream</mtext><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\text{Likes}(\text{John},\text{IceCream})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">Likes</span></span><span class="mopen">(</span><span class="mord text"><span class="mord">John</span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord">IceCream</span></span><span class="mclose">)</span></span></span></span> means &quot;John likes ice cream&quot;.</li>
+<li>Quantifiers: Specify the scope of variables in a statement.
+<ul>
+<li>Universal quantifier (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∀</mi></mrow><annotation encoding="application/x-tex">\forall</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord">∀</span></span></span></span>): &quot;For all&quot;<br>
+Example: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∀</mi><mi>x</mi><mtext>Loves</mtext><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">,</mo><mtext>Pizza</mtext><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\forall x\text{Loves}(x,\text{Pizza})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∀</span><span class="mord mathnormal">x</span><span class="mord text"><span class="mord">Loves</span></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord">Pizza</span></span><span class="mclose">)</span></span></span></span> means &quot;Everyone loves pizza&quot;.</li>
+<li>Existential quantifier (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∃</mi></mrow><annotation encoding="application/x-tex">\exists</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord">∃</span></span></span></span>): &quot;There exists&quot;<br>
+Example: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∃</mi><mi>x</mi><mtext>Loves</mtext><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">,</mo><mtext>Pizza</mtext><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\exists x\text{Loves}(x,\text{Pizza})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∃</span><span class="mord mathnormal">x</span><span class="mord text"><span class="mord">Loves</span></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord">Pizza</span></span><span class="mclose">)</span></span></span></span> means &quot;Someone loves pizza&quot;.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Sentences</p>
+<ul>
+<li>Atomic sentence: Represent a basic fact or assertion without any logical connectives<br>
+Example: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>IsFriend</mtext><mo stretchy="false">(</mo><mtext>Jessie</mtext><mo separator="true">,</mo><mtext>FatherOf</mtext><mo stretchy="false">(</mo><mtext>DiDi</mtext><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\text{IsFriend}(\text{Jessie},\text{FatherOf}(\text{DiDi}))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">IsFriend</span></span><span class="mopen">(</span><span class="mord text"><span class="mord">Jessie</span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord">FatherOf</span></span><span class="mopen">(</span><span class="mord text"><span class="mord">DiDi</span></span><span class="mclose">))</span></span></span></span> means &quot;Jessie is friend to DiDi's father&quot;.</li>
+<li>Complex sentence: Formed by combining atomic sentences using logical connectives<br>
+Example: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>IsClassmate</mtext><mo stretchy="false">(</mo><mtext>Jessie</mtext><mo separator="true">,</mo><mtext>Sam</mtext><mo stretchy="false">)</mo><mo>∧</mo><mtext>TalksTo</mtext><mo stretchy="false">(</mo><mtext>Jessie</mtext><mo separator="true">,</mo><mtext>Sam</mtext><mo stretchy="false">)</mo><mo>→</mo><mtext>IsFriend</mtext><mo stretchy="false">(</mo><mtext>Jessie</mtext><mo separator="true">,</mo><mtext>Sam</mtext><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\text{IsClassmate}(\text{Jessie},\text{Sam})\land\text{TalksTo}(\text{Jessie},\text{Sam})\rightarrow\text{IsFriend}(\text{Jessie},\text{Sam})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">IsClassmate</span></span><span class="mopen">(</span><span class="mord text"><span class="mord">Jessie</span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord">Sam</span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∧</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">TalksTo</span></span><span class="mopen">(</span><span class="mord text"><span class="mord">Jessie</span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord">Sam</span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">IsFriend</span></span><span class="mopen">(</span><span class="mord text"><span class="mord">Jessie</span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord">Sam</span></span><span class="mclose">)</span></span></span></span><br>
+This means, &quot;If Jessie is a classmate of Sam and Jessie talks to Sam, then Jessie is a friend of Sam&quot;.</li>
+</ul>
+</li>
+<li>
+<p>Propositionalisation</p>
+<p>Propositionalisation is the process of transforming predicate logic statements into propositional forms to establish truth value or to facilitate reasoning. In this process, predicate expressions are either instantiated (assigned specific values) or generalised using quantifiers.</p>
+<ul>
+<li>
+<p>Assign specific value to predicates<br>
+Example: &quot;If Sam studies at NUS, Sam is smart.&quot;</p>
+<p>This can be expressed in predicate logic as:</p>
+<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>StudyAt</mtext><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">,</mo><mtext>NUS</mtext><mo stretchy="false">)</mo><mo>→</mo><mtext>Smart</mtext><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\text{StudyAt}(x,\text{NUS})\rightarrow\text{Smart}(x)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">StudyAt</span></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord">NUS</span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">Smart</span></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span></span></span></span></span></p>
+<p>After substituting <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mtext>Sam</mtext></mrow><annotation encoding="application/x-tex">x=\text{Sam}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord text"><span class="mord">Sam</span></span></span></span></span>:</p>
+<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>StudyAt</mtext><mo stretchy="false">(</mo><mtext>Sam</mtext><mo separator="true">,</mo><mtext>NUS</mtext><mo stretchy="false">)</mo><mo>→</mo><mtext>Smart</mtext><mo stretchy="false">(</mo><mtext>Sam</mtext><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\text{StudyAt}(\text{Sam},\text{NUS})\rightarrow\text{Smart}(\text{Sam})
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">StudyAt</span></span><span class="mopen">(</span><span class="mord text"><span class="mord">Sam</span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord">NUS</span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">Smart</span></span><span class="mopen">(</span><span class="mord text"><span class="mord">Sam</span></span><span class="mclose">)</span></span></span></span></span></p>
+</li>
+<li>
+<p>Universal quantifier<br>
+Example: &quot;Everyone studying at NUS is smart.&quot;</p>
+<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi mathvariant="normal">∀</mi><mi>x</mi><mtext>StudyAt</mtext><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">,</mo><mtext>NUS</mtext><mo stretchy="false">)</mo><mo>→</mo><mtext>Smart</mtext><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\forall x\text{StudyAt}(x,\text{NUS})\rightarrow\text{Smart}(x)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∀</span><span class="mord mathnormal">x</span><span class="mord text"><span class="mord">StudyAt</span></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord">NUS</span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">Smart</span></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span></span></span></span></span></p>
+</li>
+<li>
+<p>Existential quantifier<br>
+Example: &quot;Someone studying at NUS is smart.&quot;</p>
+<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi mathvariant="normal">∃</mi><mi>x</mi><mtext>StudyAt</mtext><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">,</mo><mtext>NUS</mtext><mo stretchy="false">)</mo><mo>∧</mo><mtext>Smart</mtext><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\exists x\text{StudyAt}(x,\text{NUS})\land\text{Smart}(x)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∃</span><span class="mord mathnormal">x</span><span class="mord text"><span class="mord">StudyAt</span></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord">NUS</span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∧</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">Smart</span></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span></span></span></span></span></p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="reasoning-under-uncertainty">Reasoning under Uncertainty</h2>
+<ol>
+<li>
+<p>Three main aspects of knowledge imperfection</p>
+<ul>
+<li>Incompleteness of information<br>
+This refers to situations where critical data or details are missing, making it difficult to arrive at accurate conclusions. Analogical reasoning can be particularly useful in such cases by leveraging similarities between known cases to fill in the gaps or infer missing information. For example, in problem-solving scenarios, incomplete data can be supplemented by comparing the current situation to previous cases with similar attributes.</li>
+<li>Imprecision in description<br>
+This refers to vagueness or lack of clarity in defining conditions or facts. For example, a term like &quot;high risk&quot; can be subjective unless it is quantified or placed within a specific context. Imprecision is often tackled using fuzzy or approximate reasoning, which provides a framework to handle vagueness by assigning degrees of membership to different categories.</li>
+<li>Uncertainty in occurrence<br>
+This refers to the unpredictability or likelihood of events happening due to specific causes, or the uncertainty in evaluating a hypothesis based on observed facts. Addressing this type of uncertainty often requires deductive or abductive reasoning. Probabilistic reasoning techniques, such as Bayesian network, are frequently used to quantify the probabilities of various hypotheses based on evidence and prior knowledge. Machine learning models can also predict event likelihoods by treating causes as features or estimate hypothesis probabilities by using observed evidence as features. The reasoning process of these models can be viewed as either deductive or abductive, depending on the perspective. However, their training or learning phase is fundamentally an inductive reasoning step involving generalisation.</li>
+</ul>
+</li>
+<li>
+<p>Analogical reasoning</p>
+<p>Analogical reasoning, also known as similarity-based reasoning, involves comparing the observed features or properties of a subject with those of other subjects to identify similarities.</p>
+<ul>
+<li>Nearest neighbour approach (kNN)<br>
+This method identifies the closest data points (neighbours) in the feature space to make predictions or classifications. It selects the most similar <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span> subjects and uses majority voting among them to determine the classification or prediction for the subject of interest.</li>
+<li>Case-based reasoning (CBR)<br>
+A problem-solving technique that utilises historical cases to address new problems. It identifies and retrieves the most relevant past cases and adapts their solution to better suit the current problem. This case adaptation enhances effectiveness, particularly when no exact match exists.</li>
+</ul>
+<p>Applications include customer profiling for personalised recommendations, hardware diagnosis, medical education, product design, document preparation, lawyer decision support.</p>
+</li>
+<li>
+<p>Similarity measure</p>
+<ul>
+<li>Attributes and weights<br>
+Identify the relevant attributes of the subject and assign weights based on their importance in determining similarity.</li>
+<li>Minimal satisfaction level<br>
+Define a threshold similarity score required for a satisfactory comparison. Scores below this threshold may indicate that the comparison is insufficient or irrelevant.</li>
+</ul>
+</li>
+<li>
+<p>Fuzzy logic evaluates the degree of truth or inclination towards a vague linguitic concept, assigning partial truth values between 0 (false) and 1 (true). This makes it ideal for handling imprecise or ambiguous concepts.</p>
+</li>
+<li>
+<p>Rules in fuzzy logic</p>
+<p>A fuzzy rule (also known as a fuzzy implication or fuzzy conditional statement) in a multi-input, single-output system generally takes the following form:</p>
+<p>IF <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">x_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> is <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">A_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> AND ... AND <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">x_n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> is <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">A_n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> THEN <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span> is <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span>.</p>
+<p>Where:</p>
+<ul>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>1</mn></msub><mo separator="true">,</mo><mo>⋯</mo><mtext> </mtext><mo separator="true">,</mo><msub><mi>x</mi><mi>n</mi></msub><mo separator="true">,</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x_1,\cdots,x_n,y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span>: The linguistic variables representing the system's inputs and outputs.</li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mn>1</mn></msub><mo separator="true">,</mo><mo>⋯</mo><mtext> </mtext><mo separator="true">,</mo><msub><mi>A</mi><mi>n</mi></msub><mo separator="true">,</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A_1,\cdots,A_n,B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span>: The linguistic values (fuzzy subsets) assigned to the variables <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>1</mn></msub><mo separator="true">,</mo><mo>⋯</mo><mtext> </mtext><mo separator="true">,</mo><msub><mi>x</mi><mi>n</mi></msub><mo separator="true">,</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x_1,\cdots,x_n,y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span>.</li>
+</ul>
+<p>These linguistic values are defined as fuzzy subsets within their respective universes of discourse (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>X</mi><mn>1</mn></msub><mo separator="true">,</mo><mo>⋯</mo><mtext> </mtext><mo separator="true">,</mo><msub><mi>X</mi><mi>n</mi></msub><mo separator="true">,</mo><mi>Y</mi></mrow><annotation encoding="application/x-tex">X_1,\cdots,X_n,Y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span></span></span></span>). This structure models the relationship between inputs (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>1</mn></msub><mo separator="true">,</mo><mo>⋯</mo><mtext> </mtext><mo separator="true">,</mo><msub><mi>x</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">x_1,\cdots,x_n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>) and the output (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span>) using fuzzy logic, enabling the system to process imprecise or uncertain information.</p>
+</li>
+<li>
+<p>Fuzzy <em>modus ponens</em></p>
+<p><strong>Modus Ponens</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Expression</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Rule</td>
+<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo>→</mo><mi>Q</mi></mrow><annotation encoding="application/x-tex">P\rightarrow Q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">Q</span></span></span></span></td>
+</tr>
+<tr>
+<td style="text-align:left">Fact</td>
+<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi></mrow><annotation encoding="application/x-tex">P</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span></span></span></span></td>
+</tr>
+<tr>
+<td style="text-align:left">Conclusion</td>
+<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi></mrow><annotation encoding="application/x-tex">Q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">Q</span></span></span></span></td>
+</tr>
+</tbody>
+</table>
+<p>Where <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi></mrow><annotation encoding="application/x-tex">P</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi></mrow><annotation encoding="application/x-tex">Q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">Q</span></span></span></span> are binary propositions, with <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo stretchy="false">(</mo><mi>P</mi><mo stretchy="false">)</mo><mo separator="true">,</mo><mi>T</mi><mo stretchy="false">(</mo><mi>Q</mi><mo stretchy="false">)</mo><mo>∈</mo><mo stretchy="false">{</mo><mn>0</mn><mo separator="true">,</mo><mn>1</mn><mo stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">T(P),T(Q)\in \{0,1\}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mclose">)</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mopen">(</span><span class="mord mathnormal">Q</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mclose">}</span></span></span></span>.</p>
+<p><strong>Fuzzy Modus Ponens</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Expression</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Rule</td>
+<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo>→</mo><mi>Q</mi></mrow><annotation encoding="application/x-tex">P\rightarrow Q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">Q</span></span></span></span></td>
+</tr>
+<tr>
+<td style="text-align:left">Fact</td>
+<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo mathvariant="normal">′</mo></mrow><annotation encoding="application/x-tex">P\prime</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord">′</span></span></span></span></td>
+</tr>
+<tr>
+<td style="text-align:left">Conclusion</td>
+<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi><mo mathvariant="normal">′</mo></mrow><annotation encoding="application/x-tex">Q\prime</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">Q</span><span class="mord">′</span></span></span></span></td>
+</tr>
+</tbody>
+</table>
+<p>Where:</p>
+<ul>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo separator="true">,</mo><mi>Q</mi></mrow><annotation encoding="application/x-tex">P,Q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">Q</span></span></span></span>: Classical binary propositions.</li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo mathvariant="normal">′</mo><mo separator="true">,</mo><mi>Q</mi><mo mathvariant="normal">′</mo></mrow><annotation encoding="application/x-tex">P\prime,Q\prime</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord">′</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">Q</span><span class="mord">′</span></span></span></span>: Fuzzy propositions, with <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo stretchy="false">(</mo><mi>P</mi><mo mathvariant="normal">′</mo><mo stretchy="false">)</mo><mo separator="true">,</mo><mi>T</mi><mo stretchy="false">(</mo><mi>Q</mi><mo mathvariant="normal">′</mo><mo stretchy="false">)</mo><mo>∈</mo><mo stretchy="false">[</mo><mn>1</mn><mo separator="true">,</mo><mn>0</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">T(P\prime),T(Q\prime)\in [1,0]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord">′</span><span class="mclose">)</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mopen">(</span><span class="mord mathnormal">Q</span><span class="mord">′</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">0</span><span class="mclose">]</span></span></span></span>, that represent approximate matches to <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi></mrow><annotation encoding="application/x-tex">P</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi></mrow><annotation encoding="application/x-tex">Q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">Q</span></span></span></span>, respectively.</li>
+</ul>
+</li>
+<li>
+<p>Fuzzy reasoning, also known as approximate reasoning, employs fuzzy logic to handle situations where precise information is unavailable. It facilitates decision-making in scenarios with incomplete or uncertain data, overcoming the limitations of traditional binary logic. When an input does not perfectly align with a rule's premise, the reasoning process generates an output through an approximation evaluation.</p>
+<p>Applications include automatic washing machine and fuzzy vacuum cleaner.</p>
+</li>
+<li>
+<p>Abductive reasoning works backwards to identify possible causes or explanations for observed facts. A key approach is probabilistic reasoning, which evaluates explanations based on their likelihood, making abduction more rigorous and evidence-driven.</p>
+<p>Bayesian inference is a probabilistic reasoning method that uses Bayes' Theorem to update the probability of a hypothesis <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi></mrow><annotation encoding="application/x-tex">H</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.08125em;">H</span></span></span></span> given evidence <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi></mrow><annotation encoding="application/x-tex">E</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span></span></span></span>.</p>
+<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>H</mi><mo>∣</mo><mi>E</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>E</mi><mo>∣</mo><mi>H</mi><mo stretchy="false">)</mo><mo>⋅</mo><mi>P</mi><mo stretchy="false">(</mo><mi>H</mi><mo stretchy="false">)</mo></mrow><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>E</mi><mo stretchy="false">)</mo></mrow></mfrac></mrow><annotation encoding="application/x-tex">P(H\mid E)=\frac{P(E\mid H)\cdot P(H)}{P(E)}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.363em;vertical-align:-0.936em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.427em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mclose">)</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+</li>
+</ol>
+<h2 id="knowledge-representation">Knowledge Representation</h2>
+<ol>
+<li>
+<p>Forms of knowledge representation</p>
+<ul>
+<li>Natural language<br>
+Representing knowledge through text or spoken words, as humans commonly communicate.</li>
+<li>Mathematical formulas<br>
+Using equations or mathematical expressions to represent knowledge, particularly in scientific and engineering domains.</li>
+<li>Formal logic<br>
+Utilising systems like propositional logic or predicate logic to represent knowledge with precise syntax and semantics.</li>
+<li>Semantic networks<br>
+Graph-based representations where nodes represent concepts, and edges define relationships between concepts, often used to model associative knowledge.</li>
+<li>Frames<br>
+Structured data models with predefined &quot;slots&quot; (attributes) and &quot;filler&quot; (values) for representing entities and their properties.</li>
+<li>Ontology<br>
+A hierarcical representation of domain-specific knowledge, including concepts, relationships, and constraints, often used in AI and semantic system.</li>
+<li>Databases<br>
+Organised storage of data with a schema to represent structured information for querying and retrieval.</li>
+<li>Semantic web<br>
+Representing knowledge using standards such as RDF (Resource Description Framework) and OWL (Web Ontology Language) to enable interoperability and reasoning over web data.</li>
+<li>Knowledge graphs<br>
+Networks of interconnected entities (nodes) and relationship (edges) that enable semantic querying and inference.</li>
+</ul>
+</li>
+<li>
+<p>Knowledge representation in machines</p>
+<ul>
+<li>The selection of a representation method (e.g., data structure) is inherently linked to the inference mechanism (e.g., algorithm) to ensure efficient reasoning and computation.</li>
+</ul>
+</li>
+<li>
+<p>Semantic network</p>
+<p>A semantic network is a form of knowledge representation that is particularly useful for certain types of logical reasoning. It provides a convenient graphical notation to express relationships between concepts or entities. A semantic network is structured as a graph, where:</p>
+<ul>
+<li>Nodes represent concepts or entities.</li>
+<li>Edges (links) represent relationships between those concepts. Common types of relationships include:
+<ul>
+<li>Is-a (categorisation)<br>
+Example: &quot;A Cat is-a Mammal&quot;.</li>
+<li>Part-of<br>
+Example: &quot;An Engine is part-of a Car&quot;.</li>
+<li>Property<br>
+Example: &quot;A Bird has the property Wings&quot;.</li>
+<li>Causal<br>
+Example: &quot;Rain causes Flood&quot;.</li>
+</ul>
+</li>
+</ul>
+<p>Semantic networks are widely used in fields such as artificial intelligence, natural language processing, and cognitive science. They model how information is structured, enabling both humans and machines to better understand and reason about relationships between concepts.</p>
+</li>
+<li>
+<p>Frame</p>
+<p>Frames are a knowledge representation structure that organises information about objects, concepts, or situations in terms of attributes (slots) and their values (fillers). They are similar to semantic networks but provide a more structured approach, often incorporating default values for missing information.</p>
+<p>Structure:</p>
+<ul>
+<li>Slots<br>
+Represent attributes or properties of the object or concept (e.g., colour, size, location).</li>
+<li>Fillers<br>
+Contain specific values for the slots (e.g., &quot;red&quot; as the value for the colour attribute).</li>
+<li>Defaults<br>
+Provide default values for slots when specific information is not available.</li>
+</ul>
+<p>Example:</p>
+<p>A frame for a &quot;cat&quot;:</p>
+<pre><code class="language-yml"><span class="hljs-attr">Frame:</span> <span class="hljs-string">Cat</span>
+<span class="hljs-bullet">-</span> <span class="hljs-attr">Species:</span> <span class="hljs-string">Felis</span> <span class="hljs-string">catus</span>
+<span class="hljs-bullet">-</span> <span class="hljs-attr">Colour:</span> [<span class="hljs-attr">Default:</span> <span class="hljs-string">black</span>]
+<span class="hljs-bullet">-</span> <span class="hljs-attr">Sound:</span> [<span class="hljs-attr">Default:</span> <span class="hljs-string">meow</span>]
+<span class="hljs-bullet">-</span> <span class="hljs-attr">Behaviour:</span> [<span class="hljs-attr">Default:</span> <span class="hljs-string">playful</span>]
+</code></pre>
+</li>
+<li>
+<p>Domain ontology, object-oriented classes and database schema</p>
+<p>Domain ontology, object-oriented classes, and database schema are interrelated concepts used to model, represent, and manage knowledge within a domain. Domain ontology defines the conceptual structure and relationships within the domain, serving as a theoretical framework. Object-oriented classes provide a computational representation of these concepts, encapsulating attributes and behaviours in a programmatic context. The database schema translates this representation into a persistent data structure, organising and storing the data based on the conceptual framework defined by the ontology.</p>
+</li>
+<li>
+<p>Ontology for distributed AI</p>
+<p>An ontology for distributed AI is a formal and structured framework that defines the concepts, relationships, and properties relevant to distributed AI systems. It acts as a shared knowledge base, enabling effective communication, collaboration, and reasoning among distributed components or agents within the system. In large-scale knowledge representation, a general-purpose ontology is essential for organising and integrating knowledge across multiple specific domains, ensuring consistency and interoperability.</p>
+</li>
+<li>
+<p>Knowledge graph</p>
+<p>A knowledge graph is a structured representation of information that models entities, their attributes, and relationships within a specific domain. It captures semantic meaning, enabling enhanced understanding, reasoning, and decision-making. Knowledge graphs are widely used in search engines, recommendation systems, natural language processing, and artificial intelligence.</p>
+<ul>
+<li>Entities<br>
+Entities are the nodes in the graph, representing real-world objects, concepts, or abstract ideas. For example, &quot;Apple Inc.&quot;, &quot;Steve Job&quot;, and &quot;iPhone&quot; are entities.</li>
+<li>Relationships<br>
+Relationships are the edges connecting entities, representing associations or interactions. These are typically described as predicates, such as &quot;founded by&quot;, &quot;manufactures&quot;, &quot;developed&quot;.</li>
+<li>Attributes<br>
+Both entities and relationships can have attributes or properties that provide additional details. For example, the entity &quot;Apple Inc.&quot; might have attributes such as &quot;founded in 1976&quot; or &quot;headquartered in Cupertino&quot;.</li>
+<li>Context and semantics<br>
+Knowledge graphs often incorporate ontologies or schemas to ensure semantic consistency and domain specificity. These structures improve interoperability and enable advanced reasoning capabilities.</li>
+<li>Scalability<br>
+Knowledge graphs are designed to evolve, allowing new entities, relationships, and attributes to be added seamlessly without disrupting the existing structure or semantics.</li>
+</ul>
+</li>
+<li>
+<p>Enhancing knowledge graph for reasoning</p>
+<p>Transforming a knowledge graph into a rule-based system involves combining foundational models like RDF with reasoning frameworks such as OWL and SWRL. This integration enables logical inference, semantic enrichment, and rule-based decision-making.</p>
+<p><strong>RDF: The Backbone of Knowledge Graphs</strong></p>
+<p>The Resource Description Framework (RDF) provides the foundational structure for knowledge graphs. Information is represented as triples (subject → predicate → object), enabling flexible, interoperable, and queryable data.</p>
+<p>Example:</p>
+<ul>
+<li>Subject: &quot;John&quot;</li>
+<li>Predicate: &quot;worksAt&quot;</li>
+<li>Object: &quot;DBS Bank&quot;</li>
+</ul>
+<p>These triples form the core graph structure and can be queried using SPARQL, a query language designed for RDF data.</p>
+<p><strong>OWL: Semantic Enrichment</strong></p>
+<p>The Web Ontology Language (OWL) extends RDF by adding semantic capabilities to represent complex relationships and hierarchies. With OWL, knowledge graphs gain the ability to infer new facts.</p>
+<ul>
+<li>Class hierarchies: Defining categories and their relationships (e.g., &quot;Employee&quot; as a subclass of &quot;Person&quot;).</li>
+<li>Equivalence: Map synonymous relationships (e.g., &quot;worksAt&quot; and &quot;employedBy&quot; are equivalent).</li>
+<li>Property restrictions: Enforce rules such as &quot;Every Employee must work at one Organisation&quot;.</li>
+</ul>
+<p>Example:</p>
+<p>If &quot;John works at DBS Bank&quot; and &quot;DBS Bank is an organisation&quot;, OWL can infer that &quot;John is employed by an organisation&quot;.</p>
+<p><strong>SWRL: Rule-Based Reasoning</strong></p>
+<p>The Semantic Web Rule Language (SWRL) extends OWL by enabling rule-based reasoning through logical statements.</p>
+<ul>
+<li>Structure: SWRL rules follow the format:<br>
+IF conditions are met → THEN conclusions are drawn</li>
+</ul>
+<p>Example rule:</p>
+<ul>
+<li>IF: A person works at a bank, and a bank provides financial services.</li>
+<li>THEN: The person works in the financial industry.</li>
+</ul>
+<p>SWRL supports first-order logic, allowing for the encoding of domain-specific rules and enabling deductive reasoning.</p>
+<p><strong>A Rule-Based Knowledge Graph</strong></p>
+<p>By integrating RDF, OWL, and SWRL, a knowledge graph evolves into a powerful rule-based system capable of:</p>
+<ul>
+<li>First-order logic: Encoding domain-specific rules (e.g., &quot;People over 65 are eligible for senior benefits&quot;).</li>
+<li>Inference: Automatically deducing new facts from existing data and rules.</li>
+<li>Query and explainability: Extracting insights with SPARQL and explaining inferred conclusions.</li>
+</ul>
+<p>This layered approach allows knowledge graphs to provide rich semantic insights, enhance decision-making, and support complex reasoning.</p>
+</li>
+<li>
+<p>Semantic web</p>
+<p>The semantic web, a vision introduced by Tim Berners-Lee, aims to make data on the web machine-readable and interoperable by leveraging standardised frameworks such as RDF, OWL, and SPARQL. Its overarching goal is to create a universal layer of linked data across the web, enabling machines to understand and process information meaningfully.</p>
+<p>Knowledge graphs are practical implementations inspired by the principles of the semantic web. While the semantic web envisions a global, web-wide ecosystem of linked data, knowledge graphs are typically domain-specific and designed for targeted applications. Notable examples include Google's Knowledge Graph, which powers search engine results, and Facebook's Social Graph, which models social connections. Although knowledge graphs often incorporate semantic web standards, they frequently rely on proprietary technologies to address challenges related to performance and scalability.</p>
+<p>Recent advancements in data science and machine learning, particularly in areas such as graph neural networks (GNNs) and representation learning, have significantly expanded the scope of knowledge graph applications. Beyond traditional use cases like search engines, recommendation systems, and natural language processing, knowledge graphs are increasingly used in scientific research. For example, in fields such as genomics, proteomics, and systems biology, knowledge graphs model complex biological relationships, including gene interactions, protein networks, and disease pathways.</p>
+<p>While knowledge graphs build on the foundational ideas of the semantic web, they often balance the use of open standards with domain-specific and proprietary approaches. This flexibility has made them a powerful tool across a wide range of industries and research domains.</p>
+</li>
+<li>
+<p>Reference books</p>
+<ul>
+<li>Artificial Intelligence: A Modern Approach</li>
+</ul>
+</li>
+</ol>
+<h2 id="model-representation">Model Representation</h2>
+<ol start="13">
+<li>
+<p>NN embedding
+one-hot encoding
+sparsely distributed variables
+embedding help overcome the problem
+embeddings are vectors</p>
+<ul>
+<li>tranforming categorical data</li>
+<li>reducing  high dimensional data into lower dimensional vectors</li>
+</ul>
+<p>embeddings</p>
+<ul>
+<li>process of vectorise features</li>
+<li>numerical vector of the embedding process</li>
+<li>embedding layer</li>
+<li>embedding model</li>
+</ul>
+<p>In CNNs, embedding enhance feature extraction
+In RNNs, embedding enhance sequential data processing</p>
+<p>Dimensionality reduction</p>
+</li>
+<li>
+<p>Embedding models</p>
+<ul>
+<li>PCA</li>
+<li>SVD</li>
+<li>Word2Vec</li>
+<li>BERT</li>
+</ul>
+</li>
+</ol>
+
+            <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+            
+        </body>
+        </html>

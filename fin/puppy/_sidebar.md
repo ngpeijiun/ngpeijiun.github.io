@@ -1,0 +1,3 @@
+- [Home](/ "Home")
+- [Sequential Chapter Review](fin/puppy/p-1-sequential-chapter-review.md "Sequential Chapter Review")
+- [Cross-Chapter Themes](fin/puppy/p-2-cross-chapter-themes.md "Cross-Chapter Themes")

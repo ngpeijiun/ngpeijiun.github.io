@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>Introduction to Recommender Systems</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 16px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <h1 style="color: #ccc">Intelligent Reasoning System</h1>
+<h1 id="introduction-to-recommender-systems">Introduction to Recommender Systems</h1>
+<blockquote>
+<p>Reduce choice overload by predicting what the user is most likely to prefer from a large set of options.</p>
+</blockquote>
+<div class="badge">
+    <span class="key">Type</span>
+    <span class="value">Course</span>
+</div>
+<div class="badge">
+    <span class="key">Instructor</span>
+    <span class="value">Barry Shepherd</span>
+</div>
+<div class="badge">
+    <span class="key">Institution</span>
+    <span class="value">NUS-ISS</span>
+</div>
+<div class="badge">
+    <span class="key">Note Updated</span>
+    <span class="value">2025-08-02</span>
+</div>
+<h2 id="what-are-recommender-systems">What Are Recommender Systems?</h2>
+<p>Recommender systems are designed to assist users in making choices when the number of options is vast.</p>
+<ol>
+<li>Key Challenges: How to reason effectively when there are millions of possible outcomes (e.g., Amazon has 12M+ products).</li>
+<li>These systems are core to platform like Netflix, Amazon, YouTube, Grab, LinkedIn, Spotify, Airbnb, and Lazada.</li>
+<li>They are <strong>critical revenue drivers</strong>, enhancing <strong>user experience</strong>, <strong>engagement</strong>, and <strong>conversion rates</strong>.</li>
+</ol>
+<h2 id="importance--impact">Importance &amp; Impact</h2>
+<p>Case Study: Netflix</p>
+<ol>
+<li>80% of viewing time is driven by Netflix's recommender system.</li>
+<li>Estimated $1B/year in savings due to improved retention and reduced churn.</li>
+</ol>
+<p>Netflix Prize</p>
+<ol>
+<li>Launched: 2006 with a $1M prize.</li>
+<li>Data: 100M movie ratings from 500,000 users on 17,000+ movies.</li>
+<li>Goal: Predict 3M unseen ratings; improve <strong>RMSE (Root Mean Square Error)</strong> by 10%.</li>
+<li>Winner: BellKor's Pragmatic Chaos (2009).</li>
+</ol>
+<h2 id="data-sources-for-recommender-systems">Data Sources for Recommender Systems</h2>
+<ol>
+<li><strong>Items</strong>
+<ul>
+<li>Objects to be recommended (e.g., books, videos, products).</li>
+</ul>
+</li>
+<li><strong>Users</strong>
+<ul>
+<li>Demographics, goals, preferences (explicit or inferred).</li>
+</ul>
+</li>
+<li><strong>Ratings</strong>: Interactions between users and items.
+<ul>
+<li><strong>Explicit</strong>: e.g., 1-5 star ratings, agree/neutral/disagree.</li>
+<li><strong>Implicit</strong>: e.g., clicks, views, watch time, purchases.</li>
+<li><strong>Text Comments</strong>: user feedback or reviews.</li>
+<li><strong>Tags</strong>: labels like &quot;boring&quot;, &quot;inspiring&quot;, &quot;too long&quot;.</li>
+</ul>
+</li>
+<li><strong>Context</strong>: Additional conditions.
+<ul>
+<li>User expertise level (e.g., is the user a beginner or advanced camera user?)</li>
+<li>Location-based filters (e.g., is the user looking for restaurant near their current location?)</li>
+<li>Device type or time of day</li>
+</ul>
+</li>
+</ol>
+<h2 id="diversity-matters">Diversity Matters</h2>
+<p>Recommender systems typically return a list of suggestions, not just one item. These suggestions span multiple categories—such as literature, fitness gear, video content, beverages, or biographies—to support both user satisfaction and content discovery.</p>
+<p>While accuracy is important, it is not sufficient on its own. Effective recommender systems strike a balance between <strong>relevance</strong> and <strong>diversity</strong>.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left">Low Relevance</th>
+<th style="text-align:left">High Relevance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Low Diversity</strong></td>
+<td style="text-align:left">Unhelpful</td>
+<td style="text-align:left">Repetitive</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>High Diversity</strong></td>
+<td style="text-align:left">Unfocused</td>
+<td style="text-align:left">Balanced and engaging</td>
+</tr>
+</tbody>
+</table>
+<p>Aim for the ideal zone: recommendations that are both <strong>relevant</strong> and <strong>diverse</strong>.</p>
+<h2 id="big-issues-for-recommender-systems">Big Issues for Recommender Systems</h2>
+<ol>
+<li>
+<p><strong>Data Sparsity</strong></p>
+<p>Most user-item interactions are missing, making it difficult to learn meaningful patterns from sparse matrices.</p>
+<ul>
+<li>Netflix: 98.8% of ratings are unknown</li>
+<li>Movielens: 95.7% of ratings are unknown</li>
+</ul>
+</li>
+<li>
+<p><strong>Cold Start Problem</strong></p>
+<p>Occurs when new users or new items have no prior interactions:</p>
+<ul>
+<li>Collaborative filtering cannot be applied.</li>
+<li>No reliable signals are available for personalisation.</li>
+</ul>
+</li>
+</ol>
+<h2 id="main-approaches">Main Approaches</h2>
+<h3 id="popularity-based">Popularity-Based</h3>
+<p>Simple and non-personalised:</p>
+<ol>
+<li>Recommends trending or best-selling items.</li>
+<li>Works well for <strong>cold-start</strong> users or items.</li>
+<li>Examples: YouTube trending videos, Amazon bestsellers.</li>
+</ol>
+<h3 id="association-rule-mining">Association Rule Mining</h3>
+<p>e.g., Market Basket Analysis</p>
+<blockquote>
+<p><img src="file:////Users/naryaong/Code/git/ngpeijiun.github.io/ais/irs/_media/irs-8-mba-long-tail.png" alt="MBA Long Tail"></p>
+</blockquote>
+<ol>
+<li>Recommends items that are frequently co-purchased or co-viewed.</li>
+<li>Based on broad transaction trends and <strong>co-occurrence</strong> in transactions or sessions, rather than individual preferences.</li>
+<li>Works well for <strong>session-based recommendations</strong>, where user intent changes frequently (e.g., browsing specific categories).</li>
+<li>Typically promotes <strong>popular items</strong> (<strong>short head</strong> of the distribution).</li>
+<li>Limitations:
+<ul>
+<li>Not personalised to the user's past behaviour.</li>
+<li>Performs poorly on <strong>long-tail</strong> items that occur infrequently.</li>
+</ul>
+</li>
+<li>Challenge:
+<ul>
+<li>How to recommend less popular (long-tail) items effectively?</li>
+</ul>
+</li>
+</ol>
+<h3 id="content-based-filtering">Content-Based Filtering</h3>
+<ol>
+<li>Recommends <strong>similar items</strong> to those a user liked or viewed previously.</li>
+<li>Matches users directly to item features (e.g., genre, keywords).</li>
+<li>Common in document and product recommendation.</li>
+<li>Risk: may reinforce narrow interests (filter bubbles).</li>
+</ol>
+<h3 id="collaborative-filtering">Collaborative Filtering</h3>
+<ol>
+<li>
+<p>Recommends items liked by <strong>similar users</strong> or <strong>items similar</strong> to those liked by the user (user-user or item-item).</p>
+</li>
+<li>
+<p>Enables <strong>serendipitous discovery</strong> beyond the user's past preferences.</p>
+</li>
+<li>
+<p>Common in e-retail and streaming platforms.</p>
+</li>
+<li>
+<p><strong>Latent Factor Models</strong> (e.g., matrix factorisation) uncover hidden dimensions of user preferences and item characteristics (e.g., genre, mood, quality).</p>
+<p>The models learn compact user-item embeddings by factorising the interaction matrix into <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mtext>user</mtext><mo>×</mo><mtext>factor</mtext><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(\text{user}\times\text{factor})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord text"><span class="mord">user</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">factor</span></span><span class="mclose">)</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mtext>item</mtext><mo>×</mo><mtext>factor</mtext><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(\text{item}\times\text{factor})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord text"><span class="mord">item</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">factor</span></span><span class="mclose">)</span></span></span></span> matrices. These <strong>latent factors</strong> allow generalisation to unseen combinations and improve prediction from sparse data.</p>
+</li>
+</ol>
+<h3 id="community-basedsocial-filtering">Community-Based/Social Filtering</h3>
+<ol>
+<li>Leverages friendship or social networks to suggest what users' social connections liked.</li>
+<li>Builds on trust in the preferences of known users.</li>
+</ol>
+<h3 id="knowledge-based-filtering">Knowledge-Based Filtering</h3>
+<ol>
+<li>Suitable when user has <strong>explicit constraints</strong> (e.g., financial, regulatory, prerequisites)</li>
+<li>No need for prior user behaviour.</li>
+<li>Useful for high-involvement decisions like cars, loans, housing.</li>
+<li>Methods include <strong>constraint-based reasoning</strong> and <strong>multi-criteria decision-making</strong> (MCDM).</li>
+</ol>
+
+            <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+            
+        </body>
+        </html>
