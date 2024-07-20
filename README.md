@@ -14,8 +14,7 @@
     *Andrew Ng*<br>
     *DeepLearning.AI*
   - [Generative AI with Large Language Models](genai/with-llm/genai-1-intro-and-project-lifecycle)<br>
-    *DeepLearning.AI*<br>
-    *Amazon Web Services*
+    *DeepLearning.AI, Amazon Web Services*
 
 - Notes about Chatbot
 
@@ -57,14 +56,19 @@
     *MDN Web Docs*
   - [p5.js](cg/p5/p5-1-introduction)
 
+- Notes about Game Development
+  - [Game Development](gamedev/gamedev-1-introduction)
+
 - Notes about Investment
 
   - [Specified Investment Products (SIPs)](fin/sip/sip-1-unit-trusts)<br>
     *ABS, SAS*
+  - [小狗钱钱](fin/puppy/p-1-sequential-chapter-review)<br>
+    *Bodo Schäfer*
+  - [巴比伦理财圣经](fin/babylon/b-1-intro)<br>
+    *George Samuel Clason*
   - [Million Dollar Maths](fin/math/mdm-1-the-power-of-exponential-growth)<br>
     *Hugh Barker*
-  - [巴比伦理财圣经](fin/babylon/b-1-intro.md)<br>
-    **George Samuel Clason*
 
 - Notes about Learning
 
