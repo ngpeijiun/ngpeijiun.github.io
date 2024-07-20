@@ -12,6 +12,9 @@ Apr 10, 2024
     "editor.renderWhitespace": "all",
     "editor.rulers": [80, 120],
     "files.eol": "\n",
-    "vim.useSystemClipboard": true
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+    "markdown.preview.fontSize: 16,
+    "vim.useSystemClipboard": true,
 }
 ```
