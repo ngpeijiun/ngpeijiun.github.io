@@ -2,7 +2,7 @@
 
 # Introduction to Data Analysis
 
-Jul 18, 2024
+Jul 26, 2024
 
 ## What is Data Analysis?
 
@@ -573,6 +573,29 @@ Jul 18, 2024
     -   Data analyst specialist
     -   Domain specialist
 
-2.  The data analyst specialist role focuses on developing technical and functional expertise. Starting as an associate or junior data analyst, one progresses through analyst, senior analyst, lead analyst, and principal analyst roles. The progression depends on industry, organisation size, and team size. Skills advance from foundational to expert in technical, statistical, and analytical areas, requiring familiarity with various tools, languages, and technologies.
+2.  The data analyst specialist role focuses on developing technical and functional expertise. The career path for data analysts can vary depending on the industry and organisation size, but it generally involves starting as an associate or junior data analyst, progressing through data analyst, senior data analyst, lead data analyst, and principal data analyst roles. Skills advance from foundational to expert level in technical, statistical, and analytical areas, requiring familiarity with various tools, languages, and technologies.
 
-    Communication, presentation, stakeholder management, and project management skills are also essential. Lead or principal analysts may establish team processes, recommend software and tools, upskill team members, and expand the team. These responsibilities might overlap with managerial roles in some organisations.
+    Communication, presentation, stakeholder management, and project management skills are also essential. Lead or principal data analysts may establish team processes, recommend software and tools, upskill team members, and expand the team. These responsibilities might overlap with managerial roles in some organisations.
+
+3.  Domain specialists, also known as functional analysts, are experts in specific domains like healthcare, sales, finance, social media, or digital marketing. They may not be the most technically skilled but are recognised as authorities in their fields, holding titles such as marketing analyst, sales analyst, healthcare analyst, or social media analyst.
+
+4.  Analytics-enabled job roles, like project managers, marketing managers, and HR managers, benefit from analytics skills to enhance efficiency and effectiveness. Many job openings in these roles are analytics-enabled as organisations increasingly rely on data for decision-making.
+
+5.  Data analysts have opportunities to transition into other data professions by acquiring new skills. Potential career paths include:
+
+    -   Data engineer
+    -   Big data engineer
+    -   Data scientist
+    -   Business analyst
+    -   Business intelligence analyst
+
+    For example, a junior data analyst interested in data lakes and big data can become a big data engineer with further expertise. Similarly, those intrigued by the business aspect can transition into a business analyst or business intelligence analyst role. Many resources are available to support skill development and career advancement.
+
+## Generative AI for Data Analysis
+
+1.  The application of generative AI in data analysis is vast.
+
+    -   **Data generation and imputation** <br> Generate synthetic datasets for testing and development. Generative AI can create synthetic datasets, solving the challenge of limited data availability. It creates synthetic datasets and augments existing ones, providing analysts with diverse and enriched data for robust analysis and model training. These models can fill in missing data, providing a more complete picture for analysts and data scientists.
+    -   **Transforming data representation** <br> Tranforming data into different representations is another frontier. Generative AI can convert texts into images or vice versa, giving data analysts new perspectives and creative ways to represent complex information. Data preparation is crucial in data analytics journey. Generative AI contributes by automating and enhancing data cleaning, normalisation, transforming processes, and streamlining the path from raw data to actionable insights.
+    -   **Querying databases** <br> When it comes to querying databases, generative AI brings efficiency and innovation. It can assist in formulating complex queries, optimising database interactions, and adapting to evolving data structures. Imagine having an intelligent assistant for your data queries. Generative AI empowers Q&A models, enabling users to interact with data naturally, ask questions in plain language, and receive meaningful insights in return.
+    -   **Interactive visualisations and storytelling** <br> Generative AI can enhance the quality and aesthetics of data visualisations, making them informative and visually striking.

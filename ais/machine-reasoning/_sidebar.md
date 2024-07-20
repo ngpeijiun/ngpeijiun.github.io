@@ -1,0 +1,6 @@
+- [Home](/ "Home")
+- [Search Algorithms](ais/machine-reasoning/irs-1-search-algorithms "Search Algorithms")
+- [Reasoning in AI](ais/machine-reasoning/irs-2-reasoning-in-ai "Reasoning in AI")
+- [Model Representation](ais/machine-reasoning/irs-3-model-representation "Model Representation")
+- [Knowledge Graph](ais/machine-reasoning/irs-4-knowledge-graph "Knowledge Graph")
+- [Inductive Reasoning in ML](ais/machine-reasoning/irs-5-inductive-reasoning-in-ml "Inductive Reasoning in ML")
