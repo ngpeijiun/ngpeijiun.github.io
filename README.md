@@ -57,6 +57,9 @@
     *MDN Web Docs*
   - [p5.js](cg/p5/p5-1-introduction)
 
+- Notes about Game Development
+  - [Game Development](gamedev/gamedev-1-introduction)
+
 - Notes about Investment
 
   - [Specified Investment Products (SIPs)](fin/sip/sip-1-unit-trusts)<br>
