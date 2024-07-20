@@ -1,4 +1,5 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto+Mono|Source+Sans+Pro:300,400,600");
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Public+Sans:ital,wght@0,100..900;1,100..900");
+
 * {
     -webkit-font-smoothing: antialiased;
     -webkit-overflow-scrolling: touch;
@@ -65,8 +66,9 @@ body {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     color: black;
-    font-family: Source Sans Pro, Helvetica Neue, Arial, sans-serif;
-    font-size: 15px;
+    font-family: "Open Sans", serif;
+    font-optical-sizing: auto;
+    font-size: 16px;
     letter-spacing: 0;
     margin: 0;
     overflow-x: hidden;
@@ -427,7 +429,8 @@ body.sticky .sidebar-toggle {
     border-radius: 100%;
     color: #fff;
     content: "!";
-    font-family: Dosis, Source Sans Pro, Helvetica Neue, Arial, sans-serif;
+    font-family: "Open Sans", serif;
+    font-optical-sizing: auto;
     font-size: 14px;
     font-weight: 700;
     left: -12px;
@@ -802,7 +805,8 @@ body {
 .markdown-section code,
 .markdown-section pre {
     background-color: #f8f8f8;
-    font-family: Roboto Mono, Monaco, courier, monospace
+    font-family: "Fira Code", serif;
+    font-optical-sizing: auto;
 }
 
 .markdown-section pre {
@@ -919,7 +923,8 @@ body {
     border-radius: 2px;
     color: #525252;
     display: block;
-    font-family: Roboto Mono, Monaco, courier, monospace;
+    font-family: "Fira Code", serif;
+    font-optical-sizing: auto;
     font-size: .8rem;
     line-height: inherit;
     margin: 0 2px;
