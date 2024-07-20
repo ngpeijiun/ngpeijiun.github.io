@@ -11,6 +11,7 @@ Apr 10, 2024
     "editor.fontSize": 14,
     "editor.renderWhitespace": "all",
     "editor.rulers": [80, 120],
+    "markdown.preview.fontSize: 16,
     "files.eol": "\n",
     "vim.useSystemClipboard": true
 }
